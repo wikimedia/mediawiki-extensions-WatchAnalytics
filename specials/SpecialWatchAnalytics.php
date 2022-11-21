@@ -105,7 +105,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			INNER JOIN page ON page.page_namespace = watchlist.wl_namespace AND page.page_title = watchlist.wl_title;
 		' );
 
-		$allWikiData = $db->fetchRow( $res );
+		$allWikiData = $res->fetchRow();
 
 		list( $watches, $pending, $percent ) = [
 			$allWikiData['num_watches'],

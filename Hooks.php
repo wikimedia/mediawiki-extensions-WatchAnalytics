@@ -5,16 +5,30 @@ use MediaWiki\MediaWikiServices;
 class WatchAnalyticsHooks {
 
 	/**
-	 * Handler for PersonalUrls hook. Replace the "watchlist" item on the user
+	 * Handler for skin template navigation
+	 *
+	 * @param SkinTemplate $skin
+	 * @param array &$links
+	 * @throws MWException
+	 * @throws ConfigException
+	 */
+	public function onSkinTemplateNavigation__Universal( $skin, &$links ) : void {
+		$user = $skin->getUser();
+		self::personalUrlsBuilder( $skin, $links, $user );
+	}
+
+	/**
+	 * Handler for personalUrlsBuilder hook. Replace the "watchlist" item on the user
 	 * toolbar ('personal URLs') with a link to Special:PendingReviews.
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PersonalUrls
 	 *
-	 * @param array &$personal_urls Array of URLs to append to.
+	 * @param SkinTemplate $skin
+	 * @param array &$links Array of URLs to append to.
+	 * @param User $user
 	 * @return bool
 	 */
-	public static function onPersonalUrls( array &$personal_urls ) {
-		global $wgUser, $wgOut;
-		$user = $wgUser;
+	public static function personalUrlsBuilder( $skin, &$links, $user ) {
+		global $wgOut;
 
 		if ( !$user->isAllowed( 'pendingreviewslink' ) ) {
 			return true;
@@ -37,15 +51,15 @@ class WatchAnalyticsHooks {
 		}
 
 		// Determine CSS class of Watchlist/PendingReviews link
-		$personal_urls['watchlist']['class'] = [ 'mw-watchanalytics-watchlist-badge' ];
+		$links['watchlist']['class'] = [ 'mw-watchanalytics-watchlist-badge' ];
 		if ( $numPending != 0 ) {
-			$personal_urls['watchlist']['class'] = [ 'mw-watchanalytics-watchlist-pending' ];
+			$links['watchlist']['class'] = [ 'mw-watchanalytics-watchlist-pending' ];
 		}
 
 		// Determine text of Watchlist/PendingReviews link
 		global $egPendingReviewsEmphasizeDays;
 		if ( $maxPendingDays > $egPendingReviewsEmphasizeDays ) {
-			$personal_urls['watchlist']['class'][] = 'mw-watchanalytics-watchlist-pending-old';
+			$links['watchlist']['class'][] = 'mw-watchanalytics-watchlist-pending-old';
 			if ( $numPendingApprovals != 0 ) {
 				$text = wfMessage( 'watchanalytics-personal-url-approvals-old' )->params( $numPending, $maxPendingDays, $numPendingApprovals )->text();
 			} else {
@@ -60,10 +74,10 @@ class WatchAnalyticsHooks {
 			}
 
 		}
-		$personal_urls['watchlist']['text'] = $text;
+		$links['watchlist']['text'] = $text;
 
 		// set "watchlist" link to Pending Reviews
-		$personal_urls['watchlist']['href'] = SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL();
+		$links['watchlist']['href'] = SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL();
 		return true;
 	}
 
@@ -223,7 +237,7 @@ class WatchAnalyticsHooks {
 	 *
 	 * @return bool
 	 */
-	public static function addMagicWordVariableIDs( &$magicWordVariableIDs ) {
+	public static function onGetMagicVariableIDs( &$magicWordVariableIDs ) {
 		$magicWordVariableIDs[] = 'MAG_NOPAGESCORE';
 		return true;
 	}

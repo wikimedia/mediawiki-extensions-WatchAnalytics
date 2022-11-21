@@ -59,7 +59,7 @@ class SpecialPendingReviews extends SpecialPage {
 	 *
 	 * Otherwise generates the special page.
 	 *
-	 * Generally this special page is only for the current user ($wgUser) to
+	 * Generally this special page is only for the current user ($user) to
 	 * see their own pending reviews, but by setting the 'user' param in the
 	 * query string it is possible to view others' Pending Reviews. FIXME: When
 	 * this extension is "released" this function should be limited only to

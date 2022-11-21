@@ -1,5 +1,8 @@
 <?php
 
+
+use MediaWiki\MediawikiServices;
+
 class SpecialPageStatistics extends SpecialPage {
 
 	public $mMode;
@@ -13,7 +16,9 @@ class SpecialPageStatistics extends SpecialPage {
 	}
 
 	public function execute( $parser = null ) {
-		global $wgRequest, $wgOut, $wgUser;
+		global $wgRequest, $wgOut;
+
+		$user = RequestContext::getMain()->getUser();
 
 		$this->setHeaders();
 		$wgOut->addModuleStyles( 'ext.watchanalytics.specials' ); // @todo FIXME: check if this is necessary
@@ -35,11 +40,12 @@ class SpecialPageStatistics extends SpecialPage {
 		// }
 
 		// @todo: delete if multiple views not needed (thus, not requiring header call here)
-		if ( $this->mTitle && $this->mTitle->isKnown() && $this->mTitle->isWatchable() ) {
+		$watchlistManager = MediawikiServices::getInstance()->getWatchlistManager();
+		if ( $this->mTitle && $this->mTitle->isKnown() && $watchlistManager->isWatchable( $this->mTitle ) ) {
 
 			$unReviewTimestamp = $wgRequest->getVal( 'unreview' );
 			if ( $unReviewTimestamp ) {
-				$rh = new ReviewHandler( $wgUser, $this->mTitle, $wgRequest );
+				$rh = new ReviewHandler( $user, $this->mTitle, $wgRequest );
 				$rh->resetNotificationTimestamp( $unReviewTimestamp );
 				$wgOut->addModuleStyles( [ 'ext.watchanalytics.reviewhandler.styles' ] );
 				$wgOut->addHTML( $this->unReviewMessage() );
@@ -127,8 +133,7 @@ class SpecialPageStatistics extends SpecialPage {
 				'p' => 'page',
 			],
 			[
-				'rev.rev_user',
-				'rev.rev_user_text',
+				'rev.rev_actor',
 				'COUNT( * ) AS num_revisions',
 			],
 			[
@@ -137,7 +142,7 @@ class SpecialPageStatistics extends SpecialPage {
 			],
 			__METHOD__,
 			[
-				'GROUP BY' => 'rev.rev_user',
+				'GROUP BY' => 'rev.rev_actor',
 				'ORDER BY' => 'num_revisions DESC',
 			],
 			[
@@ -152,7 +157,7 @@ class SpecialPageStatistics extends SpecialPage {
 		#
 		$html .= Xml::element( 'h2', null, wfMessage( 'watchanalytics-pagestats-editors-list-title' )->text() );
 		$html .= Xml::openElement( "ul" );
-		while ( $row = $res->fetchObject() ) {
+		if ( $row = $res->fetchObject() ) {
 			// $editor = User::newFromId( $row->rev_user )
 			// $realName = $editor->getRealName();
 
@@ -160,7 +165,7 @@ class SpecialPageStatistics extends SpecialPage {
 				Xml::openElement( 'li' )
 				. wfMessage(
 					'watchanalytics-pagestats-editors-list-item',
-					Linker::userLink( $row->rev_user, $row->rev_user_text ),
+					Linker::userLink( $row->rev_actor, User::newFromId( $row->rev_actor ) ),
 					$row->num_revisions
 				)->text()
 				. Xml::closeElement( 'li' );
@@ -263,7 +268,7 @@ class SpecialPageStatistics extends SpecialPage {
 		);
 
 		$data = [];
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		if ( $row = $res->fetchObject() ) {
 			$data[ $row->timestamp ] = $row->num_reviewed;
 		}
 

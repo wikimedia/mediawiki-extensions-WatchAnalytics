@@ -1,5 +1,6 @@
 <?php
 
+
 class WatchSuggest {
 
 	/**
@@ -68,8 +69,7 @@ class WatchSuggest {
 
 		$sortedPages = $this->sortPagesByWatchImportance( $linkedPages );
 
-		global $wgUser;
-		$userIsViewer = $wgUser->getId() == $this->mUser->getId();
+		$userIsViewer = RequestContext::getMain()->getUser()->getId() == $this->mUser->getId();
 
 		$count = 1;
 		$watchSuggestionsTitle = wfMessage( 'pendingreviews-watch-suggestion-title' )->text();
@@ -345,12 +345,12 @@ class WatchSuggest {
 	}
 
 	public static function getWatchLink( Title $title ) {
-		global $wgUser;
+		$user = RequestContext::getMain()->getUser();
 
 		// action=watch&token=9d1186bca6dd20866e607538b92be6c8%2B%5C
 		$watchLinkURL = $title->getLinkURL( [
 			'action' => 'watch',
-			'token' => WatchAction::getWatchToken( $title, $wgUser ),
+			'token' => $user->getEditToken(),
 		] );
 
 		$watchLink =

@@ -30,7 +30,7 @@ class WatchAnalyticsUser {
 			null // array( 'u' => array( 'LEFT JOIN', 'u.user-id=w.wl_user' ) )
 		);
 		$this->pendingWatches = [];
-		while ( $row = $dbr->fetchRow( $res ) ) {
+		while ( $row = $res->fetchRow() ) {
 
 			// $title = Title::newFromText( $row['title_text'], $row['notification_timestamp'] );
 			$this->pendingWatches[] = $row;

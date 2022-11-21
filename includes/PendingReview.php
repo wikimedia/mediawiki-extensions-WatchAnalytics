@@ -182,7 +182,7 @@ class PendingReview {
 
 		$pending = [];
 
-		while ( $row = $dbr->fetchRow( $watchResult ) ) {
+		while ( $row = $watchResult->fetchRow() ) {
 
 			$pending[] = new self( $row );
 
@@ -249,7 +249,7 @@ class PendingReview {
 
 		$pending = [];
 
-		while ( $row = $dbr->fetchRow( $watchResult ) ) {
+		while ( $row = $watchResult->fetchRow() ) {
 
 			$pending[] = new self( $row );
 

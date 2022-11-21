@@ -159,8 +159,8 @@
 		"remoteExtPath": "WatchAnalytics/modules"
 	},
 	"Hooks": {
-		"PersonalUrls": [
-			"WatchAnalyticsHooks::onPersonalUrls"
+		"PersonalUrlsBuilder": [
+			"WatchAnalyticsHooks::personalUrlsBuilder"
 		],
 		"BeforePageDisplay": [
 			"WatchAnalyticsHooks::onBeforePageDisplay"
@@ -177,8 +177,8 @@
 		"PageContentSaveComplete": [
 			"WatchAnalyticsHooks::onPageContentSaveComplete"
 		],
-		"MagicWordwgVariableIDs": [
-			"WatchAnalyticsHooks::addMagicWordVariableIDs"
+		"GetMagicVariableIDs": [
+			"WatchAnalyticsHooks::onGetMagicVariableIDs"
 		],
 		"ParserAfterTidy": [
 			"WatchAnalyticsHooks::handleMagicWords"
@@ -188,9 +188,6 @@
 		],
 		"LoadExtensionSchemaUpdates": [
 			"WatchAnalyticsUpdaterHooks::addSchemaUpdates"
-		],
-		"ParserTestTables": [
-			"WatchAnalyticsUpdaterHooks::onParserTestTables"
 		]
 	},
 	"LogTypes": [ "pendingreviews" ],

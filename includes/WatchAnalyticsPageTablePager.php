@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediawikiServices;
+
 class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 
 	protected $isSortable = [
@@ -30,7 +32,8 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 	}
 
 	public function getQueryInfo() {
-		$namespaces = MWNamespace::getCanonicalNamespaces();
+		$services = MediawikiServices::getInstance();
+		$namespaces = $services->getNamespaceInfo()->getCanonicalNamespaces();
 
 		if ( $this->mQueryNamespace !== null
 			&& $this->mQueryNamespace >= 0

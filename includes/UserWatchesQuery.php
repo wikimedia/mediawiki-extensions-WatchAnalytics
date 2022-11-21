@@ -119,7 +119,7 @@ class UserWatchesQuery extends WatchesQuery {
 			$qInfo['join_conds']
 		);
 
-		$row = $dbr->fetchRow( $res );
+		$row = $res->fetchRow();
 
 		// if user doesn't have any pages in watchlist, then no data will be
 		// returned by this query. Create a "blank" row instead.

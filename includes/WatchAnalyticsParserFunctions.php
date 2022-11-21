@@ -109,9 +109,7 @@ class WatchAnalyticsParserFunctions {
 	}
 
 	public static function renderWatchersNeeded( &$parser, $frame, $args ) {
-		global $wgUser;
-
-		$wgUserId = $wgUser->getId();
+		$userId = RequestContext::getMain()->getUser()->getId();
 
 		$args = self::processArgs( $frame, $args, [ 0, 60, 3, 10 ] );
 		$namespace   = intval( $args[0] );
@@ -162,7 +160,7 @@ class WatchAnalyticsParserFunctions {
 						p.page_title AS page_title,
 						p.page_namespace AS page_namespace,
 						SUM( IF(w.wl_title IS NOT NULL, 1, 0) ) AS num_watches,
-						SUM( IF(w.wl_user = $wgUserId, 1, 0) ) AS wg_user_watches,
+						SUM( IF(w.wl_user = $userId, 1, 0) ) AS wg_user_watches,
 						p.page_counter / SUM( IF(w.wl_title IS NOT NULL, 1, 0) ) AS view_watch_ratio
 					FROM
 						watchlist AS w
@@ -210,7 +208,9 @@ class WatchAnalyticsParserFunctions {
 	}
 
 	protected static function makeWatchLink( $ns, $titleText ) {
-		global $wgContLang, $wgUser;
+		global $wgContLang;
+
+		$user = RequestContext::getMain()->getUser();
 
 		$context = RequestContext::getMain();
 
@@ -228,7 +228,7 @@ class WatchAnalyticsParserFunctions {
 		$text = $wgContLang->convert( $nt->getPrefixedText() );
 
 		$plink = Linker::linkKnown( $nt, htmlspecialchars( $text ) );
-		$token = WatchAction::getWatchToken( $nt, $wgUser );
+		$token = WatchAction::getWatchToken( $nt, $user );
 		$wlink = Linker::linkKnown(
 			$nt,
 			$context->msg( 'watch' )->escaped(),
