@@ -159,8 +159,8 @@
 		"remoteExtPath": "WatchAnalytics/modules"
 	},
 	"Hooks": {
-		"PersonalUrlsBuilder": [
-			"WatchAnalyticsHooks::personalUrlsBuilder"
+		"SkinTemplateNavigation::Universal": [
+			"WatchAnalyticsHooks::onSkinTemplateNavigation__Universal"
 		],
 		"BeforePageDisplay": [
 			"WatchAnalyticsHooks::onBeforePageDisplay"
