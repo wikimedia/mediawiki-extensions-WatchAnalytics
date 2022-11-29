@@ -43,7 +43,7 @@ class WatchStateRecorder {
 	}
 
 	public function recordAll() {
-		$this->dbw = wfGetDB( DB_MASTER );
+		$this->dbw = wfGetDB( DB_PRIMARY );
 
 		// get user and page info
 		$userWatchQuery = new UserWatchesQuery();
@@ -288,7 +288,7 @@ class WatchStateRecorder {
 			];
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		// insert into watch_tracking_page: $timestamp, $title->getId(), $numWatchers, $numReviewed
 		$dbw->replace(
@@ -328,7 +328,7 @@ class WatchStateRecorder {
 		$userWQ = new UserWatchesQuery();
 		$userWatchStats = $userWQ->getMultiUserWatchStats( [ $user->getId() ] );
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		// necessary to use replace here? probably, in case two requests
 		// are made in rapid succession such that the second gets a read

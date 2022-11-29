@@ -28,7 +28,7 @@
  */
 
 // Allow people to have different layouts.
-if ( ! isset( $IP ) ) {
+if ( !isset( $IP ) ) {
 	$IP = __DIR__ . '/../../../';
 	if ( getenv( "MW_INSTALL_PATH" ) ) {
 		$IP = getenv( "MW_INSTALL_PATH" );
@@ -62,7 +62,7 @@ class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		$usernames = $this->getOption( 'usernames' );
 		if ( $usernames ) {

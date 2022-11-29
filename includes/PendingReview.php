@@ -5,46 +5,46 @@ use MediaWiki\MediaWikiServices;
 class PendingReview {
 
 	/**
-	 * @var string $notificationTimestamp: time of oldest change user hasn't seen
+	 * @var string : time of oldest change user hasn't seen
 	 * @example 20141031072315
 	 */
 	public $notificationTimestamp;
 
 	/**
-	 * @var Title $title
+	 * @var Title
 	 */
 	public $title;
 
 	/**
-	 * @var array|false $newRevisions
+	 * @var array|false
 	 * @todo FIXME: document
 	 */
 	public $newRevisions;
 
 	/**
-	 * @var string $deletedTitle: text of deleted title
+	 * @var string : text of deleted title
 	 * @todo document is this "Main Page" or "Main_Page"
 	 */
 	public $deletedTitle;
 
 	/**
-	 * @var int $deletedNS
+	 * @var int
 	 */
 	public $deletedNS;
 
 	/**
-	 * @var array|false $deletionLog
+	 * @var array|false
 	 * @todo FIXME: document
 	 */
 	public $deletionLog;
 
 	/**
-	 * @var int $numReviewers: number of people who have reviewed this page
+	 * @var int : number of people who have reviewed this page
 	 */
 	public $numReviewers;
 
 	/**
-	 * @var array|false $log
+	 * @var array|false
 	 * @todo FIXME: document
 	 */
 	public $log;

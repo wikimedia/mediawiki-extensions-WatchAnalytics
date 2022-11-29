@@ -1,10 +1,10 @@
 <?php
 /**
-* ClearPendingReviews SpecialPage
-*
-* @file
-* @ingroup Extensions
-*/
+ * ClearPendingReviews SpecialPage
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 class SpecialClearPendingReviews extends SpecialPage {
 	public function __construct() {
@@ -104,7 +104,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 	 * @return $results
 	 */
 	public static function doSearchQuery( $data, $clearPages ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$category = preg_replace( '/\s+/', '_', $data['category'] );
 		$page = preg_replace( '/\s+/', '_', $data['page'] );
 		$start = preg_replace( '/\s+/', '', $data['start'] );

@@ -24,7 +24,7 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 		$sortField = $wgRequest->getVal( 'sort' );
 		$this->mQueryNamespace = $wgRequest->getVal( 'ns' );
 
-		if ( ! isset( $sortField ) ) {
+		if ( !isset( $sortField ) ) {
 			$this->mDefaultDirection = false;
 		}
 

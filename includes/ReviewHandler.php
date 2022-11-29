@@ -7,17 +7,17 @@ class ReviewHandler {
 	public static $isReviewable = true;
 
 	/**
-	 * @var User $user: reference to the current user
+	 * @var User : reference to the current user
 	 */
 	public $user;
 
 	/**
-	 * @var Title $title: reference to current title
+	 * @var Title : reference to current title
 	 */
 	public $title;
 
 	/**
-	 * @var int $initial: state of the user watching the page initially (at the
+	 * @var int : state of the user watching the page initially (at the
 	 * beginning of the page load). Possible values: -1 for not watching the
 	 * page, 0 for watching and has seen the latest version, and a large int
 	 * like 20150102030405 (timestamp) for the user not having seen the latest.
@@ -25,7 +25,7 @@ class ReviewHandler {
 	public $initial = null;
 
 	/**
-	 * @var int $final: same purpose as $initial, but determined late in the
+	 * @var int : same purpose as $initial, but determined late in the
 	 * page load to see if the watch/review-state has changed.
 	 */
 	public $final = null;
@@ -37,7 +37,7 @@ class ReviewHandler {
 	}
 
 	public static function setup( User $user, Title $title, $isDiff ) {
-		if ( ! $title->isWatchable() ) {
+		if ( !$title->isWatchable() ) {
 			self::$isReviewable = false;
 			return false;
 		}
@@ -81,7 +81,7 @@ class ReviewHandler {
 
 	public static function pageIsBeingReviewed() {
 		// never setup
-		if ( ! self::$isReviewable || self::$pageLoadHandler === null ) {
+		if ( !self::$isReviewable || self::$pageLoadHandler === null ) {
 			return false;
 		}
 
@@ -206,7 +206,7 @@ class ReviewHandler {
 	}
 
 	public function resetNotificationTimestamp( $ts ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		return $dbw->update(
 			'watchlist',

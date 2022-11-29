@@ -3,18 +3,18 @@
 class PageScore {
 
 	/**
-	 * @var bool $displayPageScore: used to determine if a particular page should or
+	 * @var bool : used to determine if a particular page should or
 	 * should not include page scores. Assume true until magic word says otherwise.
 	 */
 	public static $displayPageScore = true;
 
 	/**
-	 * @var Title $mTitle: reference to current title
+	 * @var Title : reference to current title
 	 */
 	public $mTitle;
 
 	/**
-	 * @var array $cssColorClasses: names of classes used to color page score badges
+	 * @var array : names of classes used to color page score badges
 	 */
 	public $cssColorClasses;
 

@@ -55,7 +55,7 @@ class PendingApproval extends PendingReview {
 	/**
 	 * Get an array of pages user can approve that require approvals
 	 * @param User $user
-	 * @return Array
+	 * @return array
 	 */
 	public static function getUserPendingApprovals( User $user ) {
 		$dbr = wfGetDB( DB_REPLICA );

@@ -137,12 +137,12 @@ class UserWatchesQuery extends WatchesQuery {
 	/**
 	 * Gets watch statistics for a list of users.
 	 *
-	 * @param Array $userIds array of integer user IDs.
-	 * @return Array returns user watch info in an array with user IDs as keys
+	 * @param array $userIds array of integer user IDs.
+	 * @return array returns user watch info in an array with user IDs as keys
 	 * and values being objects with params num_watches and num_pending.
 	 */
 	public function getMultiUserWatchStats( array $userIds ) {
-		if ( ! count( $userIds ) ) {
+		if ( !count( $userIds ) ) {
 			return [];
 		}
 

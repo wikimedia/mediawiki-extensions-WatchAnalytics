@@ -12,7 +12,7 @@ class WatchAnalyticsHooks {
 	 * @throws MWException
 	 * @throws ConfigException
 	 */
-	public function onSkinTemplateNavigation__Universal( $skin, &$links ) : void {
+	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
 		self::personalUrlsBuilder( $skin, $links, $user );
 	}
@@ -193,7 +193,7 @@ class WatchAnalyticsHooks {
 		$oldDBkey = $originalTitle->getDBkey();
 		$newDBkey = $newTitle->getDBkey();
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$results = $dbw->select( 'watchlist',
 			[ 'wl_user', 'wl_notificationtimestamp' ],
 			[ 'wl_namespace' => $oldNS, 'wl_title' => $oldDBkey ],
@@ -233,7 +233,7 @@ class WatchAnalyticsHooks {
 	 *
 	 * @see FIXME (include link to hook documentation)
 	 *
-	 * @param Array &$magicWordVariableIDs array of names of magic words
+	 * @param array &$magicWordVariableIDs array of names of magic words
 	 *
 	 * @return bool
 	 */

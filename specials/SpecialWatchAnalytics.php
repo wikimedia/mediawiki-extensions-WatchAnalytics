@@ -36,7 +36,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		// $fileactions = array('actions...?');
 
 		$w = new WatchStateRecorder();
-		if ( ! $w->recordedWithinHours( 1 ) ) {
+		if ( !$w->recordedWithinHours( 1 ) ) {
 			$w->recordAll();
 			$wgOut->addHTML( '<p>' . wfMessage( 'watchanalytics-all-wiki-stats-recorded' )->text() . '</p>' );
 		}
@@ -74,7 +74,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		// FROM watchlist
 		// INNER JOIN page ON page.page_namespace = watchlist.wl_namespace AND page.page_title = watchlist.wl_title;		$dbr = wfGetDB( DB_SLAVE );
 
-		$db = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_PRIMARY );
 
 		// $res = $dbr->select(
 		// array(
@@ -232,7 +232,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 
 			// if the page isn't in $pages, then it's also not in $nodes
 			// add to both
-			if ( ! isset( $pages[ $row['title'] ] ) ) {
+			if ( !isset( $pages[ $row['title'] ] ) ) {
 				$nextNode = count( $nodes );
 
 				$pages[ $row['title'] ] = $nextNode;
@@ -246,7 +246,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			}
 
 			// same for users...add to $users and $nodes accordingly
-			if ( ! isset( $users[ $row['user_name'] ] ) ) {
+			if ( !isset( $users[ $row['user_name'] ] ) ) {
 				$nextNode = count( $nodes );
 
 				$users[ $row['user_name'] ] = $nextNode;

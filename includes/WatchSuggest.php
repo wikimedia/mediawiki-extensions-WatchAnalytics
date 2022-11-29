@@ -1,15 +1,14 @@
 <?php
 
-
 class WatchSuggest {
 
 	/**
-	 * @var User $mUser: reference to current user
+	 * @var User : reference to current user
 	 */
 	public $mUser;
 
 	/**
-	 * @var DatabaseBase $dbr: FIXME confirm correct class
+	 * @var DatabaseBase : FIXME confirm correct class
 	 */
 	public $dbr;
 
@@ -81,7 +80,7 @@ class WatchSuggest {
 		foreach ( $sortedPages as $pageId => $pageInfo ) {
 
 			$suggestedTitle = Title::newFromID( $pageInfo[ 'page_id' ] );
-			if ( ! $suggestedTitle // for some reason some pages in the pagelinks table don't exist in either table page or table archive...
+			if ( !$suggestedTitle // for some reason some pages in the pagelinks table don't exist in either table page or table archive...
 				|| $suggestedTitle->getNamespace() !== 0 // skip pages not in the main namespace
 				|| $suggestedTitle->isRedirect() ) { // don't need redirects
 				continue;
@@ -121,7 +120,7 @@ class WatchSuggest {
 	}
 
 	public function getUserWatchlist( User $user, $namespaces = [] ) {
-		if ( ! is_array( $namespaces ) ) {
+		if ( !is_array( $namespaces ) ) {
 			if ( intval( $namespaces ) < 0 ) {
 				throw new MWException( __METHOD__ . ' argument $namespace requires integer or array' );
 			}
@@ -230,13 +229,13 @@ class WatchSuggest {
 		);
 		$linkedPages = [];
 		while ( $row = $linkedPagesResult->fetchObject() ) {
-			if ( ! isset( $linkedPages[ $row->pl_from_id ] ) ) {
+			if ( !isset( $linkedPages[ $row->pl_from_id ] ) ) {
 				$linkedPages[ $row->pl_from_id ] = 1;
 			} else {
 				$linkedPages[ $row->pl_from_id ]++;
 			}
 
-			if ( ! isset( $linkedPages[ $row->pl_to_id ] ) ) {
+			if ( !isset( $linkedPages[ $row->pl_to_id ] ) ) {
 				$linkedPages[ $row->pl_to_id ] = 1;
 			} else {
 				$linkedPages[ $row->pl_to_id ]++;
@@ -245,7 +244,7 @@ class WatchSuggest {
 
 		$linkedPagesToKeep = [];
 		foreach ( $linkedPages as $pageId => $numLinks ) {
-			if ( ! in_array( $pageId, $userWatchlistPageIds ) ) {
+			if ( !in_array( $pageId, $userWatchlistPageIds ) ) {
 				$linkedPagesToKeep[ $pageId ] = [ 'num_links' => $numLinks ];
 			}
 		}

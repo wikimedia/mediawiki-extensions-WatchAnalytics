@@ -11,21 +11,21 @@ class WatchesQuery {
 	public $options;
 
 	/**
-	 * @var int $limit: maximum number of database rows to return
+	 * @var int : maximum number of database rows to return
 	 * @todo FIXME: who/what sets this?
 	 * @example 20
 	 */
 	public $limit;
 
 	/**
-	 * @var int $offset: used with $limit for pagination
+	 * @var int : used with $limit for pagination
 	 * @todo FIXME: who/what sets this?
 	 * @example 100
 	 */
 	public $offset;
 
 	/**
-	 * @var array $fieldNames: property declared in child classes to bind a MW
+	 * @var array : property declared in child classes to bind a MW
 	 * message with a SQL database column
 	 * @todo FIXME: where is this used?
 	 * @example array( 'dbkey' => 'message-name', 'page_ns_and_title' => 'watchanalytics-special-header-page-title' )
@@ -33,14 +33,14 @@ class WatchesQuery {
 	protected $fieldNames;
 
 	/**
-	 * @var string|bool $userGroupFilter: defines which user group to be used to
+	 * @var string|bool : defines which user group to be used to
 	 * filter for page-watches
 	 * @example 'sysop'
 	 */
 	protected $userGroupFilter = false;
 
 	/**
-	 * @var string|bool $categoryFilter: defines which category to be used to
+	 * @var string|bool : defines which category to be used to
 	 * filter for page-watches
 	 * @example 'Articles_with_unsourced_statements'
 	 */

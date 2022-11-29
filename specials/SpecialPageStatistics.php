@@ -1,6 +1,5 @@
 <?php
 
-
 use MediaWiki\MediawikiServices;
 
 class SpecialPageStatistics extends SpecialPage {
@@ -208,7 +207,7 @@ class SpecialPageStatistics extends SpecialPage {
 			// $editor = User::newFromId( $row->rev_user )
 			// $realName = $editor->getRealName();
 
-			if ( is_null( $row->wl_notificationtimestamp ) ) {
+			if ( $row->wl_notificationtimestamp === null ) {
 				$watcherMsg = 'watchanalytics-pagestats-watchers-list-item-reviewed';
 			} else {
 				$watcherMsg = 'watchanalytics-pagestats-watchers-list-item-unreviewed';

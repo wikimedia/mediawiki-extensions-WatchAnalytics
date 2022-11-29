@@ -129,7 +129,7 @@ class PageWatchesQuery extends WatchesQuery {
 
 		$return = [];
 		while ( $row = $pageWatchStats->fetchObject() ) {
-			if ( ! isset( $row->num_views ) ) {
+			if ( !isset( $row->num_views ) ) {
 				$row->num_views = 1;
 			}
 			$return[] = $row;

@@ -47,7 +47,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	}
 
 	public function isFieldSortable( $field ) {
-		if ( ! isset( $this->isSortable[$field] ) ) {
+		if ( !isset( $this->isSortable[$field] ) ) {
 			return false;
 		} else {
 			return $this->isSortable[ $field ];
@@ -99,7 +99,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	/**
 	 * Override IndexPager in includes/Pager.php.
 	 *
-	 * @return Array
+	 * @return array
 	 */
 	public function getPagingQueries() {
 		$queries = parent::getPagingQueries();
