@@ -2,7 +2,7 @@
 
 class UserWatchesQuery extends WatchesQuery {
 
-	public $sqlUserName = 'u.user_name AS user_name';
+	public $sqlUserName = 'MAX(u.user_name) AS user_name';
 	public $sqlNumWatches = 'COUNT(*) AS num_watches';
 	public $sqlNumPending = 'SUM( IF(w.wl_notificationtimestamp IS NULL, 0, 1) ) AS num_pending';
 	public $sqlPercentPending = 'SUM( IF(w.wl_notificationtimestamp IS NULL, 0, 1) ) * 100 / COUNT(*) AS percent_pending';

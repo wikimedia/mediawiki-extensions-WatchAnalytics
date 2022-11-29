@@ -123,9 +123,6 @@
 			"position": "bottom",
 			"scripts": [
 				"shakependingreviews/shake.js"
-			],
-			"dependencies": [
-				"jquery.effects.shake"
 			]
 		},
 		"ext.watchanalytics.pagescores.scripts": {

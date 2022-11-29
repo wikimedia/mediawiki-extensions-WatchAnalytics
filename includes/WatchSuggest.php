@@ -294,8 +294,8 @@ class WatchSuggest {
 				'u' => 'user',
 			],
 			[
-				'u.user_name AS user_name',
-				'u.user_real_name AS real_name',
+				'MAX(u.user_name) AS user_name',
+				'MAX(u.user_real_name) AS real_name',
 				'COUNT( * ) AS user_watches',
 			],
 			'p.page_is_redirect = 0 AND w.wl_user != 0', // no redirects, and don't include maintenance scripts and other non-users
