@@ -12,7 +12,7 @@ class WatchAnalyticsHooks {
 	 * @throws MWException
 	 * @throws ConfigException
 	 */
-	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
+	public static function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
 		self::personalUrlsBuilder( $skin, $links, $user );
 	}
@@ -74,10 +74,10 @@ class WatchAnalyticsHooks {
 			}
 
 		}
-		$links['watchlist']['text'] = $text;
+		$links['watchlist']['text'][] = $text;
 
 		// set "watchlist" link to Pending Reviews
-		$links['watchlist']['href'] = SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL();
+		$links['watchlist']['href'][] = SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL();
 		return true;
 	}
 
