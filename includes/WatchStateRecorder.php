@@ -54,12 +54,12 @@ class WatchStateRecorder {
 
 		// override fields
 		$userQueryInfo['fields'] = [
-			'u.user_id AS user_id',
+			'MAX(u.user_id) AS user_id',
 			$userWatchQuery->sqlNumWatches,
 			$userWatchQuery->sqlNumPending,
 		];
 		$pageQueryInfo['fields'] = [
-			'p.page_id AS page_id',
+			'   MAX(p.page_id) AS page_id',
 			'p.page_namespace AS page_namespace', // needed only for all-wiki info
 			$pageWatchQuery->sqlNumWatches,
 			$pageWatchQuery->sqlNumReviewed,

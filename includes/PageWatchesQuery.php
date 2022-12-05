@@ -102,7 +102,7 @@ class PageWatchesQuery extends WatchesQuery {
 		$queryInfo['options'][ 'ORDER BY' ] = 'num_watches ASC';
 
 		$cols = [
-			'p.page_id AS page_id',
+			'MAX(p.page_id) AS page_id',
 			$this->sqlNumWatches, // 'SUM( IF(w.wl_title IS NOT NULL, 1, 0) ) AS num_watches'
 		];
 
