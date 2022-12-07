@@ -64,7 +64,7 @@
 	"ResourceModules": {
 		"ext.watchanalytics.base": {
 			"position": "bottom",
-			"styles": "base/ext.watchanalytics.base.css"
+			"styles": "ext.watchanalytics.base.css"
 		},
 		"ext.watchanalytics.forcegraph.scripts": {
 			"position": "bottom",
@@ -87,7 +87,7 @@
 		},
 		"ext.watchanalytics.specials": {
 			"position": "bottom",
-			"styles": "specials/ext.watchanalytics.specials.css"
+			"styles": "ext.watchanalytics.specials.css"
 		},
 		"ext.watchanalytics.pendingreviews.scripts": {
 			"position": "bottom",
@@ -98,7 +98,7 @@
 		},
 		"ext.watchanalytics.clearpendingreviews.scripts": {
 			"position": "bottom",
-			"scripts": "clearpendingreviews/ext.watchanalytics.clearpendingreviews.js",
+			"scripts": "ext.watchanalytics.clearpendingreviews.js",
 			"dependencies": [
 				"mediawiki.Title"
 			]
@@ -110,19 +110,19 @@
 		"underscore.js": {
 			"position": "bottom",
 			"scripts": [
-				"underscore.js/underscore-min.js"
+				"underscore-umd.js"
 			]
 		},
 		"d3.js": {
 			"position": "bottom",
 			"scripts": [
-				"d3.js/d3.js"
+				"d3.js"
 			]
 		},
 		"ext.watchanalytics.shakependingreviews": {
 			"position": "bottom",
 			"scripts": [
-				"shakependingreviews/shake.js"
+				"shake.js"
 			]
 		},
 		"ext.watchanalytics.pagescores.scripts": {
