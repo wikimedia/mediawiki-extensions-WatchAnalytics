@@ -21,6 +21,8 @@
  * @ingroup SpecialPage
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * A special page that lists last changes made to the wiki that a user is
  * watching. Pages are listed in reverse-chronological order or by priority;
@@ -907,6 +909,12 @@ class SpecialPendingReviews extends SpecialPage {
 	 */
 	public function getPendingReviewChangesList( $combinedList ) {
 		$changes = [];
+		if ( method_exists( MediaWikiServices::class, 'getCommentFormatter' ) ) {
+			// MW 1.38+
+			$commentFormatter = MediaWikiServices::getInstance()->getCommentFormatter();
+		} else {
+			$commentFormatter = null;
+		}
 		foreach ( $combinedList as $change ) {
 			if ( isset( $change->log_timestamp ) ) {
 				$changeTs = $change->log_timestamp;
@@ -918,7 +926,13 @@ class SpecialPendingReviews extends SpecialPage {
 
 				$comment = $rev->getComment();
 				if ( $comment ) {
-					$comment = '<span class="comment">' . Linker::formatComment( $comment ) . '</span>';
+					if ( $commentFormatter !== null ) {
+						// MW 1.38+
+						$formattedComment = $commentFormatter->format( comment );
+					} else {
+						$formattedComment = Linker::formatComment( $comment );
+					}
+					$comment = '<span class="comment">' . $formattedComment . '</span>';
 					$changeText = ' ' . wfMessage( 'pendingreviews-with-comment', [ $userPage ] )->parse() . ' ' . $comment;
 				} else {
 					$changeText = ' ' . wfMessage( 'pendingreviews-edited-by', $userPage )->parse();
