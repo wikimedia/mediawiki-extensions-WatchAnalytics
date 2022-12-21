@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 abstract class WatchAnalyticsTablePager extends TablePager {
 
 	public function __construct( $page, $conds, $filters = [] ) {
@@ -142,7 +144,12 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 
 		// user group filter
 		$groups = [ $this->msg( 'watchanalytics-user-group-no-filter' )->text() => '' ];
-		$rawGroups = User::getAllGroups();
+		if ( method_exists( MediaWikiServices::class, 'getUserGroupManager' ) ) {
+			// MW 1.35+
+			$rawGroups = MediaWikiServices::getInstance()->getUserGroupManager()->listAllGroups();
+		} else {
+			User::getAllGroups();
+		}
 		foreach ( $rawGroups as $group ) {
 			$labelMsg = $this->msg( 'group-' . $group );
 			if ( $labelMsg->exists() ) {
