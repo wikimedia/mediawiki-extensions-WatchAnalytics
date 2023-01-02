@@ -159,12 +159,15 @@ class ReviewHandler {
 
 		$this->pendingReview = PendingReview::getPendingReview( $this->user, $this->title );
 
+		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
+
 		foreach ( $this->pendingReview as $item ) {
 			if ( count( $item->newRevisions ) > 0 ) {
 
 				// returns essentially the negative-oneth revision...the one before
 				// the wl_notificationtimestamp revision...or null/false if none exists?
-				$mostRecentReviewed = Revision::newFromRow( $item->newRevisions[0] )->getPrevious();
+				$currentRevision = $revisionStore->newRevisionFromRow( $item->newRevisions[0] );
+				$mostRecentReviewed = $revisionStore->getPreviousRevision( $currentRevision );
 			} else {
 				$mostRecentReviewed = false; // no previous revision, the user has not reviewed the first!
 			}
@@ -174,8 +177,7 @@ class ReviewHandler {
 				$lastSeenId = $mostRecentReviewed->getId();
 
 			} else {
-
-				$latest = Revision::newFromTitle( $item->title );
+				$latest = $revisionStore->getRevisionByTitle( $item->title );
 				$lastSeenId = $latest->getId();
 
 			}

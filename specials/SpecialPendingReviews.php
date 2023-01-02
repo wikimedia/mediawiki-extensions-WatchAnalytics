@@ -307,7 +307,9 @@ class SpecialPendingReviews extends SpecialPage {
 		} else {
 
 			if ( count( $item->newRevisions ) ) {
-				$previousViewedChange = Revision::newFromRow( $item->newRevisions[0] )->getPrevious();
+				$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
+				$currentRevision = $revisionStore->newRevisionFromRow( $item->newRevisions[0] );
+				$previousViewedChange = $revisionStore->getPreviousRevision( $currentRevision );
 				if ( $previousViewedChange ) {
 					$prevId = $previousViewedChange->getId();
 					$context = new DerivativeContext( RequestContext::getMain() );
@@ -471,11 +473,13 @@ class SpecialPendingReviews extends SpecialPage {
 	 * @return string HTML for button
 	 */
 	public function getReviewButton( $item ) {
+		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
 		if ( count( $item->newRevisions ) > 0 ) {
 
 			// returns essentially the negative-oneth revision...the one before
 			// the wl_notificationtimestamp revision...or null/false if none exists?
-			$mostRecentReviewed = Revision::newFromRow( $item->newRevisions[0] )->getPrevious();
+			$currentRevision = $revisionStore->newRevisionFromRow( $item->newRevisions[0] );
+			$mostRecentReviewed = $revisionStore->getPreviousRevision( $currentRevision );
 		} else {
 			$mostRecentReviewed = false; // no previous revision, the user has not reviewed the first!
 		}
@@ -495,8 +499,7 @@ class SpecialPendingReviews extends SpecialPage {
 				)->text()
 			);
 		} else {
-
-			$latest = Revision::newFromTitle( $item->title );
+			$latest = $revisionStore->getRevisionByTitle( $item->title );
 			$diffURL = $item->title->getLocalURL( [ 'oldid' => $latest->getId() ] );
 
 			$diffLink = Xml::element( 'a',
@@ -915,12 +918,13 @@ class SpecialPendingReviews extends SpecialPage {
 		} else {
 			$commentFormatter = null;
 		}
+		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
 		foreach ( $combinedList as $change ) {
 			if ( isset( $change->log_timestamp ) ) {
 				$changeTs = $change->log_timestamp;
 				$changeText = $this->getLogChangeMessage( $change );
 			} else {
-				$rev = Revision::newFromRow( $change );
+				$rev = $revisionStore->newRevisionFromRow( $change );
 				$changeTs = $change->rev_timestamp;
 				$userPage = Title::makeTitle( NS_USER, $change->rev_user_text )->getFullText();
 
@@ -928,9 +932,9 @@ class SpecialPendingReviews extends SpecialPage {
 				if ( $comment ) {
 					if ( $commentFormatter !== null ) {
 						// MW 1.38+
-						$formattedComment = $commentFormatter->format( comment );
+						$formattedComment = $commentFormatter->format( $comment );
 					} else {
-						$formattedComment = Linker::formatComment( $comment );
+						$formattedComment = Linker::formatComment( $comment->text );
 					}
 					$comment = '<span class="comment">' . $formattedComment . '</span>';
 					$changeText = ' ' . wfMessage( 'pendingreviews-with-comment', [ $userPage ] )->parse() . ' ' . $comment;
