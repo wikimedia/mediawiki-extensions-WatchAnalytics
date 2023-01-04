@@ -208,7 +208,7 @@
 		"PendingReviewsOrangePagesThreshold": 4,
 		"PendingReviewsNumberWatchSuggestions": 20,
 		"PendingReviewsShowWatchSuggestionsIfReviewsUnder": 5,
-		"WatchAnalyticsPageScoreNamespaces": [0, 1],
+		"WatchAnalyticsPageScoreNamespaces": [ 0, 1 ],
 		"WatchAnalyticsWatchQualityColors": {
 			"50" : "plaid",
 			"5" : "excellent",
