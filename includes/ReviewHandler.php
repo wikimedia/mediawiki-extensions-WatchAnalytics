@@ -39,15 +39,15 @@ class ReviewHandler {
 	}
 
 	public static function setup( User $user, Title $title, $isDiff ) {
-		if ( method_exists( $title, 'isWatchable' ) ) {
-			if ( !$title->isWatchable() ) {
+		$watchlistManager = MediaWikiServices::getInstance()->getWatchlistManager();
+		if ( method_exists( $watchlistManager, 'isWatchable' ) ) {
+			if ( !$watchlistManager->isWatchable( $title ) ) {
 				self::$isReviewable = false;
 				return false;
 			}
 		} else {
-			// MW 1.37+
-			$watchlistManager = MediaWikiServices::getInstance()->getWatchlistManager();
-			if ( !$watchlistManager->isWatchable( $title ) ) {
+			// MW < 1.37
+			if ( !$title->isWatchable() ) {
 				self::$isReviewable = false;
 				return false;
 			}
