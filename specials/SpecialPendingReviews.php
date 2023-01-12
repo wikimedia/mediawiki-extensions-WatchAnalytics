@@ -334,11 +334,11 @@ class SpecialPendingReviews extends SpecialPage {
 			$reviewButton = $this->getReviewButton( $item );
 		}
 
-		$historyButton = $this->getHistoryButton( $item );
+		$historyLink = $this->getHistoryLink( $item );
 
 		$displayTitle = '<strong>' . $item->title->getFullText() . '</strong>';
 
-		return $this->getReviewRowHTML( $item, $rowCount, $displayTitle, $reviewButton, $historyButton, $acceptChangesButton, $changes );
+		return $this->getReviewRowHTML( $item, $rowCount, $displayTitle, $reviewButton, $historyLink, $acceptChangesButton, $changes );
 	}
 
 	/**
@@ -440,7 +440,7 @@ class SpecialPendingReviews extends SpecialPage {
 
 		$html = "<tr $classAndAttr><td class='pendingreviews-page-title pendingreviews-top-cell'>" .
 			"$displayTitle</td>" .
-			"<td class='pendingreviews-review-links pendingreviews-bottom-cell pendingreviews-top-cell'>" .
+			"<td class=' pendingreviews-bottom-cell pendingreviews-top-cell'>" .
 			"$acceptButton $buttonOne $buttonTwo</td></tr>";
 
 		$html .= "<tr $classAndAttr><td colspan='2' class='pendingreviews-bottom-cell'>$changes</td></tr>";
@@ -492,7 +492,7 @@ class SpecialPendingReviews extends SpecialPage {
 			] );
 
 			$diffLink = Xml::element( 'a',
-				[ 'href' => $diffURL, 'class' => 'pendingreviews-green-button', 'target' => "_blank" ],
+				[ 'href' => $diffURL, 'target' => "_blank" ],
 				wfMessage(
 					'watchanalytics-pendingreviews-diff-revisions',
 					count( $item->newRevisions )
@@ -503,7 +503,7 @@ class SpecialPendingReviews extends SpecialPage {
 			$diffURL = $item->title->getLocalURL( [ 'oldid' => $latest->getId() ] );
 
 			$diffLink = Xml::element( 'a',
-				[ 'href' => $diffURL, 'class' => 'pendingreviews-green-button', 'target' => "_blank" ],
+				[ 'href' => $diffURL, 'target' => "_blank" ],
 				$this->msg( 'watchanalytics-pendingreviews-users-first-view' )->text()
 			);
 
@@ -540,11 +540,10 @@ class SpecialPendingReviews extends SpecialPage {
 	 * @param PendingReview $item
 	 * @return string HTML for button
 	 */
-	public function getHistoryButton( $item ) {
+	public function getHistoryLink( $item ) {
 		return Xml::element( 'a',
 			[
 				'href' => $item->title->getLocalURL( [ 'action' => 'history' ] ),
-				'class' => 'pendingreviews-dark-blue-button',
 				'target' => "_blank"
 			],
 			wfMessage( 'watchanalytics-pendingreviews-history-link' )->text()
@@ -679,8 +678,7 @@ class SpecialPendingReviews extends SpecialPage {
 
 		return Xml::element( 'a',
 			[
-				'href' => $userTalk->getLocalURL( $talkQueryString ),
-				'class' => 'pendingreviews-dark-blue-button' // pendingreviews-delete-talk-button
+				'href' => $userTalk->getLocalURL( $talkQueryString )
 			],
 			wfMessage( 'pendingreviews-page-deleted-talk', $user->getUserPage()->getFullText() )->text()
 		);
