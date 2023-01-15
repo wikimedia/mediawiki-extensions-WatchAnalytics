@@ -215,9 +215,10 @@ class SpecialPageStatistics extends SpecialPage {
 
 			$html .=
 				Xml::openElement( 'li' )
+				. Linker::userLink( $row->wl_user, $row->user_name )
+				. ' - '
 				. wfMessage(
-					$watcherMsg,
-					Linker::userLink( $row->wl_user, $row->user_name )
+					$watcherMsg
 				)->text()
 				. Xml::closeElement( 'li' );
 

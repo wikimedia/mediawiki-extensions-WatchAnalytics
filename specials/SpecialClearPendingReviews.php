@@ -166,7 +166,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			}
 
 			// Log when pages are cleared in Special:Log
-			$logEntry = new ManualLogEntry( 'pendingreviews', 'clearreivews' );
+			$logEntry = new ManualLogEntry( 'pendingreviews', 'clearreviews' );
 			$logEntry->setPerformer( $this->getUser() );
 			$logEntry->setTarget( $this->getPageTitle() );
 			$logEntry->setParameters( [

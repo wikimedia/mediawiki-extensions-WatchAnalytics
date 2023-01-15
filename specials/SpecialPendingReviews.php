@@ -878,13 +878,13 @@ class SpecialPendingReviews extends SpecialPage {
 
 		// get user page of user who created the log entry
 		$user = User::newFromId( $logEntry->log_actor );
-		$userPage = Title::makeTitle( NS_USER, $user->getName() )->getFullText();
+		$userLink = Linker::userLink( $user->getId(), $user->getName() );
 
 		// if a message exists for the particular log type, handle it as follows
 		if ( isset( $messages[ $logEntry->log_type ][ $logEntry->log_action ] ) ) {
 
 			// all messages will use the executing users user-page
-			$messageParams = [ $userPage ];
+			$messageParams = [ $userLink ];
 
 			// if the log action is move or move_redir, the move target is in the message
 			if ( $logEntry->log_action == 'move' || $logEntry->log_action == 'move_redir' ) {
@@ -895,11 +895,11 @@ class SpecialPendingReviews extends SpecialPage {
 				$messageParams[] = $logEntry->log_comment;
 			}
 
-			return wfMessage( $messages[ $logEntry->log_type ][ $logEntry->log_action ], $messageParams );
+			return wfMessage( $messages[ $logEntry->log_type ][ $logEntry->log_action ], $messageParams )->text();
 
 		// if no message exists for the log type and action, handling with "unknown change"
 		} else {
-			return wfMessage( 'pendingreviews-log-unknown-change', $userPage );
+			return wfMessage( 'pendingreviews-log-unknown-change', $userLink );
 		}
 	}
 
@@ -925,7 +925,7 @@ class SpecialPendingReviews extends SpecialPage {
 			} else {
 				$rev = $revisionStore->newRevisionFromRow( $change );
 				$changeTs = $change->rev_timestamp;
-				$userPage = Title::makeTitle( NS_USER, $change->rev_user_text )->getFullText();
+				$userLink = Linker::userLink( $change->rev_user, $change->rev_user_text );
 
 				$comment = $rev->getComment();
 				if ( $comment ) {
@@ -936,9 +936,9 @@ class SpecialPendingReviews extends SpecialPage {
 						$formattedComment = Linker::formatComment( $comment->text );
 					}
 					$comment = '<span class="comment">' . $formattedComment . '</span>';
-					$changeText = ' ' . wfMessage( 'pendingreviews-with-comment', [ $userPage ] )->parse() . ' ' . $comment;
+					$changeText = ' ' . wfMessage( 'pendingreviews-with-comment', [ $userLink ] )->text() . ' ' . $comment;
 				} else {
-					$changeText = ' ' . wfMessage( 'pendingreviews-edited-by', $userPage )->parse();
+					$changeText = ' ' . wfMessage( 'pendingreviews-edited-by', $userLink )->text();
 				}
 			}
 
