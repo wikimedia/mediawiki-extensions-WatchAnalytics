@@ -899,7 +899,7 @@ class SpecialPendingReviews extends SpecialPage {
 
 		// if no message exists for the log type and action, handling with "unknown change"
 		} else {
-			return wfMessage( 'pendingreviews-log-unknown-change', $userLink );
+			return wfMessage( 'pendingreviews-log-unknown-change', $userLink )->text();
 		}
 	}
 

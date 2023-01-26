@@ -170,6 +170,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$logEntry->setPerformer( $this->getUser() );
 			$logEntry->setTarget( $this->getPageTitle() );
 			$logEntry->setParameters( [
+				'3::paramname' => '(' . $data['start'] . ' - ' . $data['end'] . ')',
 				'4::paramname' => '(' . $pageCount . ')',
 				'5::paramname' => '(' . $data['category'] . ')',
 				'6::paramname' => '(' . $data['page'] . ')',
