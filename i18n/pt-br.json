@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Trooper57"
+		]
+	},
+	"clearpendingreviews-success-return": "Retornar para:",
+	"clearpendingreviews-people-impacted": "As seguintes pessoas serão afetadas:",
+	"action-clearreviews": "limpar revisões pendentes",
+	"watchanalytics-special-header-pending-percent": "% pendente",
+	"watchanalytics-watch-forcegraph-description": "Os pontos laranja representam os usuários. Os pontos azuis representam as páginas. As linhas ligando os pontos representam os usuários que vigiam a página. As linhas se tornam cinza se a versão mais recente da página for revisada. As linhas se tornam vermelhas se a revisão estiver pendente. Mova o mouse sobre um ponto para ver o nome do usuário ou da página.",
+	"watchanalytics-pendingreviews-prev-revisions": "Anterior",
+	"pendingreviews-timediff-minutes": "Modificado {{PLURAL:$1|1 minuto|$1 minutos}} atrás",
+	"watchanalytics-pagestats-watchers-list-item-reviewed": "revisada por último",
+	"watchanalytics-view-user-pendingreviews": "revisões pendentes",
+	"pendingreviews-log-move-redir": "$1 redirecionou esta página para o novo título '''$2'''",
+	"pendingreviews-log-unknown-change": "$1 fez uma mudança desconhecida"
+}

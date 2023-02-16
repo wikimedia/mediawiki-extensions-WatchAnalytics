@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"MathXplore"
+		]
+	},
+	"watchanalytics-view": "表示",
+	"clearpendingreview-start-time": "開始時間",
+	"clearpendingreview-end-time": "終了時間",
+	"clearpendingreviews-category-invalid": "カテゴリは存在しません。",
+	"watchanalytics-special-header-user": "利用者",
+	"watchanalytics-special-header-page-title": "ページ",
+	"watchanalytics-special-header-timestamp": "日付/時刻",
+	"watchanalytics-pendingreviews-prev-revisions": "前",
+	"watchanalytics-pendingreviews-next-revisions": "次",
+	"pendingreviews-watch-suggestion-watchlink": "ウォッチ"
+}
