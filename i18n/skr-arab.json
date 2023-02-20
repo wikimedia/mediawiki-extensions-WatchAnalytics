@@ -5,10 +5,13 @@
 		]
 	},
 	"watchanalytics-view": "نظارہ:",
+	"clearform-submit": "ورقے صاف کرو",
+	"watchanalytics-special-header-user": "ورتݨ آلا",
 	"watchanalytics-special-header-page-title": "ورقہ",
 	"watchanalytics-view-page-stats": "ورقہ شماریات",
 	"watchanalytics-special-header-timestamp": "تریخ/ویلا",
 	"watchanalytics-special-header-num-pages": "# ورقے",
+	"watchanalytics-pendingreviews-prev-revisions": "پچھلا",
 	"watchanalytics-pendingreviews-next-revisions": "اڳلا",
 	"pendingreviews-watch-suggestion-watchlink": "پارھا ݙیوو"
 }
