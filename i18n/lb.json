@@ -1,9 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
+			"Robby",
 			"Volvox"
 		]
 	},
 	"pagestatistics": "Säitestatistiken",
-	"watchanalytics-special-header-user": "Benotzer"
+	"clearpendingreviews-date-invalid": "Kee valabelen Datum",
+	"clearpendingreviews-success-return": "Zréck op:",
+	"clearform-submit": "Säiten eidelmaachen",
+	"watchanalytics-special-header-user": "Benotzer",
+	"watchanalytics-special-header-page-title": "Säit",
+	"watchanalytics-category-filter-label": "No Säite-Kategorie filteren:",
+	"watchanalytics-view-user-stats": "Benotzer Statistiken",
+	"watchanalytics-special-header-timestamp": "Datum/Zäit",
+	"watchanalytics-special-header-num-pages": "# Säiten",
+	"watchanalytics-pendingreviews-prev-revisions": "Vireg",
+	"pendingreviews-timediff-just-now": "Grad elo geännert",
+	"pendingreviews-log-protect": "$1 huet dës Säit als gespaart markéiert",
+	"pendingreviews-watch-suggestion-watchlink": "Iwwerwaachen"
 }

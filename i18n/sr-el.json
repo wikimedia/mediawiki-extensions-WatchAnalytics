@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"watchanalytics-view": "Prikaži:",
+	"clearpendingreview-start-time": "Početak:",
+	"clearpendingreviews-category-invalid": "Kategorija ne postoji",
+	"watchanalytics-special-header-page-title": "stranica",
+	"watchanalytics-pendingreviews-history-link": "(istorija stranice)",
+	"watchanalytics-pendingreviews-prev-revisions": "Prethodno",
+	"watchanalytics-pendingreviews-next-revisions": "Sledeće",
+	"watchanalytics-accept-change-close-banner": "Zatvori",
+	"pendingreviews-page-deleted": "Obrisana stranica: $1",
+	"pendingreviews-page-moved-no-redirect": "Premeštena stranica: $1",
+	"pendingreviews-log-delete": "$1 je obrisao/la ovu stranicu, razlog: $2"
+}

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"McDutchie",
+			"Robby",
 			"Sanjay Thiyagarajan"
 		]
 	},
@@ -87,7 +88,7 @@
 	"watchanalytics-view-and-approve": "View/Approve changes text",
 	"watchanalytics-pendingreviews-users-first-view": "New page text",
 	"watchanalytics-pendingreviews-history-link": "view page history link text",
-	"watchanalytics-pendingreviews-prev-revisions": "Previous link text",
+	"watchanalytics-pendingreviews-prev-revisions": "Previous link text\n{{identical|Previous}}",
 	"watchanalytics-pendingreviews-next-revisions": "Next link text",
 	"pendingreviews-timediff-days": "Changed days difference text. Parameter:\n* $1 - number of days",
 	"pendingreviews-timediff-hours": "Changed hours difference text. Parameter:\n* $1 - number of hours",
