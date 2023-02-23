@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari"
+		]
+	},
+	"pagestatistics": "పేజీ గణాంకాలు",
+	"clearpendingreviews-date-invalid": "సరైన తేదీ కాదు",
+	"pendingreviews-user-page": "వాడుకరి $1 కి చెందిన పెండింగు సమీక్షలు",
+	"watchanalytics-special-header-page-title": "పేజీ",
+	"pendingreviews-num-reviews-complete": "అభినందనలు! మీరు సమీక్షలను ముగించారు.",
+	"pendingreviews-reviewer-criticality-danger": "పేజీలను సమీక్షించినది 0 - {{PLURAL:$1|ఒక్కరు|$1 మంది}}",
+	"pendingreviews-reviewer-criticality-danger-zero": "పేఝీలను 0 వ్యక్తులు సమీక్షించారు",
+	"watch-analytics-page-score-reviews-label": "సమీక్షలు",
+	"watchanalytics-unreview-button": "సమీక్షను వాయిదా వెయ్యి",
+	"pendingreviews-log-approved": "$1, ఓ కూర్పును ఆమోదించారు",
+	"pendingreviews-log-delete": "ఈ పేజీని $1 తొలగించారు. ఇచ్చిన కారణం: $2",
+	"pendingreviews-log-move": "$1, ఈ పేజీని '''$2''' అనే కొత్త శీర్షికకు తరలించారు",
+	"pendingreviews-log-unprotect": "$1, ఈ పేజీకి ఉన్న సంరక్షణను తీసేసారు"
+}
