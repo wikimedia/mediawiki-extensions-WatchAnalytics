@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Norhorn"
+		]
+	},
+	"watchanalytics-view": "Προβολή:",
+	"clearpendingreview-start-time": "Ώρα έναρξης:",
+	"clearpendingreview-preview": "Προεπισκόπηση σελίδων",
+	"clearpendingreviews-people-impacted": "Θα επηρεαστούν τα ακόλουθα άτομα:",
+	"watchanalytics-special-header-user": "Χρήστης",
+	"watchanalytics-special-header-page-title": "σελίδα",
+	"watchanalytics-special-header-pending-percent": "% εκκρεμής",
+	"watchanalytics-view-user-stats": "Στατιστικά χρήστη",
+	"watchanalytics-view-page-stats": "Στατιστικά σελίδας",
+	"watchanalytics-special-header-timestamp": "Ημερομηνία/Ώρα",
+	"watchanalytics-special-header-num-pages": "# σελίδες",
+	"watchanalytics-special-header-main-num-one-reviewed": "# το περιεχόμενο ελέγχθηκε μία φορά",
+	"watchanalytics-pendingreviews-prev-revisions": "Προηγούμενο",
+	"watchanalytics-pendingreviews-next-revisions": "Επόμενο",
+	"pendingreviews-watch-suggestion-thanks": "Ευχαριστούμε που παρακολουθήσατε!"
+}
