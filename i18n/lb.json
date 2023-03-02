@@ -18,6 +18,8 @@
 	"watchanalytics-special-header-num-pages": "# Säiten",
 	"watchanalytics-pendingreviews-prev-revisions": "Vireg",
 	"pendingreviews-timediff-just-now": "Grad elo geännert",
+	"watchanalytics-pagestats-editors-list-item": "$1 - {{PLURAL:$2|1 Versioun|$2 Versiounen}}",
 	"pendingreviews-log-protect": "$1 huet dës Säit als gespaart markéiert",
+	"pendingreviews-log-upload-overwrite": "De Benotzer $1 huet eng nei Versioun vum Fichier eropgelueden",
 	"pendingreviews-watch-suggestion-watchlink": "Iwwerwaachen"
 }
