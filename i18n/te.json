@@ -1,13 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chaduvari"
+			"Chaduvari",
+			"V Bhavya"
 		]
 	},
 	"pagestatistics": "పేజీ గణాంకాలు",
 	"clearpendingreviews-date-invalid": "సరైన తేదీ కాదు",
+	"clearpendingreviews-category-invalid": "వర్గం ఉనికిలో లేదు.",
 	"pendingreviews-user-page": "వాడుకరి $1 కి చెందిన పెండింగు సమీక్షలు",
 	"watchanalytics-special-header-page-title": "పేజీ",
+	"watchanalytics-special-header-pending-percent": "% పెండింగ్‌లో ఉంది",
+	"watchanalytics-pendingreviews-prev-revisions": "మునుపటి",
+	"watchanalytics-pendingreviews-next-revisions": "తరువాత",
 	"pendingreviews-num-reviews-complete": "అభినందనలు! మీరు సమీక్షలను ముగించారు.",
 	"pendingreviews-reviewer-criticality-danger": "పేజీలను సమీక్షించినది 0 - {{PLURAL:$1|ఒక్కరు|$1 మంది}}",
 	"pendingreviews-reviewer-criticality-danger-zero": "పేఝీలను 0 వ్యక్తులు సమీక్షించారు",
