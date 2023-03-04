@@ -165,8 +165,8 @@
 		"ParserFirstCallInit": [
 			"WatchAnalyticsParserFunctions::setup"
 		],
-		"TitleMoveComplete": [
-			"WatchAnalyticsHooks::onTitleMoveComplete"
+		"PageMoveComplete": [
+			"WatchAnalyticsHooks::onPageMoveComplete"
 		],
 		"PageViewUpdates": [
 			"WatchAnalyticsHooks::onPageViewUpdates"

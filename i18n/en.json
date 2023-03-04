@@ -100,27 +100,21 @@
 	"pendingreviews-reviewer-criticality-danger": "Pages reviewed by 0 - {{PLURAL:$1|1 person|$1 people}}",
 	"pendingreviews-reviewer-criticality-danger-zero": "Pages reviewed by 0 people",
 	"pendingreviews-reviewer-criticality-generic": "Pages reviewed by $1 or more people",
-
 	"watch-analytics-page-score-tooltip": "Scores indicate how well this page is being reviewed",
 	"watch-analytics-page-score-scrutiny-label": "Scrutiny",
 	"watch-analytics-page-score-reviews-label": "Reviews",
-
-
 	"watchanalytics-pagestats-editors-list-title": "Page editors",
 	"watchanalytics-pagestats-editors-list-item": "$1 - {{PLURAL:$2|1 revision|$2 revisions}}",
 	"watchanalytics-pagestats-watchers-title": "Page watchers",
 	"watchanalytics-pagestats-watchers-list-item-reviewed": "reviewed latest",
 	"watchanalytics-pagestats-watchers-list-item-unreviewed": "review pending",
 	"watchanalytics-pagestats-chart-header": "Number of reviewers over time",
-
 	"watchanalytics-unreview-button": "Defer review",
 	"watchanalytics-accept-change-close-banner": "Close banner",
 	"watchanalytics-unreview-banner-text": "'''Page reviewed!''' By navigating to this page you have marked it reviewed. If you did not want to review the page you may un-review it to save it for another time.",
 	"watchanalytics-unreview-complete": "'''This page has been un-reviewed''' and is again in your [[Special:PendingReviews|Pending Reviews]].",
-
 	"watchanalytics-view-user-pendingreviews": "pending reviews",
 	"pendingreviews-watch-suggestion-thanks": "Thanks for watching!",
-
 	"pendingreviews-pending-approvedrev":  "Has revisions which require approval",
 	"pendingreviews-pending-approvedrev-title": "Revision approval required: $1",
 	"pendingreviews-edited-by":            "$1 made an edit '''without a summary'''",
@@ -153,5 +147,4 @@
 	"pendingreviews-approve-revs-title": "{{PLURAL:$1|Page|Pages}} needing your approval ($1)",
 	"pendingreviews-watch-suggestion-description": "Please help by watching the following pages related to your watchlist that have low attention.",
 	"pendingreviews-watch-suggestion-watchlink": "Watch"
-
 }

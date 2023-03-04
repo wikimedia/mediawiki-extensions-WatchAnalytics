@@ -164,34 +164,35 @@ class WatchAnalyticsHooks {
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete
 	 *
-	 * @param Title &$originalTitle
-	 * @param Title &$newTitle
-	 * @param User &$user
-	 * @param int $oldid
-	 * @param int $newid
-	 * @param FIXME string|null $reason
+	 * @param LinkTarget $old
+	 * @param LinkTarget $new
+	 * @param UserIdentity $userIdentity
+	 * @param int $pageid
+	 * @param int $redirid
+	 * @param string|null $reason
+	 * @param RevisionRecord $revision
 	 *
 	 * @return bool true in all cases
 	 */
-	public static function onTitleMoveComplete( Title &$originalTitle, Title &$newTitle,
-			User &$user, $oldid, $newid, $reason = null ) {
+	public static function onPageMoveComplete( LinkTarget $old, LinkTarget $new,
+			UserIdentity $userIdentity, int $pageid, int $redirid, string $reason, RevisionRecord $revision ) {
 		#
 		# Record move in watch stats
 		#
-		WatchStateRecorder::recordPageChange( Article::newFromID( $oldid ) );
+		WatchStateRecorder::recordPageChange( Article::newFromID( $pageid ) );
 
 		// if a redirect was created, record data for the "new" page (the redirect)
-		if ( $newid > 0 ) {
-			WatchStateRecorder::recordPageChange( Article::newFromID( $newid ) );
+		if ( $redirid > 0 ) {
+			WatchStateRecorder::recordPageChange( Article::newFromID( $redirid ) );
 		}
 
 		#
 		# BELOW IS THE pre-MW 1.25 FIX.
 		#
-		$oldNS = $originalTitle->getNamespace();
-		$newNS = $newTitle->getNamespace();
-		$oldDBkey = $originalTitle->getDBkey();
-		$newDBkey = $newTitle->getDBkey();
+		$oldNS = $old->getNamespace();
+		$newNS = $new->getNamespace();
+		$oldDBkey = $old->getDBkey();
+		$newDBkey = $new->getDBkey();
 
 		$dbw = wfGetDB( DB_PRIMARY );
 		$results = $dbw->select( 'watchlist',
