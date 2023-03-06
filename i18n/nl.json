@@ -141,7 +141,7 @@
 	"pendingreviews-log-upload-overwrite": "$1 heeft een nieuwe versie van het bestand geüpload",
 	"pendingreviews-log-unknown-change": "$1 heeft een onbekende wijziging aangebracht",
 	"log-name-pendingreviews": "Openstaande beoordelingen",
-	"log-description-pendingreviews": "Houdt acties bij die zijn ondernomen met behulp van tools van de uitbreiding Watch Analytics met betrekking tot openstaande beoordelingen.",
+	"log-description-pendingreviews": "Houdt de met openstaande beoordelingen in verband staande handelingen bij die zijn verricht met hulpmiddelen van de uitbreiding Watch Analytics.",
 	"logentry-pendingreviews-clearreviews": "$1 {{GENDER:$2|heeft $4 openstaande beoordelingen gewist}} in de categorie $5 die overeenkomen met de titel $6 in het datumbereik $3",
 	"pendingreviews-watch-suggestion-title": "Deze wiki heeft uw hulp nodig bij het volgen van pagina's",
 	"pendingreviews-approve-revs-title": "Pagina{{PLURAL:$1||'s}} die uw goedkeuring nodig hebben ($1)",
