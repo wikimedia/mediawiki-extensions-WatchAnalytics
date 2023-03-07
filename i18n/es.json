@@ -5,5 +5,9 @@
 		]
 	},
 	"clearpendingreview-start-time": "Fecha de inicio:",
-	"watchanalytics-special-header-user": "Usuario"
+	"clearpendingreview-preview": "Vista previa de páginas",
+	"watchanalytics-special-header-user": "Usuario",
+	"pendingreviews-timediff-hours": "Modificado hace {{PLURAL:$1|$1 hora|$1 horas}}",
+	"pendingreviews-timediff-minutes": "Modificado hace {{PLURAL:$1|$1 minuto|$1 minutos}}",
+	"watchanalytics-pagestats-watchers-list-item-unreviewed": "pendiente de revisión"
 }
