@@ -4,5 +4,8 @@
 			"Kareyac"
 		]
 	},
-	"watchanalytics-special-header-page-title": "страница"
+	"clearpendingreview-start-time": "Время начала:",
+	"watchanalytics-special-header-user": "Участник",
+	"watchanalytics-special-header-page-title": "страница",
+	"watchanalytics-accept-change-close-banner": "Закрыть баннер"
 }
