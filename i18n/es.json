@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fitoschido",
 			"MarcoAurelio"
 		]
 	},
+	"pagestatistics": "Estadísticas de la página",
 	"clearpendingreview-start-time": "Fecha de inicio:",
 	"clearpendingreview-preview": "Vista previa de páginas",
+	"clearpendingreviews-category-invalid": "La categoría no existe.",
 	"watchanalytics-special-header-user": "Usuario",
+	"watchanalytics-pendingreviews-next-revisions": "Siguiente",
 	"pendingreviews-timediff-hours": "Modificado hace {{PLURAL:$1|$1 hora|$1 horas}}",
 	"pendingreviews-timediff-minutes": "Modificado hace {{PLURAL:$1|$1 minuto|$1 minutos}}",
 	"watchanalytics-pagestats-watchers-list-item-unreviewed": "pendiente de revisión"
