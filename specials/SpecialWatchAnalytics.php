@@ -113,7 +113,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			$allWikiData['percent_pending']
 		];
 
-		$percent = round( $percent, 1 );
+		$percent = round( $percent ?? 0, 1 );
 		$stateOf = "<strong>The state of the Wiki: </strong>$watches watches of which $percent% ($pending) are pending";
 
 		$navLinks = '';
