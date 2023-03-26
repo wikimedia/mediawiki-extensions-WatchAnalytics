@@ -7,6 +7,9 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:WatchAnalytics",
 	"descriptionmsg": "watchanalytics-desc",
 	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
 	"GroupPermissions": {
 		"sysop": {
 			"viewpagescore": true,
@@ -189,13 +192,13 @@
 	},
 	"LogTypes": [ "pendingreviews" ],
 	"LogNames": {
-			"pendingreviews": "pendingreviews"
+		"pendingreviews": "pendingreviews"
 	},
 	"LogHeaders": {
-			"pendingreviews": "pendingreviews-header"
+		"pendingreviews": "pendingreviews-header"
 	},
 	"LogActionsHandlers": {
-			"pendingreviews/*": "LogFormatter"
+		"pendingreviews/*": "LogFormatter"
 	},
 	"config": {
 		"_prefix": "eg",
