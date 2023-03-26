@@ -4,7 +4,7 @@
 
 	$(document).ready( function () {
 
-		$("#firstHeading").append(
+		$("#firstHeading").before(
 			$("#ext-watchanalytics-pagescores-template")[0].innerHTML
 		);
 
