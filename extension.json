@@ -66,11 +66,9 @@
 	},
 	"ResourceModules": {
 		"ext.watchanalytics.base": {
-			"position": "bottom",
 			"styles": "ext.watchanalytics.base.css"
 		},
 		"ext.watchanalytics.forcegraph.scripts": {
-			"position": "bottom",
 			"scripts": [
 				"forcegraph/ext.watchanalytics.circlesort.js",
 				"forcegraph/ext.watchanalytics.forcegraph.js"
@@ -85,67 +83,54 @@
 			]
 		},
 		"ext.watchanalytics.forcegraph.styles": {
-			"position": "bottom",
 			"styles": "forcegraph/ext.watchanalytics.forcegraph.css"
 		},
 		"ext.watchanalytics.specials": {
-			"position": "bottom",
 			"styles": "ext.watchanalytics.specials.css"
 		},
 		"ext.watchanalytics.pendingreviews.scripts": {
-			"position": "bottom",
 			"scripts": "pendingreviews/ext.watchanalytics.pendingreviews.js",
 			"dependencies": [
 				"mediawiki.Title"
 			]
 		},
 		"ext.watchanalytics.clearpendingreviews.scripts": {
-			"position": "bottom",
 			"scripts": "ext.watchanalytics.clearpendingreviews.js",
 			"dependencies": [
 				"mediawiki.Title"
 			]
 		},
 		"ext.watchanalytics.pendingreviews.styles": {
-			"position": "bottom",
 			"styles": "pendingreviews/ext.watchanalytics.pendingreviews.css"
 		},
 		"underscore.js": {
-			"position": "bottom",
 			"scripts": [
 				"underscore-umd.js"
 			]
 		},
 		"d3.js": {
-			"position": "bottom",
 			"scripts": [
 				"d3.js"
 			]
 		},
 		"ext.watchanalytics.shakependingreviews": {
-			"position": "bottom",
 			"scripts": [
 				"shake.js"
 			]
 		},
 		"ext.watchanalytics.pagescores.scripts": {
-			"position": "bottom",
 			"scripts": "pagescores/pagescores.js"
 		},
 		"ext.watchanalytics.pagescores.styles": {
-			"position": "bottom",
 			"styles": "pagescores/pagescores.css"
 		},
 		"ext.watchanalytics.reviewhandler.scripts": {
-			"position": "bottom",
 			"scripts": "reviewhandler/reviewhandler.js"
 		},
 		"ext.watchanalytics.reviewhandler.styles": {
-			"position": "bottom",
 			"styles": "reviewhandler/reviewhandler.css"
 		},
 		"ext.watchanalytics.charts": {
-			"position": "bottom",
 			"styles": "charts/ext.watchanalytics.charts.css",
 			"scripts": [
 				"charts/Chart.js",
