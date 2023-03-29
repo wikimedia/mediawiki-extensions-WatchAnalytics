@@ -931,7 +931,7 @@ class SpecialPendingReviews extends SpecialPage {
 				if ( $comment ) {
 					if ( $commentFormatter !== null ) {
 						// MW 1.38+
-						$formattedComment = $commentFormatter->format( $comment );
+						$formattedComment = $commentFormatter->format( $comment->text );
 					} else {
 						$formattedComment = Linker::formatComment( $comment->text );
 					}
@@ -942,9 +942,11 @@ class SpecialPendingReviews extends SpecialPage {
 				}
 			}
 
+			$lang = RequestContext::getMain()->getLanguage();
+			$timestamp = new MWTimestamp( $changeTs );
 			$changeTs = Xml::element( 'span',
 				[ 'class' => 'pendingreviews-changes-list-time' ],
-				( new MWTimestamp( $changeTs ) )->getHumanTimestamp()
+				$lang->getHumanTimestamp( $timestamp )
 			) . ' ';
 
 			$changes[] = $changeTs . $changeText;
