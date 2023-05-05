@@ -3,7 +3,8 @@
 		"authors": [
 			"McDutchie",
 			"Robby",
-			"Sanjay Thiyagarajan"
+			"Sanjay Thiyagarajan",
+			"Shirayuki"
 		]
 	},
 	"watchanalytics-desc": "'''Note:''' ''watchers'' refers to people who have a certain page on their [[Special:Watchlist|watchlist]]; compare {{msg-wm|pageviews-watchers}} and {{msg-mw|watchlist}}.\n{{desc|name=WatchAnalytics|url=https://www.mediawiki.org/wiki/Extension:WatchAnalytics}}",
@@ -12,11 +13,11 @@
 	"watchanalytics-personal-url-old": "Reviews count and respective days count. Parameters:\n* $1 - reviews count\n* $2 - days count",
 	"watchanalytics-personal-url-approvals-old": "Reviews count, days count and approvals count for page. Parameters:\n* $1 - reviews count\n* $2 - days count\n* $3 - approvals count",
 	"watchanalytics-view": "View text",
-	"right-viewpagescore": "Description for viewpagescore user right",
-	"right-clearreviews": "Description for clearreviews user right",
-	"right-pendingreviewslink": "Description for pendingreviewslink user right",
-	"action-viewpagescore": "Description for viewpagescore action",
-	"action-pendingreviewslink": "Description for pendingreviewslink action",
+	"right-viewpagescore": "{{doc-right|viewpagescore}}",
+	"right-clearreviews": "{{doc-right|clearreviews}}",
+	"right-pendingreviewslink": "{{doc-right|pendingreviewslink}}",
+	"action-viewpagescore": "{{doc-action|viewpagescore}}",
+	"action-pendingreviewslink": "{{doc-action|pendingreviewslink}}",
 	"pendingreviews": "Pending reviews text",
 	"watchanalytics": "WatchAnalytics text",
 	"pagestatistics": "Page statistics text",
@@ -36,7 +37,7 @@
 	"clearpendingreviews-success-return": "Return text",
 	"clearpendingreviews-pages-cleared": "Pending review cleared title",
 	"clearpendingreviews-people-impacted": "Display title for impacted people list",
-	"action-clearreviews": "clear pending reviews action text",
+	"action-clearreviews": "{{doc-action|clearreviews}}",
 	"clearform-submit": "Clear Pages button label",
 	"clearform-section1": "Display text for time period selection",
 	"clearform-section2": "Select category and/or title:",
