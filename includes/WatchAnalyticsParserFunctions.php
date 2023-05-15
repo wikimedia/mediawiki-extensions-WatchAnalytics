@@ -66,7 +66,7 @@ class WatchAnalyticsParserFunctions {
 		$output .= "! Category !! Number of Under-watched pages\n";
 
 		$categories = [];
-		while ( $row = $dbr->fetchObject( $result ) ) {
+		while ( $row = $result->fetchObject() ) {
 			$pageCategories = explode( ';', $row->categories );
 
 			foreach ( $pageCategories as $cat ) {
