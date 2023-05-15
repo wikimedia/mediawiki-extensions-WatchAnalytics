@@ -329,7 +329,6 @@ class WatchAnalyticsHooks {
 		switch ( $langCode ) {
 		default:
 			$magicWords['underwatched_categories']    = [ 0, 'underwatched_categories' ];
-			$magicWords['watchers_needed'] = [ 0, 'watchers_needed' ];
 			$magicWords['MAG_NOPAGESCORE']   = [ 0, '__NOPAGESCORE__' ];
 		}
 		return true;
