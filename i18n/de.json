@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Justman10000"
+		]
+	},
+	"right-viewpagescore": "Bewertung für die Seite basierend auf den Bewertungen anzeigen",
+	"right-clearreviews": "Klare Bewertungen",
+	"right-pendingreviewslink": "Verwende einen Link, der auf die Seite mit den ausstehenden Bewertungen weiterleitet",
+	"action-viewpagescore": "Seitenbewertung auf Basis von Bewertungen anzeigen",
+	"action-pendingreviewslink": "einen Link verwenden, der zur Seite mit den ausstehenden Bewertungen führt"
+}

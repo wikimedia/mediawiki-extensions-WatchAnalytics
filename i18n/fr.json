@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"McDutchie",
 			"Verdy p"
 		]
@@ -11,11 +12,11 @@
 	"watchanalytics-personal-url-old": "$1 relecture{{PLURAL:$1||s}} (la plus ancienne : $2 jour{{PLURAL:$2||s}})",
 	"watchanalytics-personal-url-approvals-old": "$1 examen{{PLURAL:$1|s}} (le plus ancien : $2 jour{{PLURAL:$2||s}}) / $3 approbation{{PLURAL:$1||s}}",
 	"watchanalytics-view": "Afficher :",
-	"right-viewpagescore": "Droit d’afficher le score de la page basé sur les relectures",
+	"right-viewpagescore": "Afficher le score de la page basé sur les relectures",
 	"right-clearreviews": "Efface les relectures",
-	"right-pendingreviewslink": "Lien qui redirige vers la page des relectures en attente",
-	"action-viewpagescore": "Fournit un score de page basé sur les relectures",
-	"action-pendingreviewslink": "Fournit un lien redirigeant vers la page des relectures en attente",
+	"right-pendingreviewslink": "Utiliser un lien qui redirige vers la page des relectures en attente",
+	"action-viewpagescore": "afficher un score de page basé sur les relectures",
+	"action-pendingreviewslink": "utiliser un lien redirigeant vers la page des relectures en attente",
 	"pendingreviews": "Relectures en attente",
 	"watchanalytics": "Données d’analyse du suivi",
 	"pagestatistics": "Statistiques des pages",
