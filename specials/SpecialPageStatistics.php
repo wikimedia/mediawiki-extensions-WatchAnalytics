@@ -15,22 +15,22 @@ class SpecialPageStatistics extends SpecialPage {
 	}
 
 	public function execute( $parser = null ) {
-		global $wgRequest, $wgOut;
-
-		$user = RequestContext::getMain()->getUser();
+		$req = $this->getRequest();
+		$out = $this->getOutput();
+		$user = $this->getUser();
 
 		$this->setHeaders();
-		$wgOut->addModuleStyles( 'ext.watchanalytics.specials' ); // @todo FIXME: check if this is necessary
+		$out->addModuleStyles( 'ext.watchanalytics.specials' ); // @todo FIXME: check if this is necessary
 
-		$requestedPage = $wgRequest->getVal( 'page', '' );
+		$requestedPage = $req->getVal( 'page', '' );
 
 		$this->mTitle = Title::newFromText( $requestedPage );
 
 		// @todo: probably don't need filters, but may want to show stats just
 		// from a certain group of users
 		// $filters = array(
-		// 'groupfilter'    => $wgRequest->getVal( 'groupfilter', '' ),
-		// 'categoryfilter' => $wgRequest->getVal( 'categoryfilter', '' ),
+		// 'groupfilter'    => $req->getVal( 'groupfilter', '' ),
+		// 'categoryfilter' => $req->getVal( 'categoryfilter', '' ),
 		// );
 		// foreach( $filters as &$filter ) {
 		// if ( $filter === '' ) {
@@ -42,27 +42,28 @@ class SpecialPageStatistics extends SpecialPage {
 		$watchlistManager = MediawikiServices::getInstance()->getWatchlistManager();
 		if ( $this->mTitle && $this->mTitle->isKnown() && $watchlistManager->isWatchable( $this->mTitle ) ) {
 
-			$unReviewTimestamp = $wgRequest->getVal( 'unreview' );
+			$unReviewTimestamp = $req->getVal( 'unreview' );
 			if ( $unReviewTimestamp ) {
-				$rh = new ReviewHandler( $user, $this->mTitle, $wgRequest );
+				$rh = new ReviewHandler( $user, $this->mTitle, $req );
 				$rh->resetNotificationTimestamp( $unReviewTimestamp );
-				$wgOut->addModuleStyles( [ 'ext.watchanalytics.reviewhandler.styles' ] );
-				$wgOut->addHTML( $this->unReviewMessage() );
+				$out->addModuleStyles( [ 'ext.watchanalytics.reviewhandler.styles' ] );
+				$out->addHTML( $this->unReviewMessage() );
 			}
 
-			$wgOut->addHTML( $this->getPageHeader() );
+			$out->addHTML( $this->getPageHeader() );
 			$this->renderPageStats();
 		} elseif ( $requestedPage ) {
 			// @todo FIXME: internationalize
-			$wgOut->addHTML( "<p>\"$requestedPage\" is either not a page or is not watchable</p>" );
+			$out->addHTML( "<p>\"$requestedPage\" is either not a page or is not watchable</p>" );
 		} else {
-			$wgOut->addHTML( "<p>No page requested</p>" );
+			$out->addHTML( "<p>No page requested</p>" );
 		}
 	}
 
 	public function getPageHeader() {
-		global $wgOut;
-		$wgOut->addModuleStyles( [ 'ext.watchanalytics.pagescores.styles' ] );
+		$out = $this->getOutput();
+
+		$out->addModuleStyles( [ 'ext.watchanalytics.pagescores.styles' ] );
 
 		$pageScore = new PageScore( $this->mTitle );
 		// $out->addScript( $pageScore->getPageScoreTemplate() );
@@ -101,17 +102,17 @@ class SpecialPageStatistics extends SpecialPage {
 	}
 
 	public function renderPageStats() {
-		global $wgOut;
+		$out = $this->getOutput();
 
 		// @todo FIXME: internationalization
-		$wgOut->setPageTitle( 'Page Statistics: ' . $this->mTitle->getPrefixedText() );
+		$out->setPageTitle( 'Page Statistics: ' . $this->mTitle->getPrefixedText() );
 
 		$dbr = wfGetDB( DB_REPLICA );
 		$html = '';
 		// Load the module for the D3.js force directed graph
-		// $wgOut->addModules( 'ext.watchanalytics.forcegraph.scripts' );
+		// $out->addModules( 'ext.watchanalytics.forcegraph.scripts' );
 		// Load the styles for the D3.js force directed graph
-		// $wgOut->addModuleStyles( 'ext.watchanalytics.forcegraph.styles' );
+		// $out->addModuleStyles( 'ext.watchanalytics.forcegraph.styles' );
 
 		// SELECT
 		// rev.rev_user,
@@ -225,7 +226,7 @@ class SpecialPageStatistics extends SpecialPage {
 		}
 		$html .= Xml::closeElement( "ul" );
 
-		$wgOut->addHTML( $html );
+		$out->addHTML( $html );
 
 		$this->pageChart();
 	}
@@ -239,8 +240,9 @@ class SpecialPageStatistics extends SpecialPage {
 	}
 
 	public function pageChart() {
-		global $wgOut;
-		$wgOut->addModules( 'ext.watchanalytics.charts' );
+		$out = $this->getOutput();
+
+		$out->addModules( 'ext.watchanalytics.charts' );
 
 		$html = '<h2>' . wfMessage( 'watchanalytics-pagestats-chart-header' )->text() . '</h2>';
 		$html .= '<canvas id="page-reviews-chart" width="400" height="400"></canvas>';
@@ -276,6 +278,6 @@ class SpecialPageStatistics extends SpecialPage {
 		$data = array_reverse( $data );
 
 		$html .= "<script type='text/template-json' id='ext-watchanalytics-page-stats-data'>" . json_encode( $data ) . "</script>";
-		$wgOut->addHTML( $html );
+		$out->addHTML( $html );
 	}
 }

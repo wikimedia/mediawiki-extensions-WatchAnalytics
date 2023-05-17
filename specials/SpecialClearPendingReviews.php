@@ -12,15 +12,14 @@ class SpecialClearPendingReviews extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgOut;
+		$output = $this->getOutput();
 
 		if ( !$this->getUser()->isAllowed( 'clearreviews' ) ) {
 			throw new PermissionsError( 'clearreviews' );
 		}
 
 		$this->setHeaders();
-		$wgOut->addModules( 'ext.watchanalytics.clearpendingreviews.scripts' );
-		$output = $this->getOutput();
+		$output->addModules( 'ext.watchanalytics.clearpendingreviews.scripts' );
 
 		// Defines input form
 		$formDescriptor = [

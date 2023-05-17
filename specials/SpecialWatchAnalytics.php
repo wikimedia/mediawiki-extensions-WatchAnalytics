@@ -19,26 +19,27 @@ class SpecialWatchAnalytics extends SpecialPage {
 	}
 
 	public function execute( $parser = null ) {
-		global $wgRequest, $wgOut;
+		$req = $this->getRequest();
+		$out = $this->getOutput();
 
 		$this->setHeaders();
-		$wgOut->addModuleStyles( 'ext.watchanalytics.specials' );
+		$out->addModuleStyles( 'ext.watchanalytics.specials' );
 
-		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffsetForUser( $this->getUser() );
+		list( $this->limit, $this->offset ) = $req->getLimitOffsetForUser( $this->getUser() );
 
-		// $userTarget = isset( $parser ) ? $parser : $wgRequest->getVal( 'username' );
-		$this->mMode = $wgRequest->getVal( 'show' );
+		// $userTarget = isset( $parser ) ? $parser : $req->getVal( 'username' );
+		$this->mMode = $req->getVal( 'show' );
 		// $fileactions = array('actions...?');
 
 		$w = new WatchStateRecorder();
 		if ( !$w->recordedWithinHours( 1 ) ) {
 			$w->recordAll();
-			$wgOut->addHTML( '<p>' . wfMessage( 'watchanalytics-all-wiki-stats-recorded' )->text() . '</p>' );
+			$out->addHTML( '<p>' . wfMessage( 'watchanalytics-all-wiki-stats-recorded' )->text() . '</p>' );
 		}
 
 		$filters = [
-			'groupfilter'    => $wgRequest->getVal( 'groupfilter', '' ),
-			'categoryfilter' => $wgRequest->getVal( 'categoryfilter', '' ),
+			'groupfilter'    => $req->getVal( 'groupfilter', '' ),
+			'categoryfilter' => $req->getVal( 'categoryfilter', '' ),
 		];
 		foreach ( $filters as &$filter ) {
 			if ( $filter === '' ) {
@@ -46,7 +47,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			}
 		}
 
-		$wgOut->addHTML( $this->getPageHeader() );
+		$out->addHTML( $this->getPageHeader() );
 		if ( $this->mMode == 'users' ) {
 			$this->usersList( $filters );
 		} elseif ( $this->mMode == 'wikihistory' ) {
@@ -161,9 +162,9 @@ class SpecialWatchAnalytics extends SpecialPage {
 	}
 
 	public function createTablePager( $titleMsg, WatchAnalyticsTablePager $tablePager ) {
-		global $wgOut;
+		$out = $this->getOutput();
 
-		$wgOut->setPageTitle( wfMessage( $titleMsg )->text() );
+		$out->setPageTitle( wfMessage( $titleMsg )->text() );
 
 		$body = $tablePager->getBody();
 		$html = '';
@@ -176,21 +177,21 @@ class SpecialWatchAnalytics extends SpecialPage {
 		} else {
 			$html .= '<p>' . wfMsgHTML( 'listusers-noresult' ) . '</p>';
 		}
-		$wgOut->addHTML( $html );
+		$out->addHTML( $html );
 		return true;
 	}
 
 	public function forceGraph() {
-		global $wgOut;
+		$out = $this->getOutput();
 
-		$wgOut->setPageTitle( 'Watch Analytics: User/Page Watch Relationships' );
+		$out->setPageTitle( 'Watch Analytics: User/Page Watch Relationships' );
 
 		$dbr = wfGetDB( DB_REPLICA );
 
 		// Load the module for the D3.js force directed graph
-		$wgOut->addModules( 'ext.watchanalytics.forcegraph.scripts' );
+		$out->addModules( 'ext.watchanalytics.forcegraph.scripts' );
 		// Load the styles for the D3.js force directed graph
-		$wgOut->addModuleStyles( 'ext.watchanalytics.forcegraph.styles' );
+		$out->addModuleStyles( 'ext.watchanalytics.forcegraph.styles' );
 
 		$res = $dbr->select(
 			[
@@ -289,6 +290,6 @@ class SpecialWatchAnalytics extends SpecialPage {
 		$html .= '<div id="mw-ext-watchAnalytics-forceGraph-container"></div>';
 		// $html .= "<pre>$json</pre>"; // easy testing
 		$html .= "<script type='text/template' id='mw-ext-watchAnalytics-forceGraph'>$json</script>";
-		$wgOut->addHTML( $html );
+		$out->addHTML( $html );
 	}
 }

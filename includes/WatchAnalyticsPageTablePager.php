@@ -15,14 +15,14 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 	];
 
 	public function __construct( $page, $conds, $filters = [] ) {
-		global $wgRequest;
+		$req = $this->getRequest();
 
 		$this->watchQuery = new PageWatchesQuery();
 
 		parent::__construct( $page, $conds, $filters );
 
-		$sortField = $wgRequest->getVal( 'sort' );
-		$this->mQueryNamespace = $wgRequest->getVal( 'ns' );
+		$sortField = $req->getVal( 'sort' );
+		$this->mQueryNamespace = $req->getVal( 'ns' );
 
 		if ( !isset( $sortField ) ) {
 			$this->mDefaultDirection = false;

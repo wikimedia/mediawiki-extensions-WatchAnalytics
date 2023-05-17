@@ -34,9 +34,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	}
 
 	public function getIndexField() {
-		global $wgRequest;
-
-		$sortField = $wgRequest->getVal( 'sort' );
+		$sortField = $this->getRequest()->getVal( 'sort' );
 		if ( isset( $sortField ) && $this->isFieldSortable( $sortField ) ) {
 			return $sortField;
 		} else {
