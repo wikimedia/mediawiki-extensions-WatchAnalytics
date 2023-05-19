@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"HanV",
 			"McDutchie"
 		]
 	},
@@ -12,9 +13,9 @@
 	"watchanalytics-view": "Bekijken:",
 	"right-viewpagescore": "Recht om de beoordelingsscore van de pagina te bekijken",
 	"right-clearreviews": "Wist beoordelingen",
-	"right-pendingreviewslink": "Koppeling die doorverwijst naar de pagina met openstaande beoordelingen",
-	"action-viewpagescore": "Biedt paginascore op basis van beoordelingen",
-	"action-pendingreviewslink": "Biedt een koppeling die doorverwijst naar de pagina met openstaande beoordelingen",
+	"right-pendingreviewslink": "Een doorverwijzing naar de pagina met openstaande beoordelingen te gebruiken",
+	"action-viewpagescore": "bekijken van paginascore op basis van beoordelingen",
+	"action-pendingreviewslink": "een doorverwijzing gebruiken naar de pagina met openstaande beoordelingen",
 	"pendingreviews": "Openstaande beoordelingen",
 	"watchanalytics": "Volganalyse",
 	"pagestatistics": "Paginastatistieken",
