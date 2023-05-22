@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"MrSchipunov",
 			"Sayginer"
 		]
 	},
 	"watchanalytics-personal-url": "İnceleme bekleyenler ($1)",
+	"right-clearreviews": "İncelemeleri temizle",
 	"watchanalytics-special-header-pending-averagetime": "Ortalama bekleme süresi",
 	"pendingreviews-num-reviews": "İnceleme bekleyen $1 değişikliğiniz var.",
 	"pendingreviews-num-other-user-reviews": "$1 kullanıcısının $2 inceleme bekleyen değişikliği var"
