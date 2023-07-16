@@ -1,18 +1,17 @@
 <?php
 /**
- * Aliases for special pages for extension Echo
+ * Aliases for special pages for extension WatchAnalytics
  *
  * @file
  * @ingroup Extensions
  */
-// @codingStandardsIgnoreFile
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English (English) */
-$specialPageAliases['en'] = array(
-	'WatchAnalytics' => array( 'WatchAnalytics' ),
-	'PendingReviews' => array( 'PendingReviews' ),
-	'ClearPendingReviews' => array( 'ClearPendingReviews' ),
-	'PageStatistics' => array( 'PageStatistics' ),
-);
+$specialPageAliases['en'] = [
+	'WatchAnalytics' => [ 'WatchAnalytics' ],
+	'PendingReviews' => [ 'PendingReviews' ],
+	'ClearPendingReviews' => [ 'ClearPendingReviews' ],
+	'PageStatistics' => [ 'PageStatistics' ],
+];
