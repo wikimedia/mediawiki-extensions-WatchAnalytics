@@ -16,12 +16,7 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/enterprisemediawiki/WatchAnalytics/issues",
-		"wiki": "https://www.mediawiki.org/wiki/Extension:WatchAnalytics",
-		"source": "https://github.com/enterprisemediawiki/WatchAnalytics"
-	},
-	"require": {
-		"php": ">=5.6.0"
+		"issues": "https://phabricator.wikimedia.org/tag/mediawiki-extensions-watchanalytics/"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "41.0.0",
