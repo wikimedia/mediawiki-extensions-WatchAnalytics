@@ -178,14 +178,12 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$logEntry->publish( $logid );
 			$this->getHookContainer()->run( 'PendingReviewsCleared', [ &$data, &$results, &$pageCount ] );
 
-			// Create link back to Special:ClearPendingReviews
-			$pageLinkHtml = Linker::link( $this->getPageTitle() );
+			// Create link back to Special:ClearPendingReviews.
+			$pageLinkWikitext = '[[' . $this->getPageTitle()->getFullText() . '|' . $this->msg( 'clearpendingreviews' ) . ']]';
 			$output->addHTML( "<b>" );
 			$output->addHTML( wfMessage( 'clearpendingreviews-success' )->numParams( $pageCount )->plain() );
 			$output->addHTML( "</b>" );
-			$output->addHTML( "<br>" );
-			$output->addHTML( wfMessage( 'clearpendingreviews-success-return' ) );
-			$output->addHTML( $pageLinkHtml );
+			$output->addHTML( '<p>' . $this->msg( 'clearpendingreviews-success-return', $pageLinkWikitext )->parse() . '</p>' );
 
 			// Don't reload the form after clearing pages.
 			return true;
