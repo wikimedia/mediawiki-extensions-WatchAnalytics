@@ -31,7 +31,7 @@
 	"clearpendingreviews-missing-date-category": "Vnesti morate kategorijo ali naslov.",
 	"clearpendingreviews-category-invalid": "Kategorija ne obstaja.",
 	"clearpendingreviews-success": "Uspešno počiščeni čakajoči pregledi na strani $1.",
-	"clearpendingreviews-success-return": "Vrnitev na:",
+	"clearpendingreviews-success-return": "Vrnitev na $1.",
 	"clearpendingreviews-pages-cleared": "Počiščene bodo naslednje strani:",
 	"clearpendingreviews-people-impacted": "To bo vplivalo na naslednje osebe:",
 	"action-clearreviews": "počiščenje čakajočih pregledov",

@@ -31,7 +31,7 @@
 	"clearpendingreviews-missing-date-category": "חובה להזין קטגוריה או כותרת",
 	"clearpendingreviews-category-invalid": "הקטגוריה אינה קיימת.",
 	"clearpendingreviews-success": "סקירות ממתינות נוקו בהצלחה {{PLURAL:$1|מדף אחד|מ־$1 דפים}}.",
-	"clearpendingreviews-success-return": "לחזור ל־:",
+	"clearpendingreviews-success-return": "חזרה לדף $1.",
 	"clearpendingreviews-pages-cleared": "הדפים הבאים ינוקו",
 	"clearpendingreviews-people-impacted": "האנשים הבאים יושפעו:",
 	"action-clearreviews": "ניקוי ביקורות ממתינות",
