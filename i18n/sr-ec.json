@@ -7,7 +7,7 @@
 	"watchanalytics-view": "Прикажи:",
 	"clearpendingreview-start-time": "Почетак:",
 	"clearpendingreviews-category-invalid": "Категорија не постоји",
-	"clearpendingreviews-success-return": "Назад на:",
+	"clearpendingreviews-success-return": "Назад на $1.",
 	"watchanalytics-special-header-page-title": "страница",
 	"watchanalytics-special-header-timestamp": "Датум/време",
 	"watchanalytics-pendingreviews-history-link": "(историја странице)",

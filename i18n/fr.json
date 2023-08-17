@@ -33,7 +33,7 @@
 	"clearpendingreviews-missing-date-category": "Vous devez saisir une catégorie ou un titre.",
 	"clearpendingreviews-category-invalid": "La catégorie n’existe pas",
 	"clearpendingreviews-success": "Les relectures en attente ont bien été effacées de $1 pages.",
-	"clearpendingreviews-success-return": "Revenir à :",
+	"clearpendingreviews-success-return": "Revenir à $1.",
 	"clearpendingreviews-pages-cleared": "Les pages suivantes seront effacées :",
 	"clearpendingreviews-people-impacted": "Les personnes suivantes seront impactées :",
 	"action-clearreviews": "effacer les relectures en attente",

@@ -31,7 +31,7 @@
 	"clearpendingreviews-missing-date-category": "Debe entrar o categoria o titulo.",
 	"clearpendingreviews-category-invalid": "Le categoria non existe.",
 	"clearpendingreviews-success": "Le revisiones pendente ha essite radite de $1 paginas.",
-	"clearpendingreviews-success-return": "Retornar a:",
+	"clearpendingreviews-success-return": "Retornar a $1.",
 	"clearpendingreviews-pages-cleared": "Le sequente paginas essera radite:",
 	"clearpendingreviews-people-impacted": "Isto concerne le sequente personas:",
 	"action-clearreviews": "rader revisiones pendente",

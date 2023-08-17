@@ -34,7 +34,7 @@
 	"clearpendingreviews-missing-date-category": "Error message for invalid input type (except category or title)",
 	"clearpendingreviews-category-invalid": "Error message for invalid category",
 	"clearpendingreviews-success": "Success message after clearing pending reviews\nParameters:\n* $1 - number of pages",
-	"clearpendingreviews-success-return": "{{Identical|returnto}}",
+	"clearpendingreviews-success-return": "{{Identical|Return to}}",
 	"clearpendingreviews-pages-cleared": "Pending review cleared title",
 	"clearpendingreviews-people-impacted": "Display title for impacted people list",
 	"action-clearreviews": "{{doc-action|clearreviews}}",
