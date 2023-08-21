@@ -4,7 +4,7 @@
 			"Beta16"
 		]
 	},
-	"clearpendingreviews-success-return": "Torna a:",
+	"clearpendingreviews-success-return": "Torna a $1.",
 	"watchanalytics-special-header-num-pages": "# pagine",
 	"watchanalytics-pendingreviews-prev-revisions": "Precedente"
 }

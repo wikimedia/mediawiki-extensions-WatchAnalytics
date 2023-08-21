@@ -32,7 +32,7 @@
 	"clearpendingreviews-missing-date-category": "Of de categorie of de titel moet worden ingevoerd.",
 	"clearpendingreviews-category-invalid": "De categorie bestaat niet.",
 	"clearpendingreviews-success": "De openstaande beoordelingen zijn gewist van $1 pagina's.",
-	"clearpendingreviews-success-return": "Terugkeren naar:",
+	"clearpendingreviews-success-return": "Terug naar $1.",
 	"clearpendingreviews-pages-cleared": "De volgende pagina's worden gewist:",
 	"clearpendingreviews-people-impacted": "De volgende personen worden getroffen:",
 	"action-clearreviews": "openstaande beoordelingen wissen",
