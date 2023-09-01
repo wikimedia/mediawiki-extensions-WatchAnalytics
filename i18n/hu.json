@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eukarióta"
+			"Eukarióta",
+			"Hanna Tardos"
 		]
 	},
+	"clearpendingreviews-success-return": "Vissza ide: $1",
 	"watchanalytics-special-header-watches": "# szerkesztő figyeli",
 	"watchanalytics-pendingreviews-next-revisions": "Tovább",
 	"pendingreviews-accept-change": "Ellenőrzöttnek jelölés"
