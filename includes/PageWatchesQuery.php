@@ -97,7 +97,9 @@ class PageWatchesQuery extends WatchesQuery {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$pagesList = $dbr->makeList( $pages );
-
+		if ( $pagesList == null ) {
+			return [];
+		}
 		$queryInfo = $this->getQueryInfo( 'p.page_id IN (' . $pagesList . ')' );
 		$queryInfo['options'][ 'ORDER BY' ] = 'num_watches ASC';
 
