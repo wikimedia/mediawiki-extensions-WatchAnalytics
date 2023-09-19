@@ -116,6 +116,9 @@
 		"ext.watchanalytics.shakependingreviews": {
 			"scripts": [
 				"shake.js"
+			],
+			"dependencies": [
+				"jquery.ui"
 			]
 		},
 		"ext.watchanalytics.pagescores.scripts": {
