@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"З. ӘЙЛЕ"
 		]
 	},
-	"watchanalytics-special-header-user": "Ҡулланыусы",
+	"watchanalytics-special-header-user": "Ҡатнашыусы",
 	"watchanalytics-special-header-page-title": "бит"
 }
