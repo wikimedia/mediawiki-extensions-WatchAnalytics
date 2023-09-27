@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alesaru"
+			"Alesaru",
+			"Strainu"
 		]
 	},
-	"clearpendingreviews-success-return": "Reveniți la $1 ."
+	"clearpendingreviews-success-return": "Reveniți la $1."
 }
