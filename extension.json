@@ -159,17 +159,14 @@
 		"PageViewUpdates": [
 			"WatchAnalyticsHooks::onPageViewUpdates"
 		],
-		"PageContentSaveComplete": [
-			"WatchAnalyticsHooks::onPageContentSaveComplete"
+		"PageSaveComplete": [
+			"WatchAnalyticsHooks::onPageSaveComplete"
 		],
 		"GetMagicVariableIDs": [
 			"WatchAnalyticsHooks::onGetMagicVariableIDs"
 		],
 		"ParserAfterTidy": [
 			"WatchAnalyticsHooks::handleMagicWords"
-		],
-		"LanguageGetMagic": [
-			"WatchAnalyticsHooks::onLanguageGetMagic"
 		],
 		"LoadExtensionSchemaUpdates": [
 			"WatchAnalyticsUpdaterHooks::addSchemaUpdates"

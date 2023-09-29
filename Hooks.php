@@ -315,23 +315,14 @@ class WatchAnalyticsHooks {
 	 * string $summary, boolean $isMinor, boolean $isWatch, $section Deprecated,
 	 * integer $flags, {Revision|null} $revision, Status $status, integer $baseRevId
 	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
 	 *
 	 * @param WikiPage $wikipage
 	 *
 	 * @return bool
 	 */
-	public static function onPageContentSaveComplete( WikiPage $wikipage ) {
+	public static function onPageSaveComplete( WikiPage $wikipage ) {
 		WatchStateRecorder::recordPageChange( $wikipage );
-		return true;
-	}
-
-	public static function onLanguageGetMagic( &$magicWords, $langCode ) {
-		switch ( $langCode ) {
-		default:
-			$magicWords['underwatched_categories']    = [ 0, 'underwatched_categories' ];
-			$magicWords['MAG_NOPAGESCORE']   = [ 0, '__NOPAGESCORE__' ];
-		}
 		return true;
 	}
 
