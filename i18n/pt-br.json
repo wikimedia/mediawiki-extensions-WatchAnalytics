@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Trooper57"
+			"Trooper57",
+			"YuriNikolai"
 		]
 	},
 	"pagestatistics": "Estatísticas da página",
 	"clearpendingreviews-success": "Revisões pendentes limpas com sucesso de $1 páginas.",
-	"clearpendingreviews-success-return": "Retornar para:",
+	"clearpendingreviews-success-return": "Retornar para $1.",
 	"clearpendingreviews-people-impacted": "As seguintes pessoas serão afetadas:",
 	"action-clearreviews": "limpar revisões pendentes",
 	"watchanalytics-special-header-page-title": "página",
