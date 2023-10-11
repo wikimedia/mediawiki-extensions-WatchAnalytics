@@ -92,14 +92,24 @@ class SpecialWatchAnalytics extends SpecialPage {
 		// )
 		// );
 
-		$res = $db->query( '
-			SELECT
-				COUNT(*) AS num_watches,
-				SUM( IF(watchlist.wl_notificationtimestamp IS NULL, 0, 1) ) AS num_pending,
-				SUM( IF(watchlist.wl_notificationtimestamp IS NULL, 0, 1) ) * 100 / COUNT(*) AS percent_pending
-			FROM watchlist
-			INNER JOIN page ON page.page_namespace = watchlist.wl_namespace AND page.page_title = watchlist.wl_title;
-		' );
+		$res = $db->select(
+			[ 'watchlist', 'page' ],
+			[
+				'num_watches' => 'COUNT(*)',
+				'num_pending' => 'SUM( IF(wl_notificationtimestamp IS NULL, 0, 1) )',
+				'percent_pending' => 'SUM( IF(wl_notificationtimestamp IS NULL, 0, 1) ) * 100 / COUNT(*)'
+			],
+			[],
+			__METHOD__,
+			[],
+			[ 'page' => [
+				'INNER JOIN',
+				[
+					'page_namespace = wl_namespace',
+					'page_title = wl_title'
+				]
+			] ]
+		);
 
 		$allWikiData = $res->fetchRow();
 
