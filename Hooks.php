@@ -1,6 +1,9 @@
 <?php
 
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\User\UserIdentity;
 
 class WatchAnalyticsHooks {
 
@@ -151,7 +154,7 @@ class WatchAnalyticsHooks {
 	}
 
 	/**
-	 * Handler for TitleMoveComplete hook. This function makes it so page-moves
+	 * Handler for PageMoveComplete hook. This function makes it so page-moves
 	 * are handled correctly in the `watchlist` table. Prior to a MW 1.25 alpha
 	 * release when a page is moved, the new entries into the `watchlist` table
 	 * are given an notification timestamp of NULL; they should be identical to
@@ -162,14 +165,14 @@ class WatchAnalyticsHooks {
 	 * @todo FIXME: make this work for <1.25 and 1.25+
 	 * @todo document which commit fixes this issue specifically.
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageMoveComplete
 	 *
 	 * @param LinkTarget $old
 	 * @param LinkTarget $new
 	 * @param UserIdentity $userIdentity
 	 * @param int $pageid
 	 * @param int $redirid
-	 * @param string|null $reason
+	 * @param string $reason
 	 * @param RevisionRecord $revision
 	 *
 	 * @return bool true in all cases
