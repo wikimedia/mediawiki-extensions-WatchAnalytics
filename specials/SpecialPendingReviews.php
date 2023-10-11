@@ -743,13 +743,13 @@ class SpecialPendingReviews extends SpecialPage {
 		if ( !( $this->getRequest()->getVal( 'user' ) ) ) {
 			if ( $numPendingReviews != 0 ) {
 				// message like "You have X pending reviews"
-				$html .= wfMessage( 'pendingreviews-num-reviews', $numPendingReviews )->text();
+				$html .= wfMessage( 'pendingreviews-num-reviews', $numPendingReviews )->parse();
 			} else {
 				// message like "Congrats you finished your reviews!"
-				$html .= wfMessage( 'pendingreviews-num-reviews-complete' )->text();
+				$html .= wfMessage( 'pendingreviews-num-reviews-complete' )->parse();
 			}
 		} else {
-			$html .= wfMessage( 'pendingreviews-num-other-user-reviews', $user, $numPendingReviews )->text();
+			$html .= wfMessage( 'pendingreviews-num-other-user-reviews', $user, $numPendingReviews )->parse();
 		}
 
 		$html .= '</h3>';
@@ -772,7 +772,7 @@ class SpecialPendingReviews extends SpecialPage {
 			$msg = $this->msg(
 				"pendingreviews-reviewer-criticality-generic",
 				$scoreThreshold
-				)->text();
+			)->parse();
 
 			$html .= "<tr><td class='ext-watchanalytics-criticality-$style'>$msg</td></tr>";
 		}
@@ -783,9 +783,9 @@ class SpecialPendingReviews extends SpecialPage {
 		$smallestThreshold = key( $scoreArr );
 
 		if ( $smallestThreshold == 1 ) {
-			$msg = $this->msg( "pendingreviews-reviewer-criticality-danger-zero" )->text();
+			$msg = $this->msg( "pendingreviews-reviewer-criticality-danger-zero" )->parse();
 		} else {
-			$msg = $this->msg( "pendingreviews-reviewer-criticality-danger", $smallestThreshold - 1 )->text();
+			$msg = $this->msg( "pendingreviews-reviewer-criticality-danger", $smallestThreshold - 1 )->parse();
 		}
 
 		$html .= "<tr><td class='ext-watchanalytics-criticality-danger'>$msg</td></tr>";

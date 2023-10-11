@@ -75,7 +75,7 @@ class PageScore {
 
 	public function getPageScoreTemplate() {
 		// simple explanation of what PageScores are
-		$pageScoresTooltip = wfMessage( 'watch-analytics-page-score-tooltip' )->text();
+		$pageScoresTooltip = wfMessage( 'watch-analytics-page-score-tooltip' )->escaped();
 
 		// @FIXME: Replace with special page showing page stats
 		// $pageScoresHelpPageLink = Title::makeTitle( NS_HELP, "Page Scores" )->getInternalURL();
@@ -83,7 +83,7 @@ class PageScore {
 			'page' => $this->mTitle->getPrefixedText()
 		] );
 
-		// when MW 1.25 is released (very soon) replace this with a mustache template
+		// @todo FIXME: replace this with a mustache template
 		$template =
 			"<a title='$pageScoresTooltip' id='ext-watchanalytics-pagescores' href='$pageScoresHelpPageLink'>"
 				. $this->getScrutinyBadge()
@@ -115,7 +115,7 @@ class PageScore {
 
 	public function getScrutinyBadge( $showLabel = false ) {
 		$scrutinyScore = $this->getWatchQuality();
-		$scrutinyLabel = wfMessage( 'watch-analytics-page-score-scrutiny-label' )->text();
+		$scrutinyLabel = wfMessage( 'watch-analytics-page-score-scrutiny-label' )->escaped();
 		$scrutinyColor = $this->getScoreColor( $scrutinyScore, 'egWatchAnalyticsWatchQualityColors' );
 
 		return $this->getBadge( $scrutinyLabel, $scrutinyScore, $scrutinyColor, $showLabel );
@@ -123,7 +123,7 @@ class PageScore {
 
 	public function getReviewsBadge( $showLabel = false ) {
 		$reviewsScore = $this->getReviewStatus();
-		$reviewsLabel = wfMessage( 'watch-analytics-page-score-reviews-label' )->text();
+		$reviewsLabel = wfMessage( 'watch-analytics-page-score-reviews-label' )->escaped();
 		$reviewsColor = $this->getScoreColor( $reviewsScore, 'egWatchAnalyticsReviewStatusColors' );
 
 		return $this->getBadge( $reviewsLabel, $reviewsScore, $reviewsColor, $showLabel );

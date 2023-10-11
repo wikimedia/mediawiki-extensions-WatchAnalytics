@@ -34,7 +34,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		$w = new WatchStateRecorder();
 		if ( !$w->recordedWithinHours( 1 ) ) {
 			$w->recordAll();
-			$out->addHTML( '<p>' . wfMessage( 'watchanalytics-all-wiki-stats-recorded' )->text() . '</p>' );
+			$out->addWikiMsg( 'watchanalytics-all-wiki-stats-recorded' );
 		}
 
 		$filters = [
@@ -117,7 +117,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			$navLinks .= '<li>' . $this->createHeaderLink( $msg, $query_param ) . '</li>';
 		}
 
-		$header = '<strong>' . wfMessage( 'watchanalytics-view' )->text() . '</strong>';
+		$header = '<strong>' . wfMessage( 'watchanalytics-view' )->escaped() . '</strong>';
 		$header .= Xml::tags( 'ul', null, $navLinks ) . "\n";
 
 		return $stateOf . Xml::tags( 'div', [ 'class' => 'special-watchanalytics-header' ], $header );
@@ -175,7 +175,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			$html .= $body;
 			$html .= $tablePager->getNavigationBar();
 		} else {
-			$html .= '<p>' . wfMsgHTML( 'listusers-noresult' ) . '</p>';
+			$html .= $this->msg( 'listusers-noresult' )->parseAsBlock();
 		}
 		$out->addHTML( $html );
 		return true;
@@ -285,8 +285,8 @@ class SpecialWatchAnalytics extends SpecialPage {
 		$json = [ "nodes" => $nodes, "links" => $links ];
 		$json = json_encode( $json ); // , JSON_PRETTY_PRINT );
 
-		$html = '<h3>' . wfMessage( 'watchanalytics-watch-forcegraph-header' )->text() . '</h3>';
-		$html .= '<p>' . wfMessage( 'watchanalytics-watch-forcegraph-description' )->text() . '</p>';
+		$html = '<h3>' . wfMessage( 'watchanalytics-watch-forcegraph-header' )->escaped() . '</h3>';
+		$html .= '<p>' . wfMessage( 'watchanalytics-watch-forcegraph-description' )->escaped() . '</p>';
 		$html .= '<div id="mw-ext-watchAnalytics-forceGraph-container"></div>';
 		// $html .= "<pre>$json</pre>"; // easy testing
 		$html .= "<script type='text/template' id='mw-ext-watchAnalytics-forceGraph'>$json</script>";

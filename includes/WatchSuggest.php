@@ -71,8 +71,8 @@ class WatchSuggest {
 		$userIsViewer = RequestContext::getMain()->getUser()->getId() == $this->mUser->getId();
 
 		$count = 1;
-		$watchSuggestionsTitle = wfMessage( 'pendingreviews-watch-suggestion-title' )->text();
-		$watchSuggestionsDescription = wfMessage( 'pendingreviews-watch-suggestion-description' )->text();
+		$watchSuggestionsTitle = wfMessage( 'pendingreviews-watch-suggestion-title' )->escaped();
+		$watchSuggestionsDescription = wfMessage( 'pendingreviews-watch-suggestion-description' )->escaped();
 
 		global $egPendingReviewsNumberWatchSuggestions;
 
