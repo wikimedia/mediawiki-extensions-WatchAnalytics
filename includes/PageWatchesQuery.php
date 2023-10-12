@@ -150,9 +150,7 @@ class PageWatchesQuery extends WatchesQuery {
 				'w.wl_namespace' => $ns,
 				'w.wl_title' => $titleKey,
 			],
-			__METHOD__,
-			null, // no options
-			null // no join conds (no other tables)
+			__METHOD__
 		);
 
 		$return = [];

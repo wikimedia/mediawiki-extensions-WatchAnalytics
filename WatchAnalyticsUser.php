@@ -27,14 +27,13 @@ class WatchAnalyticsUser {
 				// "ORDER BY" => "w.hit_year DESC, w.hit_month DESC, w.hit_day DESC",
 				"LIMIT" => "100000",
 			],
-			null // array( 'u' => array( 'LEFT JOIN', 'u.user-id=w.wl_user' ) )
+			[] // array( 'u' => array( 'LEFT JOIN', 'u.user-id=w.wl_user' ) )
 		);
+
 		$this->pendingWatches = [];
 		while ( $row = $res->fetchRow() ) {
-
 			// $title = Title::newFromText( $row['title_text'], $row['notification_timestamp'] );
 			$this->pendingWatches[] = $row;
-
 		}
 
 		return $this;

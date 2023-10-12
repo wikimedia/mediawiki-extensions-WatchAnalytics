@@ -165,8 +165,7 @@ class UserWatchesQuery extends WatchesQuery {
 			__METHOD__,
 			[
 				'GROUP BY' => 'w.wl_user'
-			], // no options
-			null // no joins
+			]
 		);
 
 		$return = [];

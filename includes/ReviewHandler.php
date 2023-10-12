@@ -231,8 +231,7 @@ class ReviewHandler {
 				'wl_namespace' => $this->title->getNamespace(),
 				'wl_title' => $this->title->getDBkey(),
 			],
-			__METHOD__,
-			null
+			__METHOD__
 		);
 	}
 

@@ -32,8 +32,7 @@ class WatchStateRecorder {
 			[
 				'LIMIT' => 1,
 				'ORDER BY' => 'tracking_timestamp DESC',
-			],
-			null // join_conds
+			]
 		);
 		if ( $result && $result->tracking_timestamp ) {
 			return new MWTimestamp( $result->tracking_timestamp );

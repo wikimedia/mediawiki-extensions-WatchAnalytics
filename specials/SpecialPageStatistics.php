@@ -191,7 +191,7 @@ class SpecialPageStatistics extends SpecialPage {
 				'wl_namespace' => $this->mTitle->getNamespace(),
 			],
 			__METHOD__,
-			null, // no limits, order by, etc
+			[], // no limits, order by, etc
 			[
 				'u' => [
 					'LEFT JOIN', 'u.user_id = w.wl_user'
@@ -265,8 +265,7 @@ class SpecialPageStatistics extends SpecialPage {
 			[
 				"ORDER BY" => "wtp.tracking_timestamp DESC",
 				"LIMIT" => "200", // MOST RECENT 100 changes
-			],
-			null // join conditions
+			]
 		);
 
 		$data = [];

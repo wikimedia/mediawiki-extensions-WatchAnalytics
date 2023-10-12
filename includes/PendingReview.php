@@ -98,8 +98,7 @@ class PendingReview {
 				"l.log_page=$pageID AND l.log_timestamp>=$notificationTimestamp
 					AND l.log_type NOT IN ('interwiki','newusers','patrol','rights','upload')",
 				__METHOD__,
-				[ 'ORDER BY' => 'log_timestamp ASC' ],
-				null
+				[ 'ORDER BY' => 'log_timestamp ASC' ]
 			);
 			$logPending = [];
 			while ( $log = $logResults->fetchObject() ) {
