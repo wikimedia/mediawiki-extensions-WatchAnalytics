@@ -323,11 +323,12 @@ class PendingReview {
 	 *
 	 * @param User $user
 	 * @param Title $title
-	 * @return string HTML for row
+	 * @return bool
 	 */
-	public function clearByUserAndTitle( $user, $title ) {
-		$watch = WatchedItem::fromUserTitle( $user, $title );
-		$watch->resetNotificationTimestamp();
+	public static function clearByUserAndTitle( $user, $title ) {
+		MediaWikiServices::getInstance()->getWatchedItemStore()->resetNotificationTimestamp(
+			$user, $title
+		);
 
 		// $wgOut->addHTML(
 		// wfMessage(
