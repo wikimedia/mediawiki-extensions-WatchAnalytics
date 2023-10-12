@@ -37,6 +37,8 @@ if ( !isset( $IP ) ) {
 
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\MediaWikiServices;
+
 class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 
 	public function __construct() {
@@ -74,9 +76,13 @@ class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 			die( 'You must supply at least one username' );
 		}
 
+		$services = MediaWikiServices::getInstance();
+		$userFactory = $services->getUserFactory();
+		$watchlistManager = $services->getWatchlistManager();
+
 		$users = [];
 		foreach ( $namesArray as $username ) {
-			$users[] = User::newFromName( $username );
+			$users[] = $userFactory->newFromName( $username );
 		}
 
 		$categories = $this->getOption( 'categories' );
@@ -96,21 +102,22 @@ class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 			$titleArray = $category->getMembers();
 
 			while ( $titleArray->valid() ) {
-				$this->output( "\nAdding watchers to [[" . $titleArray->current->getFullText() . "]]...\n" );
+				$title = $titleArray->current();
+				$this->output( "\nAdding watchers to [[" . $title->getFullText() . "]]...\n" );
 
 				foreach ( $users as $user ) {
 					$this->output( "    ...checking " . $user->getName() . "... " );
 
-					$watchedItem = WatchedItem::fromUserTitle(
-						$user,
-						$titleArray->current,
-						WatchedItem::IGNORE_USER_RIGHTS
-					);
-
-					if ( $watchedItem->isWatched() ) {
+					if ( $watchlistManager->isWatched( $user, $title ) ) {
 						$this->output( "already watching\n" );
 					} else {
-						$watchedItem->addWatch();
+						if ( method_exists( MediaWiki\Watchlist\WatchlistManager::class, 'addWatch' ) ) {
+							// MW 1.37+
+							$watchlistManager->addWatch( $user, $title );
+						} else {
+							// @phan-suppress-next-line PhanUndeclaredMethod
+							$user->addWatch( $title );
+						}
 						$this->output( "added to watchlist\n" );
 					}
 				}
@@ -118,7 +125,6 @@ class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 				// jump to next page in category
 				$titleArray->next();
 			}
-
 		}
 
 		$this->output( "\nComplete adding pages to watchlists!\n" );
