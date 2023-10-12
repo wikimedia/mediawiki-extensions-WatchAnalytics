@@ -258,13 +258,8 @@ class WatchAnalyticsHooks {
 	 * @return bool
 	 */
 	public static function handleMagicWords( &$parser, &$text ) {
-		if ( class_exists( MagicWordFactory::class ) ) {
-			// MW 1.32+
-			$factory = MediaWikiServices::getInstance()->getMagicWordFactory();
-			$magicWord = $factory->get( 'MAG_NOPAGESCORE' );
-		} else {
-			$magicWord = MagicWord::get( 'MAG_NOPAGESCORE' );
-		}
+		$factory = MediaWikiServices::getInstance()->getMagicWordFactory();
+		$magicWord = $factory->get( 'MAG_NOPAGESCORE' );
 
 		if ( $magicWord->matchAndRemove( $text ) ) {
 			PageScore::noPageScore();
