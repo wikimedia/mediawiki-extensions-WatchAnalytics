@@ -132,21 +132,26 @@ class PendingReview {
 			'log' => 'logging',
 		];
 
+		$dbr = wfGetDB( DB_REPLICA );
+
 		$fields = [
 			'p.page_id AS page_id',
 			'log.log_action AS log_action',
 			'w.wl_namespace AS namespace',
 			'w.wl_title AS title',
 			'w.wl_notificationtimestamp AS notificationtimestamp',
-			'(SELECT COUNT(*) FROM watchlist AS subwatch
+			"(SELECT COUNT(*) FROM {$dbr->tableName( 'watchlist' )} AS subwatch
 			  WHERE
 				subwatch.wl_namespace = w.wl_namespace
 				AND subwatch.wl_title = w.wl_title
 				AND subwatch.wl_notificationtimestamp IS NULL
-			) AS num_reviewed',
+			) AS num_reviewed",
 		];
 
-		$conds = 'w.wl_user=' . $user->getId() . ' AND w.wl_notificationtimestamp IS NOT NULL';
+		$conds = [
+			'w.wl_user' => $user->getId(),
+			'w.wl_notificationtimestamp IS NOT NULL'
+		];
 
 		$options = [
 			'ORDER BY' => 'num_reviewed ASC, w.wl_notificationtimestamp ASC',
@@ -168,8 +173,6 @@ class PendingReview {
 			],
 		];
 
-		$dbr = wfGetDB( DB_REPLICA );
-
 		$watchResult = $dbr->select(
 			$tables,
 			$fields,
@@ -182,9 +185,7 @@ class PendingReview {
 		$pending = [];
 
 		while ( $row = $watchResult->fetchRow() ) {
-
 			$pending[] = new self( $row );
-
 		}
 
 		// If ApprovedRevs is installed, append any pages in need of approvals
@@ -203,21 +204,27 @@ class PendingReview {
 			'log' => 'logging',
 		];
 
+		$dbr = wfGetDB( DB_REPLICA );
+
 		$fields = [
 			'p.page_id AS page_id',
 			'log.log_action AS log_action',
 			'w.wl_namespace AS namespace',
 			'w.wl_title AS title',
 			'w.wl_notificationtimestamp AS notificationtimestamp',
-			'(SELECT COUNT(*) FROM watchlist AS subwatch
+			"(SELECT COUNT(*) FROM {$dbr->tableName( 'watchlist' )} AS subwatch
 				WHERE
 				subwatch.wl_namespace = w.wl_namespace
 				AND subwatch.wl_title = w.wl_title
 				AND subwatch.wl_notificationtimestamp IS NULL
-			) AS num_reviewed',
+			) AS num_reviewed",
 		];
 
-		$conds = [ 'w.wl_user' => $user->getId() , 'p.page_id' => $title->getArticleID() , 'w.wl_notificationtimestamp IS NOT NULL' ];
+		$conds = [
+			'w.wl_user' => $user->getId(),
+			'p.page_id' => $title->getArticleID(),
+			'w.wl_notificationtimestamp IS NOT NULL'
+		];
 
 		$options = [];
 
@@ -235,8 +242,6 @@ class PendingReview {
 			],
 		];
 
-		$dbr = wfGetDB( DB_REPLICA );
-
 		$watchResult = $dbr->select(
 			$tables,
 			$fields,
@@ -249,10 +254,9 @@ class PendingReview {
 		$pending = [];
 
 		while ( $row = $watchResult->fetchRow() ) {
-
 			$pending[] = new self( $row );
-
 		}
+
 		return $pending;
 	}
 
