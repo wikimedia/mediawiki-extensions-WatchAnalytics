@@ -56,14 +56,17 @@ class WatchesQuery {
 		$minutesInHour = 60;
 
 		$days = floor( $remainder / $minutesInDay );
-		$remainder = $remainder % $minutesInDay;
+		$remainder %= $minutesInDay;
 
 		$hours = floor( $remainder / $minutesInHour );
-		$remainder = $remainder % $minutesInHour;
+		$remainder %= $minutesInHour;
 
 		$minutes = $remainder;
 
 		$time = [];
+		// @todo FIXME: looks like non-i18n-able hardcoded English
+		// (and maybe whatever's using this method in the first place
+		// should just use core MW getHumanTimestamp stuff instead?)
 		if ( $days ) {
 			$time[] = $days . ' day' . ( ( $days > 1 ) ? 's' : '' );
 		}

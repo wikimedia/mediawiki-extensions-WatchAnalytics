@@ -127,7 +127,7 @@ class SpecialPageStatistics extends SpecialPage {
 		#
 		# Page editors query
 		#
-		$res = $dbr->select(
+		$row = $dbr->selectRow(
 			[
 				'rev' => 'revision',
 				'p' => 'page',
@@ -155,23 +155,24 @@ class SpecialPageStatistics extends SpecialPage {
 		#
 		# Page editors
 		#
-		$html .= Xml::element( 'h2', null, wfMessage( 'watchanalytics-pagestats-editors-list-title' )->text() );
-		$html .= Xml::openElement( "ul" );
-		if ( $row = $res->fetchObject() ) {
+		$html .= Xml::element( 'h2', null, $this->msg( 'watchanalytics-pagestats-editors-list-title' )->text() );
+		$html .= Xml::openElement( 'ul' );
+		if ( $row ) {
 			// $editor = User::newFromId( $row->rev_user )
 			// $realName = $editor->getRealName();
-
-			$html .=
-				Xml::openElement( 'li' )
-				. wfMessage(
-					'watchanalytics-pagestats-editors-list-item',
-					Linker::userLink( $row->rev_actor, User::newFromId( $row->rev_actor ) ),
-					$row->num_revisions
-				)->text()
-				. Xml::closeElement( 'li' );
-
+			$u = User::newFromActorId( $row->rev_actor );
+			if ( $u ) {
+				$html .=
+					Xml::openElement( 'li' )
+					. $this->msg(
+						'watchanalytics-pagestats-editors-list-item',
+						$u->getName(),
+						$row->num_revisions
+					)->parse()
+					. Xml::closeElement( 'li' );
+			}
 		}
-		$html .= Xml::closeElement( "ul" );
+		$html .= Xml::closeElement( 'ul' );
 
 		#
 		# Watchers query
@@ -218,9 +219,7 @@ class SpecialPageStatistics extends SpecialPage {
 				Xml::openElement( 'li' )
 				. Linker::userLink( $row->wl_user, $row->user_name )
 				. ' - '
-				. wfMessage(
-					$watcherMsg
-				)->text()
+				. wfMessage( $watcherMsg )->escaped()
 				. Xml::closeElement( 'li' );
 
 		}
@@ -244,7 +243,7 @@ class SpecialPageStatistics extends SpecialPage {
 
 		$out->addModules( 'ext.watchanalytics.charts' );
 
-		$html = '<h2>' . wfMessage( 'watchanalytics-pagestats-chart-header' )->text() . '</h2>';
+		$html = '<h2>' . wfMessage( 'watchanalytics-pagestats-chart-header' )->escaped() . '</h2>';
 		$html .= '<canvas id="page-reviews-chart" width="400" height="400"></canvas>';
 
 		// $dateRangeStart = new MWTimestamp( date( 'YmdHis', strtotime( '2 weeks ago' ) ) );

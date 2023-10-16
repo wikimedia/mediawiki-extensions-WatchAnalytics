@@ -74,11 +74,10 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 			$url = SpecialPage::getTitleFor( 'PageStatistics' )->getInternalURL( [
 				'page' => $title->getPrefixedText()
 			] );
-			$msg = wfMessage( 'watchanalytics-view-page-stats' );
 			$pageStatsLink = Xml::element(
 				'a',
 				[ 'href' => $url ],
-				$msg
+				wfMessage( 'watchanalytics-view-page-stats' )->text()
 			);
 
 			$pageLink .= ' <small>(' . $pageStatsLink . ' | ' . WatchSuggest::getWatchLink( $title ) . ')</small>';

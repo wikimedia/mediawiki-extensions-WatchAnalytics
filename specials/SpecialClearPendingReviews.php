@@ -181,7 +181,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			// Create link back to Special:ClearPendingReviews.
 			$pageLinkWikitext = '[[' . $this->getPageTitle()->getFullText() . '|' . $this->msg( 'clearpendingreviews' ) . ']]';
 			$output->addHTML( "<b>" );
-			$output->addHTML( wfMessage( 'clearpendingreviews-success' )->numParams( $pageCount )->plain() );
+			$output->addWikiMsg( 'clearpendingreviews-success', $pageCount );
 			$output->addHTML( "</b>" );
 			$output->addHTML( '<p>' . $this->msg( 'clearpendingreviews-success-return', $pageLinkWikitext )->parse() . '</p>' );
 
@@ -231,6 +231,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$table .= "</tr>";
 			$table .= "</table>";
 
+			// @todo FIXME: i18n
 			$form->setSubmitText( 'Clear pages' );
 			$form->setSubmitName( 'clearpages' );
 			$form->setSubmitDestructive();

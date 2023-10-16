@@ -112,6 +112,7 @@ class WatchSuggest {
 			. "<h3>$watchSuggestionsTitle</h3>"
 			. "<p>$watchSuggestionsDescription</p>"
 			. WatchAnalyticsHtmlHelper::formatListArray( $watchSuggestionsLIs, 2 )
+			// @todo FIXME: i18n
 			. '<br /><h3>Watch Leaders</h3>'
 			. "<p>The following $numTopWatchers users are watching the most pages.</p>"
 			. WatchAnalyticsHtmlHelper::formatListArray( $this->getMostWatchesListArray( $numTopWatchers ), 2 );

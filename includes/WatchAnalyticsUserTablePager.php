@@ -40,7 +40,7 @@ class WatchAnalyticsUserTablePager extends WatchAnalyticsTablePager {
 			$url = Title::newFromText( 'Special:PendingReviews' )->getLocalUrl(
 				[ 'user' => $user_name ]
 			);
-			$msg = wfMessage( 'watchanalytics-view-user-pendingreviews' );
+			$msg = wfMessage( 'watchanalytics-view-user-pendingreviews' )->text();
 
 			$name .= ' (' . Xml::element(
 				'a',

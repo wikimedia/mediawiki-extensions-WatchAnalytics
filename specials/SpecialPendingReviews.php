@@ -194,12 +194,12 @@ class SpecialPendingReviews extends SpecialPage {
 	 * This will not display the pending reviews page.
 	 *
 	 * @param Title $clearNotifyTitle
-	 * @return bool
 	 */
 	public function handleClearNotification( $clearNotifyTitle ) {
 		PendingReview::clearByUserAndTitle( $this->getUser(), $clearNotifyTitle );
 
 		$this->getOutput()->addHTML(
+			// @todo FIXME: r e a l l y  should not be using ->text() as the output format...
 			$this->msg(
 				'pendingreviews-clear-page-notification',
 				$clearNotifyTitle->getFullText(),
@@ -316,6 +316,7 @@ class SpecialPendingReviews extends SpecialPage {
 					$context->setTitle( $item->title );
 					$diff = new DifferenceEngine( $context, $prevId, 0 );
 					$diff->showDiffStyle();
+					// @todo FIXME: i18n
 					$theDiff = $diff->getDiff( '<b>Last seen</b>', '<b>Current</b>' );
 
 					$numChars = strlen( $theDiff );
