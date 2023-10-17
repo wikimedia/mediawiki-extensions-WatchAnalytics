@@ -54,7 +54,8 @@ class SpecialPageStatistics extends SpecialPage {
 			$this->renderPageStats();
 		} elseif ( $requestedPage ) {
 			// @todo FIXME: internationalize
-			$wgOut->addHTML( "<p>\"$requestedPage\" is either not a page or is not watchable</p>" );
+			$safeRequestedPage = htmlspecialchars( $requestedPage, ENT_QUOTES );
+			$out->addHTML( "<p>\"$safeRequestedPage\" is either not a page or is not watchable</p>" );
 		} else {
 			$wgOut->addHTML( "<p>No page requested</p>" );
 		}
