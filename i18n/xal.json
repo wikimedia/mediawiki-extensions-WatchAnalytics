@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ukhant Erdemt"
+		]
+	},
+	"clearpendingreviews-success": "{{PLURAL:$1|one page|$1 pages}}-ас шүүмҗиг күләсиг амҗлтта уга кев.",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 revision|$2 revisions}}"
+}

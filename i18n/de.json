@@ -8,5 +8,6 @@
 	"right-clearreviews": "Klare Bewertungen",
 	"right-pendingreviewslink": "Verwende einen Link, der auf die Seite mit den ausstehenden Bewertungen weiterleitet",
 	"action-viewpagescore": "Seitenbewertung auf Basis von Bewertungen anzeigen",
-	"action-pendingreviewslink": "einen Link verwenden, der zur Seite mit den ausstehenden Bewertungen führt"
+	"action-pendingreviewslink": "einen Link verwenden, der zur Seite mit den ausstehenden Bewertungen führt",
+	"clearpendingreviews-success": "Die ausstehenden Bewertungen von {{PLURAL:$1|einer Seite|$1 Seiten}} wurden gelöscht."
 }
