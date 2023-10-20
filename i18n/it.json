@@ -6,5 +6,6 @@
 	},
 	"clearpendingreviews-success-return": "Torna a $1.",
 	"watchanalytics-special-header-num-pages": "# pagine",
-	"watchanalytics-pendingreviews-prev-revisions": "Precedente"
+	"watchanalytics-pendingreviews-prev-revisions": "Precedente",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 versione|$2 versioni}}"
 }

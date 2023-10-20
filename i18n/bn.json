@@ -4,5 +4,6 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"clearpendingreviews-success-return": "$1-এ ফেরত যান।"
+	"clearpendingreviews-success-return": "$1-এ ফেরত যান।",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|১টি সংস্করণ|$2টি সংস্করণ}}"
 }
