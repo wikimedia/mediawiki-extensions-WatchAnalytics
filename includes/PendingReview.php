@@ -5,7 +5,7 @@ use MediaWiki\MediaWikiServices;
 class PendingReview {
 
 	/**
-	 * @var string : time of oldest change user hasn't seen
+	 * @var int Time of oldest change user hasn't seen
 	 * @example 20141031072315
 	 */
 	public $notificationTimestamp;
@@ -22,8 +22,7 @@ class PendingReview {
 	public $newRevisions;
 
 	/**
-	 * @var string : text of deleted title
-	 * @todo document is this "Main Page" or "Main_Page"
+	 * @var string|bool Text of deleted title in the DBKey format ("Main_Page")
 	 */
 	public $deletedTitle;
 
@@ -260,9 +259,14 @@ class PendingReview {
 		return $pending;
 	}
 
-	public function getDeletionLog( $title, $ns, $notificationTimestamp ) {
+	/**
+	 * @param string $title Page title
+	 * @param int $ns Page namespace
+	 * @param int $notificationTimestamp
+	 * @return stdClass[]
+	 */
+	public function getDeletionLog( $title, int $ns, int $notificationTimestamp ) {
 		$dbr = wfGetDB( DB_REPLICA );
-		$title = $dbr->addQuotes( $title );
 
 		// pages are deleted when (a) they are explicitly deleted or (b) they
 		// are moved without leaving a redirect behind.
@@ -283,12 +287,17 @@ class PendingReview {
 				'c.comment_id',
 				'c.comment_text AS log_comment'
 			],
-			"l.log_title=$title AND l.log_namespace=$ns AND l.log_timestamp>=$notificationTimestamp
-				AND l.log_type IN ('delete','move')",
+			[
+				'l.log_title' => $title,
+				'l.log_namespace' => $ns,
+				"l.log_timestamp >= $notificationTimestamp",
+				'l.log_type' => [ 'delete', 'move' ]
+			],
 			__METHOD__,
 			[ 'ORDER BY' => 'l.log_timestamp ASC' ],
 			[ 'c' => [ 'INNER JOIN', [ 'l.log_comment_id=c.comment_id' ] ] ]
 		);
+
 		$logDeletes = [];
 		while ( $log = $logResults->fetchObject() ) {
 			$logDeletes[] = $log;
