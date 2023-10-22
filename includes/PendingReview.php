@@ -81,7 +81,10 @@ class PendingReview {
 			$revResults = $dbr->select(
 				$revQueryInfo['tables'],
 				$revQueryInfo['fields'],
-				"rev_page=$pageID AND rev_timestamp>=$notificationTimestamp",
+				[
+					'rev_page' => $pageID,
+					'rev_timestamp >= ' . (int)$notificationTimestamp
+				],
 				__METHOD__,
 				[ 'ORDER BY' => 'rev_timestamp ASC' ],
 				$revQueryInfo['joins']
@@ -94,8 +97,11 @@ class PendingReview {
 			$logResults = $dbr->select(
 				[ 'l' => 'logging' ],
 				[ '*' ],
-				"l.log_page=$pageID AND l.log_timestamp>=$notificationTimestamp
-					AND l.log_type NOT IN ('interwiki','newusers','patrol','rights','upload')",
+				[
+					'l.log_page' => $pageID,
+					'l.log_timestamp >= ' . (int)$notificationTimestamp,
+					"l.log_type NOT IN ('interwiki','newusers','patrol','rights','upload')"
+				],
 				__METHOD__,
 				[ 'ORDER BY' => 'log_timestamp ASC' ]
 			);
