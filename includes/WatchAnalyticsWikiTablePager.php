@@ -54,7 +54,7 @@ class WatchAnalyticsWikiTablePager extends WatchAnalyticsTablePager {
 		];
 
 		if ( in_array( $fieldName, $timeDiffFields ) ) {
-			return ( $value === null ) ? null : $this->watchQuery->createTimeStringFromMinutes( $value );
+			return ( $value === null ) ? null : $this->watchQuery->createTimeStringFromMinutes( (int)$value );
 		} elseif ( $fieldName === 'tracking_timestamp' ) {
 			$ts = new MWTimestamp( $value );
 			return $ts->format( 'Y-m-d' ) . '<br />' . $ts->format( 'H:i:s' );

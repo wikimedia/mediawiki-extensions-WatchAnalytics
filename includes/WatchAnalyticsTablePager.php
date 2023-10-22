@@ -5,12 +5,26 @@ use MediaWiki\MediaWikiServices;
 
 abstract class WatchAnalyticsTablePager extends TablePager {
 
-	protected $page;
-	protected $limit;
-	protected $offset;
-	protected $conds;
-	protected $filters;
+	/** @var WikiPage|Page|SpecialWatchAnalytics */
+	public $page;
+
+	/** @var int */
+	public $limit;
+
+	/** @var int */
+	public $offset;
+
+	/** @var array */
+	public $conds;
+
+	/** @var array */
+	public $filters;
+
+	/** @var WatchesQuery */
 	protected $watchQuery;
+
+	/** @var bool[] Array of 'field name' => sortableness mappings */
+	protected $isSortable;
 
 	public function __construct( $page, $conds, $filters = [] ) {
 		$this->page = $page;
@@ -62,13 +76,13 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	 * Do a query with specified parameters, rather than using the object
 	 * context
 	 *
-	 * @param string $offset index offset, inclusive
-	 * @param int $limit exact query limit
-	 * @param bool $order
+	 * @param string $offset Index offset, inclusive
+	 * @param int $limit Exact query limit
+	 * @param bool $order Query direction
 	 * @return ResultWrapper
 	 */
 	public function reallyDoQuery( $offset, $limit, $order ) {
-		$qInfo = $this->getQueryInfo( $offset, $limit, $order );
+		$qInfo = $this->getQueryInfo();
 		$tables = $qInfo['tables'];
 		$fields = $qInfo['fields'];
 		$conds  = $qInfo['conds'];
@@ -109,13 +123,8 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 		$queries = parent::getPagingQueries();
 
 		# Don't announce the limit everywhere if it's the default
-		$this->limit = isset( $this->limit ) ? $this->limit : $this->mDefaultLimit;
-
-		if ( isset( $this->offset ) ) {
-			$offset = $this->offset;
-		} else {
-			$offset = 0;
-		}
+		$this->limit = $this->limit ?? $this->mDefaultLimit;
+		$offset = $this->offset ?? 0;
 
 		if ( $offset <= 0 ) {
 			$queries['prev'] = false;

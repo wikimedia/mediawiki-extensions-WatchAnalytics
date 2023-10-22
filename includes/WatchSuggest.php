@@ -23,7 +23,7 @@ class WatchSuggest {
 	/**
 	 * Handles something.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function getWatchSuggestionList() {
 		$html = '';

@@ -24,6 +24,9 @@ class ReviewHandler {
 	/** @var bool */
 	public $isDiff;
 
+	/** @var array Array of PendingReview objects, potentially empty */
+	public $pendingReview;
+
 	/**
 	 * @var int : state of the user watching the page initially (at the
 	 * beginning of the page load). Possible values: -1 for not watching the
@@ -50,8 +53,10 @@ class ReviewHandler {
 			self::$isReviewable = false;
 			return false;
 		}
-		self::$pageLoadHandler = new self ( $user, $title, $isDiff );
+
+		self::$pageLoadHandler = new self( $user, $title, $isDiff );
 		self::$pageLoadHandler->initial = self::$pageLoadHandler->getReviewStatus();
+
 		return self::$pageLoadHandler;
 	}
 
@@ -157,9 +162,11 @@ class ReviewHandler {
 
 		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
 
+		// make phan happy by explicitly initializing this
+		$lastSeenId = 0;
+
 		foreach ( $this->pendingReview as $item ) {
 			if ( count( $item->newRevisions ) > 0 ) {
-
 				// returns essentially the negative-oneth revision...the one before
 				// the wl_notificationtimestamp revision...or null/false if none exists?
 				$currentRevision = $revisionStore->newRevisionFromRow( $item->newRevisions[0] );
@@ -169,17 +176,15 @@ class ReviewHandler {
 			}
 
 			if ( $mostRecentReviewed ) {
-
 				$lastSeenId = $mostRecentReviewed->getId();
-
 			} else {
 				$latest = $revisionStore->getRevisionByTitle( $item->title );
 				$lastSeenId = $latest->getId();
-
 			}
 
 		}
 
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable OK, so phan is never happy, it seems :^)
 		$diff = new DifferenceEngine( null, $lastSeenId, 0 );
 
 		$template = "<div id='watch-analytics-review-handler' style='display:none'> $unReviewLink";

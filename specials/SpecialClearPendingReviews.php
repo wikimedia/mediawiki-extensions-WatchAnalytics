@@ -103,7 +103,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 	/**
 	 * @param array $data
 	 * @param bool $clearPages
-	 * @return $results
+	 * @return \Wikimedia\Rdbms\IResultWrapper
 	 */
 	public static function doSearchQuery( $data, $clearPages ) {
 		$dbw = WatchAnalyticsUtils::getWriteDB();
@@ -148,8 +148,8 @@ class SpecialClearPendingReviews extends SpecialPage {
 
 	/**
 	 * @param array $data
-	 * @param object $form
-	 * @return Status
+	 * @param HTMLForm $form
+	 * @return bool
 	 */
 	public function trySubmit( $data, $form ) {
 		$request = $this->getRequest();
@@ -163,7 +163,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			// Count how many pages were cleared
 			$pageCount = 0;
 			foreach ( $results as $result ) {
-				$pageCount = $pageCount + 1;
+				$pageCount += 1;
 			}
 
 			// Log when pages are cleared in Special:Log

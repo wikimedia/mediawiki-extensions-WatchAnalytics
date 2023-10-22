@@ -2,7 +2,10 @@
 
 class SpecialWatchAnalytics extends SpecialPage {
 
+	/** @var int */
 	public $limit;
+
+	/** @var int */
 	public $offset;
 	public $mMode;
 	protected $header_links = [
@@ -276,7 +279,9 @@ class SpecialWatchAnalytics extends SpecialPage {
 
 			} else {
 				$userNodeIndex = $users[ $row['user_name'] ];
+				// @phan-suppress-next-line PhanTypeInvalidDimOffset
 				$nodes[ $userNodeIndex ]['weight']++;
+				// @phan-suppress-previous-line PhanTypeInvalidUnaryOperandIncOrDec
 			}
 
 			if ( $row['notification'] == null ) {

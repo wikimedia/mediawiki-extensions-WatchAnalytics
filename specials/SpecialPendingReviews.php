@@ -43,9 +43,17 @@ class SpecialPendingReviews extends SpecialPage {
 		'watchanalytics-wikihistory-specialpage'  => 'wikihistory',
 	];
 	protected $mUser;
+
+	/** @var bool Is the current user the same as the one specified in the 'user' URL param? */
 	protected $mUserIsReviewer;
+
+	/** @var PendingReview[] Array of PendingReview objects */
 	protected $pendingReviewList;
+
+	/** @var int The number of reviews to return, either the default 20 or from the URL 'limit' param */
 	protected $reviewLimit;
+
+	/** @var int Offset for pagination, either the default 0 or from the URL 'offset' param */
 	protected $reviewOffset;
 
 	/**
@@ -265,7 +273,7 @@ class SpecialPendingReviews extends SpecialPage {
 
 		$combinedList = $this->combineLogAndChanges( $item->log, $item->newRevisions, $item->title );
 		$changes = $this->getPendingReviewChangesList( $combinedList );
-		$acceptChangesButton = null;
+		$acceptChangesButton = '';
 
 		if ( $item->title->isRedirect() ) {
 			$reviewButton = $this->getAcceptRedirectButton( $item );
@@ -346,7 +354,7 @@ class SpecialPendingReviews extends SpecialPage {
 			. wfMessage( $displayMessage, $title->getFullText() )->parse()
 			. '</strong>';
 
-		return $this->getReviewRowHTML( $item, $rowCount, $displayTitle, $acceptDeletionButton, $talkToDeleterButton, null, $changes );
+		return $this->getReviewRowHTML( $item, $rowCount, $displayTitle, $acceptDeletionButton, $talkToDeleterButton, '', $changes );
 	}
 
 	/**
@@ -387,6 +395,8 @@ class SpecialPendingReviews extends SpecialPage {
 	 */
 	public function getReviewRowHTML( PendingReview $item, $rowCount, $displayTitle, $buttonOne, $buttonTwo, $acceptButton, $changes ) {
 		$rowClass = ( $rowCount % 2 === 0 ) ? 'pendingreviews-even-row' : 'pendingreviews-odd-row';
+
+		$reviewCriticalityClass = '';
 
 		$scoreArr = $GLOBALS['egWatchAnalyticsReviewStatusColors'];
 		// making sure array is sorted from highest to lowest

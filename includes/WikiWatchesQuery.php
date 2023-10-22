@@ -59,7 +59,7 @@ class WikiWatchesQuery extends WatchesQuery {
 			// 'content_num_one_reviewed',
 		];
 
-		$this->conds = $conds ? $conds : [];
+		$this->conds = $conds ?: [];
 
 		$this->join_conds = [];
 

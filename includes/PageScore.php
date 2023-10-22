@@ -35,7 +35,7 @@ class PageScore {
 	/**
 	 * Handles something.
 	 *
-	 * @return string
+	 * @return float
 	 */
 	public function getWatchQuality() {
 		$pwq = new PageWatchesQuery();

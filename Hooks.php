@@ -29,8 +29,10 @@ class WatchAnalyticsHooks {
 
 		// Get user's watch/review stats
 		$watchStats = $user->watchStats; // set in onBeforePageDisplay() hook
+		// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
 		$numPending = $watchStats['num_pending'];
 		$maxPendingDays = $watchStats['max_pending_days'];
+		// @phan-suppress-previous-line PhanTypeArraySuspiciousNullable
 
 		// Get user's pending approvals
 		// Check that Approved Revs is installed
@@ -92,10 +94,12 @@ class WatchAnalyticsHooks {
 		$userWatch = new UserWatchesQuery();
 		$user->watchStats = $userWatch->getUserWatchStats( $user );
 		$user->watchStats['max_pending_days'] = ceil(
+			// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
 			$user->watchStats['max_pending_minutes'] / ( 60 * 24 )
 		);
 
 		global $egPendingReviewsEmphasizeDays;
+		// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
 		if ( $user->watchStats['max_pending_days'] > $egPendingReviewsEmphasizeDays ) {
 			$out->addModules( [ 'ext.watchanalytics.shakependingreviews' ] );
 		}

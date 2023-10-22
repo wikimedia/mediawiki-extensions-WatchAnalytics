@@ -51,7 +51,7 @@ class UserWatchesQuery extends WatchesQuery {
 			$this->sqlEngagementScore,
 		];
 
-		$this->conds = $conds ? $conds : [];
+		$this->conds = $conds ?: [];
 
 		$this->join_conds = [
 			'u' => [

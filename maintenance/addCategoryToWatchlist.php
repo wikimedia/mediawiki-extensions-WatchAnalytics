@@ -108,6 +108,7 @@ class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 				foreach ( $users as $user ) {
 					$this->output( "    ...checking " . $user->getName() . "... " );
 
+					// @phan-suppress-next-line PhanTypeMismatchArgumentNullable $user can't really be null here
 					if ( $watchlistManager->isWatched( $user, $title ) ) {
 						$this->output( "already watching\n" );
 					} else {

@@ -53,7 +53,7 @@ class WatchAnalyticsUserTablePager extends WatchAnalyticsTablePager {
 
 			return $name;
 		} elseif ( $fieldName === 'max_pending_minutes' || $fieldName === 'avg_pending_minutes' ) {
-			return ( $value === null ) ? null : $this->watchQuery->createTimeStringFromMinutes( $value );
+			return ( $value === null ) ? null : $this->watchQuery->createTimeStringFromMinutes( (int)$value );
 		} else {
 			return $value;
 		}

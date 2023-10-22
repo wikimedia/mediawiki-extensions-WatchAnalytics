@@ -49,6 +49,10 @@ class WatchesQuery {
 	public function __construct() {
 	}
 
+	/**
+	 * @param int $totalMinutes
+	 * @return string
+	 */
 	public function createTimeStringFromMinutes( $totalMinutes ) {
 		$remainder = $totalMinutes;
 

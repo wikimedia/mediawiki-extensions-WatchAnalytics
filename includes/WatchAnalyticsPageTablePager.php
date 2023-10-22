@@ -1,11 +1,16 @@
 <?php
 
-use MediaWiki\MediawikiServices;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
 class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 
+	/** @var PageWatchesQuery */
+	protected $watchQuery;
+
+	/** @var int Namespace to query, 0 (NS_MAIN) by default */
 	protected $mQueryNamespace;
+
 	protected $isSortable = [
 		'page_ns_and_title' => true,
 		'num_watches' => true,
@@ -24,7 +29,7 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 		parent::__construct( $page, $conds, $filters );
 
 		$sortField = $req->getVal( 'sort' );
-		$this->mQueryNamespace = $req->getVal( 'ns' );
+		$this->mQueryNamespace = $req->getInt( 'ns', 0 );
 
 		if ( !isset( $sortField ) ) {
 			$this->mDefaultDirection = false;
@@ -34,7 +39,7 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 	}
 
 	public function getQueryInfo() {
-		$services = MediawikiServices::getInstance();
+		$services = MediaWikiServices::getInstance();
 		$namespaces = $services->getNamespaceInfo()->getCanonicalNamespaces();
 
 		if ( $this->mQueryNamespace !== null
@@ -56,13 +61,14 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 			$pageNsIndex = $pageInfo[0];
 			$pageTitleText = $pageInfo[1];
 
-			$title = Title::makeTitle( $pageNsIndex, $pageTitleText );
+			$title = Title::makeTitle( (int)$pageNsIndex, $pageTitleText );
 
 			$titleURL = $title->getLinkURL();
 			$titleNsText = $title->getNsText();
 			if ( $titleNsText === '' ) {
 				$titleFullText = $title->getText();
 			} else {
+				// @todo FIXME: ...just use $title->getPrefixedText()?
 				$titleFullText = $titleNsText . ':' . $title->getText();
 			}
 
@@ -86,7 +92,7 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 
 			return $pageLink;
 		} elseif ( $fieldName === 'max_pending_minutes' || $fieldName === 'avg_pending_minutes' ) {
-			return ( $value === null ) ? null : $this->watchQuery->createTimeStringFromMinutes( $value );
+			return ( $value === null ) ? null : $this->watchQuery->createTimeStringFromMinutes( (int)$value );
 		} else {
 			return $value;
 		}

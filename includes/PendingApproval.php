@@ -14,7 +14,7 @@ class PendingApproval extends PendingReview {
 	public function __construct( $row, Title $title ) {
 		$this->title = $title;
 
-		$this->notificationTimestamp = $row['notificationtimestamp'];
+		$this->notificationTimestamp = (int)$row['notificationtimestamp'];
 		$this->numReviewers = intval( $row['num_reviewed'] );
 
 		// Keep these just to be consistent with PendingReview class

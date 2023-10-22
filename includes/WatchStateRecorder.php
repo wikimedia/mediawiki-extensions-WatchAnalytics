@@ -10,7 +10,7 @@ class WatchStateRecorder {
 		$withinHours = ( intval( $withinHours ) > 0 ) ? intval( $withinHours ) : 1;
 		$withinDays = floor( $withinHours / 24 );
 		if ( $withinDays > 0 ) {
-			$withinHours = $withinHours % 24;
+			$withinHours %= 24;
 		}
 
 		$now = new MWTimestamp();
@@ -148,42 +148,30 @@ class WatchStateRecorder {
 			'num_pages', 'num_watches', 'num_pending', 'max_pending_minutes', 'avg_pending_minutes'
 		] );
 
-		$allNamespaces[0][ 'num_watches' ] =
-			$allNamespaces[0][ 'num_watches' ]
-			?? 0;
+		$allNamespaces[0]['num_watches'] ??= 0;
 
-		$allNamespaces[0][ 'num_pending' ] =
-			$allNamespaces[0][ 'num_pending' ]
-			?? 0;
+		$allNamespaces[0]['num_pending'] ??= 0;
 
-		$allNamespaces[0][ 'max_pending_minutes' ] =
-			$allNamespaces[0][ 'max_pending_minutes' ]
-			? $allNamespaces[0][ 'max_pending_minutes' ] : 0;
+		$allNamespaces[0]['max_pending_minutes'] =
+			$allNamespaces[0]['max_pending_minutes'] ?: 0;
 
-		$allNamespaces[0][ 'avg_pending_minutes' ] =
-			$allNamespaces[0][ 'avg_pending_minutes' ]
-			? $allNamespaces[0][ 'avg_pending_minutes' ] : 0;
+		$allNamespaces[0]['avg_pending_minutes'] =
+			$allNamespaces[0]['avg_pending_minutes'] ?: 0;
 
 		$contentOnly = $this->fetchAllFromQueryInfo( $mainWikiQueryInfo, [
 			'content_num_pages', 'content_num_watches', 'content_num_pending',
 			'content_max_pending_minutes', 'content_avg_pending_minutes'
 		] );
 
-		$contentOnly[0][ 'content_num_watches' ] =
-			$contentOnly[0][ 'content_num_watches' ]
-			?? 0;
+		$contentOnly[0]['content_num_watches'] ??= 0;
 
-		$contentOnly[0][ 'content_num_pending' ] =
-			$contentOnly[0][ 'content_num_pending' ]
-			?? 0;
+		$contentOnly[0]['content_num_pending'] ??= 0;
 
-		$contentOnly[0][ 'content_max_pending_minutes' ] =
-			$contentOnly[0][ 'content_max_pending_minutes' ]
-			? $contentOnly[0][ 'content_max_pending_minutes' ] : 0;
+		$contentOnly[0]['content_max_pending_minutes'] =
+			$contentOnly[0]['content_max_pending_minutes'] ?: 0;
 
-		$contentOnly[0][ 'content_avg_pending_minutes' ] =
-			$contentOnly[0][ 'content_avg_pending_minutes' ]
-			? $contentOnly[0][ 'content_avg_pending_minutes' ] : 0;
+		$contentOnly[0]['content_avg_pending_minutes'] =
+			$contentOnly[0]['content_avg_pending_minutes'] ?: 0;
 
 		$allWikiAnalytics = $allNamespaces[0] + $contentOnly[0] + [
 			'tracking_timestamp' => $now,
@@ -281,7 +269,7 @@ class WatchStateRecorder {
 	 * Record relevant info in watch_tracking_page and watch_tracking_user
 	 * after a change to a page (e.g. an edit, a move, etc)
 	 *
-	 * @param WikiPage $wikipage
+	 * @param Article|WikiPage $wikipage
 	 * @return bool
 	 */
 	public static function recordPageChange( $wikipage ) {

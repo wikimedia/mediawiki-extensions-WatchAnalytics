@@ -21,7 +21,7 @@ class PageWatchesQuery extends WatchesQuery {
 		'watch_quality'           => 'watchanalytics-special-header-watch-quality',
 	];
 
-	public function getQueryInfo( $conds = null ) {
+	public function getQueryInfo( $conds = [] ) {
 		$this->fields = [
 			$this->sqlNsAndTitle,
 			$this->sqlNumWatches,
@@ -67,12 +67,11 @@ class PageWatchesQuery extends WatchesQuery {
 	public function getPageWatchesAndViews( $pages ) {
 		$dbr = WatchAnalyticsUtils::getReadDB();
 
-		$pagesList = $dbr->makeList( $pages );
-		if ( $pagesList == null ) {
+		if ( $pages == null ) {
 			return [];
 		}
-		$queryInfo = $this->getQueryInfo( 'p.page_id IN (' . $pagesList . ')' );
-		$queryInfo['options'][ 'ORDER BY' ] = 'num_watches ASC';
+		$queryInfo = $this->getQueryInfo( [ 'p.page_id' => $pages ] );
+		$queryInfo['options']['ORDER BY'] = 'num_watches ASC';
 
 		$cols = [
 			'MAX(p.page_id) AS page_id',

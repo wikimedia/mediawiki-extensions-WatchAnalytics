@@ -12,7 +12,7 @@ class PendingReview {
 	public $notificationTimestamp;
 
 	/**
-	 * @var Title
+	 * @var Title|bool Can be boolean false
 	 */
 	public $title;
 
@@ -28,7 +28,7 @@ class PendingReview {
 	public $deletedTitle;
 
 	/**
-	 * @var int
+	 * @var int|bool Namespace index or boolean false
 	 */
 	public $deletedNS;
 
@@ -72,7 +72,6 @@ class PendingReview {
 		}
 
 		if ( $pageID && $title->exists() ) {
-
 			$dbr = WatchAnalyticsUtils::getReadDB();
 
 			$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
@@ -114,7 +113,6 @@ class PendingReview {
 			$deletedNS = false;
 			$deletedTitle = false;
 			$deletionLog = false;
-
 		} else {
 			$deletedNS = $namespace;
 			$deletedTitle = $titleDBkey;

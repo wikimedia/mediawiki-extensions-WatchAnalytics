@@ -1,12 +1,14 @@
 <?php
 
 use MediaWiki\Linker\Linker;
-use MediaWiki\MediawikiServices;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
 class SpecialPageStatistics extends SpecialPage {
 
 	public $mMode;
+
+	/** @var Title|null The Title object representing the page specified via the 'page' URL param */
 	protected $mTitle;
 
 	public function __construct() {
@@ -42,7 +44,7 @@ class SpecialPageStatistics extends SpecialPage {
 		// }
 
 		// @todo: delete if multiple views not needed (thus, not requiring header call here)
-		$watchlistManager = MediawikiServices::getInstance()->getWatchlistManager();
+		$watchlistManager = MediaWikiServices::getInstance()->getWatchlistManager();
 		if ( $this->mTitle && $this->mTitle->isKnown() && $watchlistManager->isWatchable( $this->mTitle ) ) {
 
 			$unReviewTimestamp = $req->getVal( 'unreview' );

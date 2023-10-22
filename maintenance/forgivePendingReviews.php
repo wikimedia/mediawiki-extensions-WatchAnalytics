@@ -40,6 +40,8 @@ class WatchAnalyticsForgivePendingReviews extends Maintenance {
 
 	protected $forgiveBefore;
 
+	protected $reviewedBy;
+
 	public function __construct() {
 		parent::__construct();
 
