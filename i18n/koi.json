@@ -4,6 +4,6 @@
 			"Римма"
 		]
 	},
-	"clearpendingreviews-success": "Бура чышкӧмась видзӧтӧм видзчисян  донтан гижӧттэз {{PLURAL\n:$1|листбок|$1 листбоккез}}.",
+	"clearpendingreviews-success": "Бура чышкӧмась видзӧтӧм видзчисян  донтан гижӧттэз {{PLURAL:$1|листбок|$1 листбоккез}}.",
 	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 версия|$2 версия}}"
 }

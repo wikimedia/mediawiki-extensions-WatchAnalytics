@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mansur"
+		]
+	},
+	"clearpendingreviews-success": "Төгәлләнмәгән бәяләмәләр {{PLURAL:$1|1 битеннән|$1 битеннән}} уңышлы бетерелде.",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 юрама|$2 юрама}}"
+}
