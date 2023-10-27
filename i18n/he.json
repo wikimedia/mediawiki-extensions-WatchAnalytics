@@ -104,7 +104,7 @@
 	"watch-analytics-page-score-scrutiny-label": "חקירה",
 	"watch-analytics-page-score-reviews-label": "סקירות",
 	"watchanalytics-pagestats-editors-list-title": "עורכי דפים",
-	"watchanalytics-pagestats-editors-list-item": "$1 – {{PLURAL:$2|גרסה אחת|$2 גרסאות}}",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] – {{PLURAL:$2|גרסה אחת|$2 גרסאות}}",
 	"watchanalytics-pagestats-watchers-title": "עוקבים אחרי הדף",
 	"watchanalytics-pagestats-watchers-list-item-reviewed": "סקירה אחרונה",
 	"watchanalytics-pagestats-watchers-list-item-unreviewed": "סקירה ממתינה",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BlueCamille",
 			"Gomoko",
 			"McDutchie",
 			"Verdy p"
@@ -32,7 +33,7 @@
 	"clearpendingreviews-date-order-invalid": "La date de début doit être antérieure à la date de fin",
 	"clearpendingreviews-missing-date-category": "Vous devez saisir une catégorie ou un titre.",
 	"clearpendingreviews-category-invalid": "La catégorie n’existe pas",
-	"clearpendingreviews-success": "Les relectures en attente ont bien été effacées de $1 pages.",
+	"clearpendingreviews-success": "Les relectures en attente ont été effacées de {{PLURAL:$1|une page|$1 pages}} avec succès.",
 	"clearpendingreviews-success-return": "Revenir à $1.",
 	"clearpendingreviews-pages-cleared": "Les pages suivantes seront effacées :",
 	"clearpendingreviews-people-impacted": "Les personnes suivantes seront impactées :",
