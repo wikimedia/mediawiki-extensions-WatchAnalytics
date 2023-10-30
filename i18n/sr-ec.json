@@ -13,6 +13,7 @@
 	"watchanalytics-pendingreviews-history-link": "(историја странице)",
 	"watchanalytics-pendingreviews-prev-revisions": "Претходно",
 	"watchanalytics-pendingreviews-next-revisions": "Следеће",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 измена|$2 измене}}",
 	"watchanalytics-accept-change-close-banner": "Затвори",
 	"pendingreviews-page-deleted": "Обрисана страница: $1",
 	"pendingreviews-page-moved-no-redirect": "Премештена страница: $1",
