@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"watchanalytics-desc": "Spodbujanje dobre porazdelitve opazovalcev",
@@ -127,12 +128,12 @@
 	"pendingreviews-accept-redirect": "Sprejmi preusmeritev",
 	"pendingreviews-accept-change": "Označi kot nepregledano",
 	"pendingreviews-clear-page-notification": "Stran »$1« je bila označena kot pregledana. Vrnitev na $2.",
-	"pendingreviews-log-approved": "$1 je {{GENDER:|odobril|odobrila|odobril_a}} redakcijo",
+	"pendingreviews-log-approved": "$1 je {{GENDER:|odobril|odobrila|odobril/a}} redakcijo",
 	"pendingreviews-log-unapproved": "$1 je {{GENDER:|odstranil|odstranila|odstranil_a}} vse odobritve redakcij",
-	"pendingreviews-log-delete": "$1 je {{GENDER:|izbrisal|izbrisala|izbrisal_a}} to stran z utemeljitvijo: $2",
+	"pendingreviews-log-delete": "$1 je {{GENDER:|izbrisal|izbrisala|izbrisal/a}} to stran z utemeljitvijo: $2",
 	"pendingreviews-log-restore": "$1 je {{GRAMMAR:|odizbrisal|odizbrisala|odizbrisal_a}} to stran",
-	"pendingreviews-log-import-upload": "$1 je {{GENDER:|naložil|naložila|naložil_a}} to datoteko",
-	"pendingreviews-log-move": "$1 je {{GENDER:|prestavil|prestavila|prestavil_a}} to stran na nov naslov '''$2'''",
+	"pendingreviews-log-import-upload": "$1 je {{GENDER:|naložil|naložila|naložil/a}} to datoteko",
+	"pendingreviews-log-move": "$1 je {{GENDER:|prestavil|prestavila|prestavil/a}} to stran na nov naslov '''$2'''",
 	"pendingreviews-log-move-redir": "$1 je {{GENDER:|preusmeril|preusmerila|preusmeril_a}} to stran na nov naslov '''$2'''",
 	"pendingreviews-log-protect": "$1 je to stran {{GENDER:označil|označila|označil_a}} kot zaščiteno",
 	"pendingreviews-log-unprotect": "$1 je {{GENDER:odstranil|odstranila|odstranil_a}} zaščito te strani",
