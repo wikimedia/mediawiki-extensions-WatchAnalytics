@@ -111,13 +111,7 @@ class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {
 					if ( $watchlistManager->isWatched( $user, $title ) ) {
 						$this->output( "already watching\n" );
 					} else {
-						if ( method_exists( MediaWiki\Watchlist\WatchlistManager::class, 'addWatch' ) ) {
-							// MW 1.37+
-							$watchlistManager->addWatch( $user, $title );
-						} else {
-							// @phan-suppress-next-line PhanUndeclaredMethod
-							$user->addWatch( $title );
-						}
+						$watchlistManager->addWatch( $user, $title );
 						$this->output( "added to watchlist\n" );
 					}
 				}
