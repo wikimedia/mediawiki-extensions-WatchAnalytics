@@ -94,7 +94,7 @@ class PageWatchesQuery extends WatchesQuery {
 	}
 
 	public function getPageWatchesAndViews( $pages ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$pagesList = $dbr->makeList( $pages );
 		if ( $pagesList == null ) {
@@ -141,7 +141,7 @@ class PageWatchesQuery extends WatchesQuery {
 	}
 
 	public function getPageWatchers( $titleKey, $ns = NS_MAIN ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$pageWatchStats = $dbr->select(
 			[ 'w' => 'watchlist' ],
@@ -162,7 +162,7 @@ class PageWatchesQuery extends WatchesQuery {
 	}
 
 	public function getPageWatchQuality( Title $title ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$queryInfo = $this->getQueryInfo( [
 			'p.page_namespace' => $title->getNamespace(),

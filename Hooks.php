@@ -197,7 +197,7 @@ class WatchAnalyticsHooks {
 		$oldDBkey = $old->getDBkey();
 		$newDBkey = $new->getDBkey();
 
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = WatchAnalyticsUtils::getWriteDB();
 		$results = $dbw->select( 'watchlist',
 			[ 'wl_user', 'wl_notificationtimestamp' ],
 			[ 'wl_namespace' => $oldNS, 'wl_title' => $oldDBkey ],

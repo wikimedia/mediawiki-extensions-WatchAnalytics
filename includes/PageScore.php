@@ -45,7 +45,7 @@ class PageScore {
 	}
 
 	public function getNumReviews() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$pageData = $dbr->selectRow(
 			'watchlist',

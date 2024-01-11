@@ -23,7 +23,7 @@ class WatchStateRecorder {
 	}
 
 	public function getLatestAllWikiTimestamp() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 		$result = $dbr->selectRow(
 			'watch_tracking_wiki',
 			'tracking_timestamp',
@@ -42,7 +42,7 @@ class WatchStateRecorder {
 	}
 
 	public function recordAll() {
-		$this->dbw = wfGetDB( DB_PRIMARY );
+		$this->dbw = WatchAnalyticsUtils::getWriteDB();
 
 		// get user and page info
 		$userWatchQuery = new UserWatchesQuery();
@@ -303,7 +303,7 @@ class WatchStateRecorder {
 			];
 		}
 
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = WatchAnalyticsUtils::getWriteDB();
 
 		// insert into watch_tracking_page: $timestamp, $title->getId(), $numWatchers, $numReviewed
 		$dbw->replace(
@@ -343,7 +343,7 @@ class WatchStateRecorder {
 		$userWQ = new UserWatchesQuery();
 		$userWatchStats = $userWQ->getMultiUserWatchStats( [ $user->getId() ] );
 
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = WatchAnalyticsUtils::getWriteDB();
 
 		// necessary to use replace here? probably, in case two requests
 		// are made in rapid succession such that the second gets a read

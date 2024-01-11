@@ -72,7 +72,7 @@ class PendingReview {
 
 		if ( $pageID && $title->exists() ) {
 
-			$dbr = wfGetDB( DB_REPLICA );
+			$dbr = WatchAnalyticsUtils::getReadDB();
 
 			$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
 
@@ -137,7 +137,7 @@ class PendingReview {
 			'log' => 'logging',
 		];
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$fields = [
 			'p.page_id AS page_id',
@@ -209,7 +209,7 @@ class PendingReview {
 			'log' => 'logging',
 		];
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$fields = [
 			'p.page_id AS page_id',
@@ -272,7 +272,7 @@ class PendingReview {
 	 * @return stdClass[]
 	 */
 	public function getDeletionLog( $title, int $ns, int $notificationTimestamp ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		// pages are deleted when (a) they are explicitly deleted or (b) they
 		// are moved without leaving a redirect behind.

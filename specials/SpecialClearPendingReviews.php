@@ -103,7 +103,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 	 * @return $results
 	 */
 	public static function doSearchQuery( $data, $clearPages ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = WatchAnalyticsUtils::getWriteDB();
 		$category = preg_replace( '/\s+/', '_', $data['category'] );
 		$page = preg_replace( '/\s+/', '_', $data['page'] );
 		$start = preg_replace( '/\s+/', '', $data['start'] );

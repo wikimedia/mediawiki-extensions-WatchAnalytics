@@ -14,7 +14,7 @@ class WatchSuggest {
 
 	public function __construct( User $user ) {
 		$this->mUser = $user;
-		$this->dbr = wfGetDB( DB_REPLICA );
+		$this->dbr = WatchAnalyticsUtils::getReadDB();
 	}
 
 	/**

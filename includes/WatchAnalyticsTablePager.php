@@ -92,7 +92,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 		$options['LIMIT'] = intval( $limit );
 		// end adapted code
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 		return $dbr->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
 	}
 
@@ -156,7 +156,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 		$groupFilter->addOptions( $groups );
 
 		// category filter
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 		$result = $dbr->select(
 			'categorylinks',
 			'cl_to',

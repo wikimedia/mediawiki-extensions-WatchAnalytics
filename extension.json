@@ -54,6 +54,7 @@
 		"WikiWatchesQuery": "includes/WikiWatchesQuery.php",
 		"WatchAnalyticsTablePager": "includes/WatchAnalyticsTablePager.php",
 		"WatchAnalyticsUserTablePager": "includes/WatchAnalyticsUserTablePager.php",
+		"WatchAnalyticsUtils": "includes/WatchAnalyticsUtils.php",
 		"WatchAnalyticsPageTablePager": "includes/WatchAnalyticsPageTablePager.php",
 		"WatchAnalyticsWikiTablePager": "includes/WatchAnalyticsWikiTablePager.php",
 		"WatchAnalyticsParserFunctions": "includes/WatchAnalyticsParserFunctions.php",

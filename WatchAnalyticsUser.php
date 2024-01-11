@@ -10,7 +10,7 @@ class WatchAnalyticsUser {
 	}
 
 	public function getPendingWatches() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$res = $dbr->select(
 			[ 'w' => 'watchlist' ],

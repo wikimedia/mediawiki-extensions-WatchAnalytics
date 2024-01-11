@@ -37,7 +37,7 @@ class WatchAnalyticsParserFunctions {
 		// $args = self::processArgs( $frame, $args, array(0) );
 		// $namespace  = $args[0];
 
-		$dbr = wfGetDB( DB_PRIMARY );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$query = "
 			SELECT * FROM (

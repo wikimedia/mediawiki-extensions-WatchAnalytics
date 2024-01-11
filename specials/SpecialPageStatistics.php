@@ -108,7 +108,7 @@ class SpecialPageStatistics extends SpecialPage {
 		// @todo FIXME: internationalization
 		$out->setPageTitle( 'Page Statistics: ' . $this->mTitle->getPrefixedText() );
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 		$html = '';
 		// Load the module for the D3.js force directed graph
 		// $out->addModules( 'ext.watchanalytics.forcegraph.scripts' );
@@ -250,7 +250,7 @@ class SpecialPageStatistics extends SpecialPage {
 		// $dateRangeStart = new MWTimestamp( date( 'YmdHis', strtotime( '2 weeks ago' ) ) );
 		// $dateRangeStart = $dateRangeStart->format('YmdHis');
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 		$res = $dbr->select(
 			[ 'wtp' => 'watch_tracking_page' ],
 			[

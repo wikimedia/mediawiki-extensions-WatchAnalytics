@@ -33,7 +33,7 @@ class PendingApproval extends PendingReview {
 	 * @return array
 	 */
 	public static function getUserPendingApprovals( User $user ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$queryInfo = ApprovedRevs::getQueryInfoPageApprovals( 'notlatest' );
 		$latestNotApproved = $dbr->select(

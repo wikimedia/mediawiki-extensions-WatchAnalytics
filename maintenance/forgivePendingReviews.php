@@ -66,7 +66,7 @@ class WatchAnalyticsForgivePendingReviews extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = WatchAnalyticsUtils::getWriteDB();
 
 		$usernames = $this->getOption( 'usernames' );
 		if ( $usernames ) {

@@ -70,7 +70,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		// FROM watchlist
 		// INNER JOIN page ON page.page_namespace = watchlist.wl_namespace AND page.page_title = watchlist.wl_title;		$dbr = wfGetDB( DB_SLAVE );
 
-		$db = wfGetDB( DB_PRIMARY );
+		$db = WatchAnalyticsUtils::getWriteDB();
 
 		// $res = $dbr->select(
 		// array(
@@ -198,7 +198,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		// @todo FIXME: i18n
 		$out->setPageTitle( 'Watch Analytics: User/Page Watch Relationships' );
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		// Load the module for the D3.js force directed graph
 		$out->addModules( 'ext.watchanalytics.forcegraph.scripts' );

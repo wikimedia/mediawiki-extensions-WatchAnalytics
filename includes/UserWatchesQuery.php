@@ -108,7 +108,7 @@ class UserWatchesQuery extends WatchesQuery {
 	public function getUserWatchStats( User $user ) {
 		$qInfo = $this->getQueryInfo();
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$res = $dbr->select(
 			$qInfo['tables'],
@@ -152,7 +152,7 @@ class UserWatchesQuery extends WatchesQuery {
 			$this->sqlNumPending,
 		];
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		$res = $dbr->select(
 			[

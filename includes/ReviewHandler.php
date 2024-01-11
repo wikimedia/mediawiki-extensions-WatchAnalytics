@@ -56,7 +56,7 @@ class ReviewHandler {
 	 * @return int
 	 */
 	public function getReviewStatus() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = WatchAnalyticsUtils::getReadDB();
 
 		// FIXME: probably should use User->getNotificationTimestmap() or something
 		// but I'm on a plane and I don't know what is available to me without docs
@@ -213,7 +213,7 @@ class ReviewHandler {
 	}
 
 	public function resetNotificationTimestamp( $ts ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = WatchAnalyticsUtils::getWriteDB();
 
 		return $dbw->update(
 			'watchlist',
