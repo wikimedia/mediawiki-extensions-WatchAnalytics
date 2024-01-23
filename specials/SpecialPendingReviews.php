@@ -316,8 +316,8 @@ class SpecialPendingReviews extends SpecialPage {
 					$context->setTitle( $item->title );
 					$diff = new DifferenceEngine( $context, $prevId, 0 );
 					$diff->showDiffStyle();
-					// @todo FIXME: i18n
-					$theDiff = $diff->getDiff( '<b>Last seen</b>', '<b>Current</b>' );
+					$theDiff = $diff->getDiff( '<b>' . wfMessage( 'pendingreviews-lastseen' )->text() . '</b>',
+					'<b>' . wfMessage( 'pendingreviews-current' )->text() . '</b>' );
 
 					$numChars = strlen( $theDiff );
 					$numRows = substr_count( $theDiff, '<tr' );

@@ -231,8 +231,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$table .= "</tr>";
 			$table .= "</table>";
 
-			// @todo FIXME: i18n
-			$form->setSubmitText( 'Clear pages' );
+			$form->setSubmitText( wfMessage( 'clearform-submit' )->text() );
 			$form->setSubmitName( 'clearpages' );
 			$form->setSubmitDestructive();
 			$form->setCancelTarget( $this->getPageTitle() );

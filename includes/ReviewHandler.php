@@ -193,8 +193,8 @@ class ReviewHandler {
 			if ( !( $this->isDiff ) ) {
 				$template .= "<div id='diff-box'>";
 				$template .= $diff->showDiffStyle();
-				// @todo FIXME: i18n
-				$template .= $diff->getDiff( '<b>Last seen</b>', '<b>Current</b>' );
+				$template .= $diff->getDiff( '<b>' . wfMessage( 'pendingreviews-lastseen' )->text() . '</b>',
+				'<b>' . wfMessage( 'pendingreviews-current' )->text() . '</b>' );
 				$template .= "</div>";
 			}
 		}
@@ -203,9 +203,10 @@ class ReviewHandler {
 
 		// Add button to navigate to top of page when user passes review banner.
 		if ( !( $this->isDiff ) ) {
-			// @todo FIXME: i18n
-			$template .= "<button id='watch-analytics-go-to-top-button' title='See changes'>";
-			$template .= "<b>Reviewing page!</b> Click here to see changes.";
+			$template .= "<button id='watch-analytics-go-to-top-button' title='" .
+			wfMessage( 'watchanalytics-reviews-seechanges-title' )->text() . "'>";
+			$template .= "<b>" . wfMessage( 'watchanalytics-reviews-seechanges-label-reviewing' )->text() . "</b>";
+			$template .= wfMessage( 'watchanalytics-reviews-seechanges-label-reviewing-msg' )->text();
 			$template .= "</button>";
 		}
 

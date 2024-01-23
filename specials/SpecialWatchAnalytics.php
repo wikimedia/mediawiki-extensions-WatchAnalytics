@@ -120,8 +120,8 @@ class SpecialWatchAnalytics extends SpecialPage {
 		];
 
 		$percent = round( $percent ?? 0, 1 );
-		// @todo FIXME: i18n
-		$stateOf = "<strong>The state of the Wiki: </strong>$watches watches of which $percent% ($pending) are pending";
+		$stateOf = '<strong>' . wfMessage( 'watchanalytics-special-stateof-title' )->text() . '</strong>';
+		$stateOf .= wfMessage( 'watchanalytics-special-stateof-pendingwatches', $watches, $percent, $pending )->text();
 
 		$navLinks = '';
 		foreach ( $this->header_links as $msg => $query_param ) {
@@ -195,8 +195,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 	public function forceGraph() {
 		$out = $this->getOutput();
 
-		// @todo FIXME: i18n
-		$out->setPageTitle( 'Watch Analytics: User/Page Watch Relationships' );
+		$out->setPageTitle( wfMessage( 'watchanalytics-watch-forcegraph-pagetitle' )->text() );
 
 		$dbr = WatchAnalyticsUtils::getReadDB();
 
