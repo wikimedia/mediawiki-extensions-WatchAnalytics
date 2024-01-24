@@ -60,6 +60,7 @@ class WatchAnalyticsParserFunctions {
 			) tmp
 			WHERE num_watches < 2";
 
+		// phpcs:ignore MediaWiki.Usage.DbrQueryUsage.DbrQueryFound
 		$result = $dbr->query( $query );
 
 		$output = "{| class=\"wikitable sortable\"\n";

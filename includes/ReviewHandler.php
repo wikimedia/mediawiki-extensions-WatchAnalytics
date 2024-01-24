@@ -5,7 +5,9 @@ use MediaWiki\MediaWikiServices;
 class ReviewHandler {
 
 	// used to track change of state through page load.
+	/** @var null|ReviewHandler */
 	public static $pageLoadHandler = null;
+	/** @var bool */
 	public static $isReviewable = true;
 
 	/**
