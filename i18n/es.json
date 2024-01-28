@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"MarcoAurelio"
+			"MarcoAurelio",
+			"No se"
 		]
 	},
 	"pagestatistics": "Estadísticas de la página",
@@ -13,5 +14,6 @@
 	"watchanalytics-pendingreviews-next-revisions": "Siguiente",
 	"pendingreviews-timediff-hours": "Modificado hace {{PLURAL:$1|$1 hora|$1 horas}}",
 	"pendingreviews-timediff-minutes": "Modificado hace {{PLURAL:$1|$1 minuto|$1 minutos}}",
-	"watchanalytics-pagestats-watchers-list-item-unreviewed": "pendiente de revisión"
+	"watchanalytics-pagestats-watchers-list-item-unreviewed": "pendiente de revisión",
+	"pendingreviews-watch-suggestion-leaders-desc": "Los siguientes usuarios de $1 son los que ven la mayor cantidad de páginas."
 }

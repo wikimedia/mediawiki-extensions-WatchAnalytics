@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"BlueCamille",
+			"Daniel236",
 			"Gomoko",
 			"McDutchie",
+			"Momo50WM",
 			"Verdy p"
 		]
 	},
@@ -42,10 +44,13 @@
 	"clearform-section1": "Sélectionnez la période de temps :",
 	"clearform-section2": "Sélectionnez la catégorie ou le titre :",
 	"pendingreviews-user-page": "Relectures en attente pour l’utilisat{{GENDER:$1|eur|rice}} : $1",
+	"pendingreviews-lastseen": "Vu pour la dernière fois",
+	"pendingreviews-current": "Courante",
 	"watchanalytics-pages-specialpage": "Statistiques de suivi des pages",
 	"watchanalytics-users-specialpage": "Statistiques de suivi des utilisateurs",
 	"watchanalytics-wikihistory-specialpage": "Statistiques historiques de suivi du wiki",
 	"watchanalytics-watch-forcegraph-specialpage": "Visualisation de tous les suivis",
+	"watchanalytics-watch-forcegraph-pagetitle": "Watch Analytics : relations utilisateur/page surveillée",
 	"watchanalytics-special-pages-pagetitle": "Données analytiques de suivi : pages",
 	"watchanalytics-special-users-pagetitle": "Données analytiques de suivi : utilisateurs",
 	"watchanalytics-special-wikihistory-pagetitle": "Données analytiques de suivi : statistiques historiques de suivi du wiki",
@@ -117,6 +122,8 @@
 	"watchanalytics-unreview-banner-text": "'''Page relue !''' En accédant à cette page, vous l’avez marquée comme relue. Si vous ne vouliez pas relire la page, vous pouvez annuler sa relecture pour l’enregistrer pour une autre fois.",
 	"watchanalytics-unreview-complete": "'''La relecture de cette page a été annulée''' et est à nouveau dans vos [[Special:PendingReviews|relectures en attente]].",
 	"watchanalytics-view-user-pendingreviews": "relectures en attente",
+	"watchanalytics-reviews-seechanges-label-reviewing": "Page de révision !",
+	"watchanalytics-reviews-seechanges-label-reviewing-msg": "Cliquez ici pour voir les changements.",
 	"pendingreviews-watch-suggestion-thanks": "Merci pour le suivi !",
 	"pendingreviews-pending-approvedrev": "A des révisions qui nécessitent une approbation",
 	"pendingreviews-pending-approvedrev-title": "Approbation de révision requise : $1",
@@ -149,5 +156,6 @@
 	"pendingreviews-watch-suggestion-title": "Ce wiki a besoin de votre aide pour suivre des pages",
 	"pendingreviews-approve-revs-title": "Page{{PLURAL:$1||s}} nécessitant votre approbation ($1)",
 	"pendingreviews-watch-suggestion-description": "Veuillez aider en suivant les pages suivantes liées à votre liste de suivi qui ont peu d’attention.",
-	"pendingreviews-watch-suggestion-watchlink": "Suivre"
+	"pendingreviews-watch-suggestion-watchlink": "Suivre",
+	"pendingreviews-watch-suggestion-leaders-desc": "Les utilisateurs suivants de $1 regardent le plus de pages."
 }

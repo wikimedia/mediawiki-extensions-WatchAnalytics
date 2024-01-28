@@ -8,6 +8,7 @@
 	"clearpendingreview-start-time": "Почетак:",
 	"clearpendingreviews-category-invalid": "Категорија не постоји",
 	"clearpendingreviews-success-return": "Назад на $1.",
+	"pendingreviews-current": "Тренутна",
 	"watchanalytics-special-header-page-title": "страница",
 	"watchanalytics-special-header-timestamp": "Датум/време",
 	"watchanalytics-pendingreviews-history-link": "(историја странице)",
@@ -15,6 +16,7 @@
 	"watchanalytics-pendingreviews-next-revisions": "Следеће",
 	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 измена|$2 измене}}",
 	"watchanalytics-accept-change-close-banner": "Затвори",
+	"watchanalytics-reviews-seechanges-label-reviewing-msg": "Кликните овде да видите промене.",
 	"pendingreviews-page-deleted": "Обрисана страница: $1",
 	"pendingreviews-page-moved-no-redirect": "Премештена страница: $1",
 	"pendingreviews-log-delete": "$1 је обрисао/ла ову страницу, разлог: $2"
