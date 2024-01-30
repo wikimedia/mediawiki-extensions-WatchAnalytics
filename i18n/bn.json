@@ -5,5 +5,7 @@
 		]
 	},
 	"clearpendingreviews-success-return": "$1-এ ফেরত যান।",
-	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|১টি সংস্করণ|$2টি সংস্করণ}}"
+	"pendingreviews-current": "বর্তমান",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|১টি সংস্করণ|$2টি সংস্করণ}}",
+	"watchanalytics-reviews-seechanges-title": "পরিবর্তন দেখুন"
 }
