@@ -31,7 +31,7 @@
 	"clearpendingreviews-missing-date-category": "Мора да внесете или категорија или наслов.",
 	"clearpendingreviews-category-invalid": "Категоријата не постои.",
 	"clearpendingreviews-success": "Успешно исчистени проверките на чекање од $1 страници.",
-	"clearpendingreviews-success-return": "Назад на:",
+	"clearpendingreviews-success-return": "Назад на $1.",
 	"clearpendingreviews-pages-cleared": "Ќе се исчистат следниве страници:",
 	"clearpendingreviews-people-impacted": "Ќе бидат засегнати следниве страници:",
 	"action-clearreviews": "исчисти проверки на чекање",
