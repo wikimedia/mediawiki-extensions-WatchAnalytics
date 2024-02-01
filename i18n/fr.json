@@ -6,6 +6,7 @@
 			"Gomoko",
 			"McDutchie",
 			"Momo50WM",
+			"Thibaut120094",
 			"Verdy p"
 		]
 	},
@@ -45,7 +46,7 @@
 	"clearform-section2": "Sélectionnez la catégorie ou le titre :",
 	"pendingreviews-user-page": "Relectures en attente pour l’utilisat{{GENDER:$1|eur|rice}} : $1",
 	"pendingreviews-lastseen": "Vu pour la dernière fois",
-	"pendingreviews-current": "Courante",
+	"pendingreviews-current": "Actuel",
 	"watchanalytics-pages-specialpage": "Statistiques de suivi des pages",
 	"watchanalytics-users-specialpage": "Statistiques de suivi des utilisateurs",
 	"watchanalytics-wikihistory-specialpage": "Statistiques historiques de suivi du wiki",
@@ -122,7 +123,8 @@
 	"watchanalytics-unreview-banner-text": "'''Page relue !''' En accédant à cette page, vous l’avez marquée comme relue. Si vous ne vouliez pas relire la page, vous pouvez annuler sa relecture pour l’enregistrer pour une autre fois.",
 	"watchanalytics-unreview-complete": "'''La relecture de cette page a été annulée''' et est à nouveau dans vos [[Special:PendingReviews|relectures en attente]].",
 	"watchanalytics-view-user-pendingreviews": "relectures en attente",
-	"watchanalytics-reviews-seechanges-label-reviewing": "Page de révision !",
+	"watchanalytics-reviews-seechanges-title": "Voir les modifications",
+	"watchanalytics-reviews-seechanges-label-reviewing": "Voir les résultats !",
 	"watchanalytics-reviews-seechanges-label-reviewing-msg": "Cliquez ici pour voir les changements.",
 	"pendingreviews-watch-suggestion-thanks": "Merci pour le suivi !",
 	"pendingreviews-pending-approvedrev": "A des révisions qui nécessitent une approbation",
@@ -157,5 +159,5 @@
 	"pendingreviews-approve-revs-title": "Page{{PLURAL:$1||s}} nécessitant votre approbation ($1)",
 	"pendingreviews-watch-suggestion-description": "Veuillez aider en suivant les pages suivantes liées à votre liste de suivi qui ont peu d’attention.",
 	"pendingreviews-watch-suggestion-watchlink": "Suivre",
-	"pendingreviews-watch-suggestion-leaders-desc": "Les utilisateurs suivants de $1 regardent le plus de pages."
+	"pendingreviews-watch-suggestion-leaders-desc": "Les $1 utilisateurs suivants suivent le plus de pages."
 }
