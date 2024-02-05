@@ -4,5 +4,9 @@
 			"Winston Sung"
 		]
 	},
-	"clearpendingreviews-success-return": "返回「$1」。"
+	"clearpendingreviews-success-return": "返回「$1」。",
+	"pendingreviews-current": "目前",
+	"watchanalytics-special-stateof-title": "wiki狀態：",
+	"watchanalytics-reviews-seechanges-title": "檢視變更",
+	"watchanalytics-reviews-seechanges-label-reviewing-msg": "點擊此處以檢視變更。"
 }
