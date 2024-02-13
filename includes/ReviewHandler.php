@@ -207,7 +207,7 @@ class ReviewHandler {
 		if ( !( $this->isDiff ) ) {
 			$template .= "<button id='watch-analytics-go-to-top-button' title='" .
 			wfMessage( 'watchanalytics-reviews-seechanges-title' )->text() . "'>";
-			$template .= "<b>" . wfMessage( 'watchanalytics-reviews-seechanges-label-reviewing' )->text() . "</b>";
+			$template .= "<b>" . wfMessage( 'watchanalytics-reviews-seechanges-label-reviewing' )->text() . " </b>";
 			$template .= wfMessage( 'watchanalytics-reviews-seechanges-label-reviewing-msg' )->text();
 			$template .= "</button>";
 		}

@@ -120,7 +120,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		];
 
 		$percent = round( $percent ?? 0, 1 );
-		$stateOf = '<strong>' . wfMessage( 'watchanalytics-special-stateof-title' )->text() . '</strong>';
+		$stateOf = '<strong>' . wfMessage( 'watchanalytics-special-stateof-title' )->text() . ' </strong>';
 		$stateOf .= wfMessage( 'watchanalytics-special-stateof-pendingwatches', $watches, $percent, $pending )->text();
 
 		$navLinks = '';
