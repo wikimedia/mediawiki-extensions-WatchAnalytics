@@ -27,7 +27,6 @@ class PageWatchesQuery extends WatchesQuery {
 			$this->sqlPercentPending,
 			$this->sqlMaxPendingMins,
 			$this->sqlAvgPendingMins,
-			$this->sqlWatchQuality,
 		];
 
 		$this->conds = $conds ? $conds : [ 'p.page_namespace IS NOT NULL' ];
@@ -54,36 +53,6 @@ class PageWatchesQuery extends WatchesQuery {
 		if ( $this->categoryFilter ) {
 			$this->setCategoryFilterQueryInfo();
 		}
-
-		// add user watch scores join
-		$this->tables['user_watch_scores'] = '(
-			SELECT
-				w2.wl_user AS user_name,
-				(
-					ROUND( IFNULL(
-						EXP(
-							-0.01 * SUM(
-								IF(w2.wl_notificationtimestamp IS NULL, 0, 1)
-							)
-						)
-						*
-						EXP(
-							-0.01 * FLOOR(
-								AVG(
-									TIMESTAMPDIFF( DAY, w2.wl_notificationtimestamp, UTC_TIMESTAMP() )
-								)
-							)
-						),
-					1), 3)
-				) AS engagement_score
-
-			FROM watchlist AS w2
-			GROUP BY w2.wl_user
-
-		)';
-		$this->join_conds['user_watch_scores'] = [
-			'LEFT JOIN', 'user_watch_scores.user_name = w.wl_user'
-		];
 
 		$this->options = [
 			// 'GROUP BY' => 'w.wl_title, w.wl_namespace'
@@ -161,13 +130,54 @@ class PageWatchesQuery extends WatchesQuery {
 		return $return;
 	}
 
+	private function createUserWatchScoresTempTable() {
+		$dbw = WatchAnalyticsUtils::getWriteDB();
+
+		$sql = <<<END
+			CREATE TEMPORARY TABLE user_watch_scores
+			AS SELECT
+				wl_user AS user_name,
+				(
+					ROUND( IFNULL(
+						EXP(
+							-0.01 * SUM(
+								IF(wl_notificationtimestamp IS NULL, 0, 1)
+							)
+						)
+						*
+						EXP(
+							-0.01 * FLOOR(
+								AVG(
+									TIMESTAMPDIFF( DAY, wl_notificationtimestamp, UTC_TIMESTAMP() )
+								)
+							)
+						),
+					1), 3)
+				) AS engagement_score
+
+			FROM watchlist
+			GROUP BY wl_user
+
+END;
+
+		$dbw->query( $sql, __METHOD__ );
+	}
+
 	public function getPageWatchQuality( Title $title ) {
 		$dbr = WatchAnalyticsUtils::getReadDB();
+
+		$this->createUserWatchScoresTempTable();
 
 		$queryInfo = $this->getQueryInfo( [
 			'p.page_namespace' => $title->getNamespace(),
 			'p.page_title' => $title->getDBkey(),
 		] );
+
+		// add user watch scores join
+		$queryInfo['tables']['user_watch_scores'] = 'user_watch_scores';
+		$queryInfo['join_conds']['user_watch_scores'] = [
+			'LEFT JOIN', 'user_watch_scores.user_name = w.wl_user'
+		];
 
 		$pageData = $dbr->selectRow(
 			$queryInfo['tables'],
