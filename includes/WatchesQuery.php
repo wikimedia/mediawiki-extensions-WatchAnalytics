@@ -96,8 +96,6 @@ class WatchesQuery {
 	}
 
 	public function getQueryInfo() {
-		$this->conds = $this->conds ? $this->conds : [];
-
 		if ( isset( $this->limit ) ) {
 			$this->options['LIMIT'] = $this->limit;
 		}
@@ -105,15 +103,13 @@ class WatchesQuery {
 			$this->options['OFFSET'] = $this->offset;
 		}
 
-		$return = [
+		return [
 			'tables' => $this->tables,
 			'fields' => $this->fields,
 			'join_conds' => $this->join_conds,
-			'conds' => $this->conds,
+			'conds' => $this->conds ?? [],
 			'options' => $this->options,
 		];
-
-		return $return;
 	}
 
 	public function setUserGroupFilter( $ugf ) {

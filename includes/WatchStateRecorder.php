@@ -2,7 +2,6 @@
 
 class WatchStateRecorder {
 
-	protected $dbr;
 	protected $dbw;
 
 	public function recordedWithinHours( $withinHours = 1 ) {

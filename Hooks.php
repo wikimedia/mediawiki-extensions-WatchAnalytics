@@ -83,13 +83,10 @@ class WatchAnalyticsHooks {
 	}
 
 	/**
-	 * Handler for BeforePageDisplay hook. This function supports several
-	 * WatchAnalytics features:
+	 * Handler for BeforePageDisplay hook. This function does the following:
 	 *
 	 * 1) Determine if user should see shaky pending reviews link
 	 * 2) Insert page scores on applicable pages
-	 * 3) REMOVED FOR MW 1.27: If a page review has occurred on this page view, display an unreview
-	 *    option and record that the review happened.
 	 *
 	 * Also supports parameter: Skin $skin.
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay
@@ -101,7 +98,7 @@ class WatchAnalyticsHooks {
 		$title = $out->getTitle();
 
 		#
-		# 1) Is user's oldest pending review is old enough to require emphasis
+		# 1) Is user's oldest pending review old enough to require emphasis?
 		#
 		$userWatch = new UserWatchesQuery();
 		$user->watchStats = $userWatch->getUserWatchStats( $user );
@@ -126,25 +123,6 @@ class WatchAnalyticsHooks {
 			$out->addModules( 'ext.watchanalytics.pagescores.scripts' );
 			$out->addModuleStyles( 'ext.watchanalytics.pagescores.styles' );
 		}
-
-		// REMOVED FOR MW 1.27
-		// #
-		// # 3) If user has reviewed page on this page load show "unreview" option
-		// #
-		// $reviewHandler = ReviewHandler::pageHasBeenReviewed();
-		// if ( $reviewHandler ) {
-
-		// // display "unreview" button
-		// $out->addScript( $reviewHandler->getTemplate() );
-		// $wgOut->addModules( [
-		// 'ext.watchanalytics.reviewhandler.scripts',
-		// 'ext.watchanalytics.reviewhandler.styles'
-		// ] );
-
-		// // record change in user/page stats
-		// WatchStateRecorder::recordReview( $user, $title );
-
-		// }
 	}
 
 	/**

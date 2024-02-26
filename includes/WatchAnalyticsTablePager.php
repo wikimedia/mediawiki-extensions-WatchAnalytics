@@ -47,11 +47,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	}
 
 	public function isFieldSortable( $field ) {
-		if ( !isset( $this->isSortable[$field] ) ) {
-			return false;
-		} else {
-			return $this->isSortable[ $field ];
-		}
+		return $this->isSortable[ $field ] ?? false;
 	}
 
 	/**

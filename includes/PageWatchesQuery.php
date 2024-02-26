@@ -29,7 +29,7 @@ class PageWatchesQuery extends WatchesQuery {
 			$this->sqlAvgPendingMins,
 		];
 
-		$this->conds = $conds ? $conds : [ 'p.page_namespace IS NOT NULL' ];
+		$this->conds = $conds ?? [ 'p.page_namespace IS NOT NULL' ];
 
 		$this->tables = [ 'w' => 'watchlist' ];
 
