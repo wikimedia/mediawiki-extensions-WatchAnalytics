@@ -28,13 +28,12 @@ class WatchAnalyticsHooks {
 	 * @param SkinTemplate $skin
 	 * @param array &$links Array of URLs to append to.
 	 * @param User $user
-	 * @return bool
 	 */
 	public static function personalUrlsBuilder( $skin, &$links, $user ) {
 		global $wgOut;
 
 		if ( !$user->isAllowed( 'pendingreviewslink' ) ) {
-			return true;
+			return;
 		}
 
 		$wgOut->addModuleStyles( 'ext.watchanalytics.base' );
@@ -81,7 +80,6 @@ class WatchAnalyticsHooks {
 
 		// set "watchlist" link to Pending Reviews
 		$links['watchlist']['href'] = SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL();
-		return true;
 	}
 
 	/**
@@ -97,8 +95,6 @@ class WatchAnalyticsHooks {
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay
 	 *
 	 * @param OutputPage $out reference to OutputPage object
-	 *
-	 * @return bool true in all cases
 	 */
 	public static function onBeforePageDisplay( $out /*, $skin*/ ) {
 		$user = $out->getUser();
@@ -149,8 +145,6 @@ class WatchAnalyticsHooks {
 		// WatchStateRecorder::recordReview( $user, $title );
 
 		// }
-
-		return true;
 	}
 
 	/**
@@ -174,8 +168,6 @@ class WatchAnalyticsHooks {
 	 * @param int $redirid
 	 * @param string $reason
 	 * @param RevisionRecord $revision
-	 *
-	 * @return bool true in all cases
 	 */
 	public static function onPageMoveComplete( LinkTarget $old, LinkTarget $new,
 			UserIdentity $userIdentity, int $pageid, int $redirid, string $reason, RevisionRecord $revision ) {
@@ -216,7 +208,7 @@ class WatchAnalyticsHooks {
 
 		if ( empty( $values ) ) {
 			// Nothing to do
-			return true;
+			return;
 		}
 
 		# Perform replace
@@ -228,8 +220,6 @@ class WatchAnalyticsHooks {
 			$values,
 			__METHOD__
 		);
-
-		return true;
 	}
 
 	/**
@@ -238,12 +228,9 @@ class WatchAnalyticsHooks {
 	 * @see FIXME (include link to hook documentation)
 	 *
 	 * @param array &$magicWordVariableIDs array of names of magic words
-	 *
-	 * @return bool
 	 */
 	public static function onGetMagicVariableIDs( &$magicWordVariableIDs ) {
 		$magicWordVariableIDs[] = 'MAG_NOPAGESCORE';
-		return true;
 	}
 
 	/**
@@ -254,8 +241,6 @@ class WatchAnalyticsHooks {
 	 *
 	 * @param Parser &$parser reference to MediaWiki parser.
 	 * @param string &$text FIXME html/wikitext? of output page before complete
-	 *
-	 * @return bool
 	 */
 	public static function handleMagicWords( &$parser, &$text ) {
 		$factory = MediaWikiServices::getInstance()->getMagicWordFactory();
@@ -264,7 +249,6 @@ class WatchAnalyticsHooks {
 		if ( $magicWord->matchAndRemove( $text ) ) {
 			PageScore::noPageScore();
 		}
-		return true;
 	}
 
 	/**
@@ -276,8 +260,6 @@ class WatchAnalyticsHooks {
 	 *
 	 * @param WikiPage $wikiPage
 	 * @param User $user
-	 *
-	 * @return bool
 	 */
 	public static function onPageViewUpdates( WikiPage $wikiPage, User $user ) {
 		$title = $wikiPage->getTitle();
@@ -301,7 +283,6 @@ class WatchAnalyticsHooks {
 			WatchStateRecorder::recordReview( $user, $title );
 
 		}
-		return true;
 	}
 
 	/**
@@ -316,12 +297,9 @@ class WatchAnalyticsHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
 	 *
 	 * @param WikiPage $wikipage
-	 *
-	 * @return bool
 	 */
 	public static function onPageSaveComplete( WikiPage $wikipage ) {
 		WatchStateRecorder::recordPageChange( $wikipage );
-		return true;
 	}
 
 }
