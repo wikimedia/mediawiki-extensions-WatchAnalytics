@@ -17,6 +17,8 @@
 	"watchanalytics-special-header-timestamp": "Datum/Zäit",
 	"watchanalytics-special-header-num-pages": "# Säiten",
 	"watchanalytics-pendingreviews-prev-revisions": "Vireg",
+	"pendingreviews-timediff-hours": "Viru(n) {{PLURAL:$1|1 Stonn|$1 Stonne}} geännert",
+	"pendingreviews-timediff-minutes": "Viru(n) {{PLURAL:$1|1 Minutt|$1 Minutte}} geännert",
 	"pendingreviews-timediff-just-now": "Grad elo geännert",
 	"watchanalytics-pagestats-editors-list-item": "$1 - {{PLURAL:$2|1 Versioun|$2 Versiounen}}",
 	"pendingreviews-log-protect": "$1 huet dës Säit als gespaart markéiert",
