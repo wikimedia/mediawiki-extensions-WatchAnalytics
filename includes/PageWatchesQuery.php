@@ -85,7 +85,7 @@ class PageWatchesQuery extends WatchesQuery {
 
 			$cols[] = "counter.$countCol AS num_views";
 			$queryInfo['join_conds']['counter'] = [
-				'LEFT JOIN' , "p.page_id = counter.$countPageIdJoinCol"
+				'LEFT JOIN', "p.page_id = counter.$countPageIdJoinCol"
 			];
 		}
 

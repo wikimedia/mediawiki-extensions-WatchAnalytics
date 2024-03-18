@@ -287,7 +287,7 @@ class WatchStateRecorder {
 		$title = $wikipage->getTitle();
 
 		// page watch stats
-		list( $numWatchers, $numReviewed, $userIdArray ) = self::getPageWatchInfo( $title );
+		[ $numWatchers, $numReviewed, $userIdArray ] = self::getPageWatchInfo( $title );
 
 		// query for each users' total watches/reviews
 		$userWQ = new UserWatchesQuery();
@@ -361,7 +361,7 @@ class WatchStateRecorder {
 		);
 
 		// page watch stats (disregarding third var, array of user IDs)
-		list( $numWatchers, $numReviewed ) = self::getPageWatchInfo( $title );
+		[ $numWatchers, $numReviewed ] = self::getPageWatchInfo( $title );
 
 		$dbw->replace(
 			'watch_tracking_page',

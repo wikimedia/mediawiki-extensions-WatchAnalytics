@@ -13,7 +13,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 	public function __construct() {
 		parent::__construct(
 			"WatchAnalytics", //
-			"",  // rights required to view
+			"", // rights required to view
 			true // show in Special:SpecialPages
 		);
 	}
@@ -25,7 +25,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 		$this->setHeaders();
 		$out->addModuleStyles( 'ext.watchanalytics.specials' );
 
-		list( $this->limit, $this->offset ) = $req->getLimitOffsetForUser( $this->getUser() );
+		[ $this->limit, $this->offset ] = $req->getLimitOffsetForUser( $this->getUser() );
 
 		// $userTarget = isset( $parser ) ? $parser : $req->getVal( 'username' );
 		$this->mMode = $req->getVal( 'show' );
@@ -113,7 +113,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 
 		$allWikiData = $res->fetchRow();
 
-		list( $watches, $pending, $percent ) = [
+		[ $watches, $pending, $percent ] = [
 			$allWikiData['num_watches'],
 			$allWikiData['num_pending'],
 			$allWikiData['percent_pending']

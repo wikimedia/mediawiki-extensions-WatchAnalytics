@@ -2,6 +2,8 @@
 <ruleset name="MediaWiki">
 	<file>.</file>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="Generic.CodeAnalysis.AssignmentInCondition.Found" />
+		<exclude name="Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition" />
 		<!-- These exclusions taken from Extension:Echo and should be re-assessed -->
 		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
@@ -18,7 +20,6 @@
 			Consider fixing while( $var = something() ) due to this:
 			https://www.mediawiki.org/wiki/Manual:Coding_conventions/PHP#Assignment_expressions
 		-->
-		<exclude name="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures" />
 
 		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage" />
 		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionVarUsage" />

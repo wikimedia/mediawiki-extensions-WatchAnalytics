@@ -9,7 +9,7 @@ class SpecialPageStatistics extends SpecialPage {
 	public function __construct() {
 		parent::__construct(
 			"PageStatistics", //
-			"",  // rights required to view
+			"", // rights required to view
 			true // show in Special:SpecialPages
 		);
 	}
