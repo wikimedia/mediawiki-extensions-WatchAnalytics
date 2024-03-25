@@ -158,6 +158,6 @@
 	"pendingreviews-approve-revs-title": "Display text for pages needing the user approval. Parameter:\n* $1 - number of pages",
 	"pendingreviews-watch-suggestion-description": "Description for page watch suggestion",
 	"pendingreviews-watch-suggestion-watchlink": "Watch link text",
-	"pendingreviews-watch-suggestion-leaders-title": "Watch Leaders",
+	"pendingreviews-watch-suggestion-leaders-title": "This refers to the users who are watching the most pages.",
 	"pendingreviews-watch-suggestion-leaders-desc": "Description for page watch leaders. Parameter:\n* $1 - number of top watchers"
 }
