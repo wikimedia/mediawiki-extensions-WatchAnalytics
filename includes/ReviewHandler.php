@@ -60,8 +60,6 @@ class ReviewHandler {
 	public function getReviewStatus() {
 		$dbr = WatchAnalyticsUtils::getReadDB();
 
-		// FIXME: probably should use User->getNotificationTimestmap() or something
-		// but I'm on a plane and I don't know what is available to me without docs
 		$row = $dbr->selectRow(
 			'watchlist',
 			[ 'wl_notificationtimestamp' ],
@@ -74,8 +72,8 @@ class ReviewHandler {
 			[]
 		);
 
-		// user is not watching the page
 		if ( $row === false ) {
+			// User is not watching the page.
 			return -1;
 		} elseif ( $row->wl_notificationtimestamp === null ) {
 			return 0;
