@@ -2,6 +2,8 @@
 
 class SpecialWatchAnalytics extends SpecialPage {
 
+	public $limit;
+	public $offset;
 	public $mMode;
 	protected $header_links = [
 		'watchanalytics-pages-specialpage' => '',

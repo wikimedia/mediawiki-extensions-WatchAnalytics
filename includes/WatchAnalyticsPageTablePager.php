@@ -4,6 +4,7 @@ use MediaWiki\MediawikiServices;
 
 class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 
+	protected $mQueryNamespace;
 	protected $isSortable = [
 		'page_ns_and_title' => true,
 		'num_watches' => true,

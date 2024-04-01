@@ -40,6 +40,11 @@ class SpecialPendingReviews extends SpecialPage {
 		'watchanalytics-users-specialpage' => 'users',
 		'watchanalytics-wikihistory-specialpage'  => 'wikihistory',
 	];
+	protected $mUser;
+	protected $mUserIsReviewer;
+	protected $pendingReviewList;
+	protected $reviewLimit;
+	protected $reviewOffset;
 
 	/**
 	 * Constructor for Special Page.

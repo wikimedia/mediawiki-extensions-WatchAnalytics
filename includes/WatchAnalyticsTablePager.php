@@ -4,6 +4,13 @@ use MediaWiki\MediaWikiServices;
 
 abstract class WatchAnalyticsTablePager extends TablePager {
 
+	protected $page;
+	protected $limit;
+	protected $offset;
+	protected $conds;
+	protected $filters;
+	protected $watchQuery;
+
 	public function __construct( $page, $conds, $filters = [] ) {
 		$this->page = $page;
 		$this->limit = $page->limit;

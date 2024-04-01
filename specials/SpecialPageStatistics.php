@@ -5,6 +5,7 @@ use MediaWiki\MediawikiServices;
 class SpecialPageStatistics extends SpecialPage {
 
 	public $mMode;
+	protected $mTitle;
 
 	public function __construct() {
 		parent::__construct(
