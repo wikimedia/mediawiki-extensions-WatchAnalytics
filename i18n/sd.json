@@ -5,5 +5,8 @@
 		]
 	},
 	"clearform-section1": "وقت جي مدت چونڊيو:",
+	"pendingreviews-timediff-days": "{{PLURAL:$1|$1 ڏينھن}} اڳ تبديل ڪيل",
+	"pendingreviews-timediff-hours": "{{PLURAL:$1|$1 ڪلاڪ}} اڳ تبديل ٿيو",
+	"pendingreviews-timediff-minutes": "{{PLURAL:$1|$1 منٽ}} اڳ تبديل ٿيل",
 	"pendingreviews-watch-suggestion-watchlink": "نظر۾رکو"
 }
