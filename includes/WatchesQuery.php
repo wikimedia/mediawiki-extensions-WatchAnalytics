@@ -56,33 +56,23 @@ class WatchesQuery {
 		$minutesInHour = 60;
 
 		$days = floor( $remainder / $minutesInDay );
+		if ( $days > 0 ) {
+			return wfMessage( 'days', $days )->escaped();
+		}
+
 		$remainder %= $minutesInDay;
-
 		$hours = floor( $remainder / $minutesInHour );
+		if ( $hours > 0 ) {
+			return wfMessage( 'hours', $hours )->escaped();
+		}
+
 		$remainder %= $minutesInHour;
-
 		$minutes = $remainder;
-
-		$time = [];
-		// @todo FIXME: looks like non-i18n-able hardcoded English
-		// (and maybe whatever's using this method in the first place
-		// should just use core MW getHumanTimestamp stuff instead?)
-		if ( $days ) {
-			$time[] = $days . ' day' . ( ( $days > 1 ) ? 's' : '' );
-		}
-		if ( $hours ) {
-			$time[] = $hours . ' hour' . ( ( $hours > 1 ) ? 's' : '' );
-		}
-		if ( $minutes ) {
-			$time[] = $minutes . ' minute' . ( ( $minutes > 1 ) ? 's' : '' );
+		if ( $minutes > 0 ) {
+			return wfMessage( 'minutes', $minutes )->escaped();
 		}
 
-		// return implode(', ', $time);
-		if ( count( $time ) > 0 ) {
-			return $time[0];
-		} else {
-			return '';
-		}
+		return '';
 	}
 
 	public function getFieldNames() {
