@@ -108,6 +108,7 @@
 	"watch-analytics-page-score-tooltip": "Scores indicate how well this page is being reviewed",
 	"watch-analytics-page-score-scrutiny-label": "Scrutiny",
 	"watch-analytics-page-score-reviews-label": "Reviews",
+	"watchanalytics-pagestats-scores": "Scores",
 	"watchanalytics-pagestats-editors-list-title": "Page editors",
 	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 revision|$2 revisions}}",
 	"watchanalytics-pagestats-watchers-title": "Page watchers",

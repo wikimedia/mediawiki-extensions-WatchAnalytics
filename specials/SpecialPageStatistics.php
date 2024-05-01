@@ -85,8 +85,8 @@ class SpecialPageStatistics extends SpecialPage {
 		// @todo FIXME: This should have the single-input form to look up pages, maybe.
 		// for now it's just an explanation of what should be here.
 		// @todo FIXME: hard coded width of the badge column is lame
-		return "<h2>Scores</h2>
-			<p>The following are page scores and explanations for <strong>$pageLink</strong></p>
+		return '<h2>' . $this->msg( 'watchanalytics-pagestats-scores' )->escaped() . '</h2>' .
+			"<p>The following are page scores and explanations for <strong>$pageLink</strong></p>
 
 			<table>
 			<tr>
