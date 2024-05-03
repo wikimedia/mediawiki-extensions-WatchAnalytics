@@ -63,11 +63,11 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	 *
 	 * @param string $offset index offset, inclusive
 	 * @param int $limit exact query limit
-	 * @param bool $descending Boolean: query direction, false for ascending, true for descending
+	 * @param bool $order
 	 * @return ResultWrapper
 	 */
-	public function reallyDoQuery( $offset, $limit, $descending ) {
-		$qInfo = $this->getQueryInfo( $offset, $limit, $descending );
+	public function reallyDoQuery( $offset, $limit, $order ) {
+		$qInfo = $this->getQueryInfo( $offset, $limit, $order );
 		$tables = $qInfo['tables'];
 		$fields = $qInfo['fields'];
 		$conds  = $qInfo['conds'];
@@ -77,7 +77,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 		// code below adapted from MW 1.22 core, Pager.php,
 		// IndexPager::buildQueryInfo()
 		$sortColumns = array_merge( [ $this->mIndexField ], $this->mExtraSortFields );
-		if ( $descending ) {
+		if ( $order == self::QUERY_ASCENDING ) {
 			$options['ORDER BY'] = $sortColumns;
 		} else {
 			$orderBy = [];
