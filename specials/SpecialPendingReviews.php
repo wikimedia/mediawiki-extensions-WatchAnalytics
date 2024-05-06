@@ -710,9 +710,6 @@ class SpecialPendingReviews extends SpecialPage {
 
 		$nextReviewSet = $this->reviewOffset + $this->reviewLimit;
 		$prevReviewSet = max( [ 0, $this->reviewOffset - $this->reviewLimit ] );
-		$currentURL = $this->getPageTitle()->getLocalUrl();
-
-		$viewingUser = '&user=' . $this->mUser;
 
 		$linkClass = "pendingreviews-nav-link";
 		if ( $this->reviewOffset == 0 ) {
@@ -726,19 +723,27 @@ class SpecialPendingReviews extends SpecialPage {
 			$nextLinkClass = $linkClass;
 		}
 
+		$prevReviewURL = $this->getPageTitle()->getLocalURL( [
+			'offset' => $prevReviewSet,
+			'user' => $this->mUser
+		] );
 		$html .= Xml::element(
 			'a',
 			[
-				'href' => $currentURL . '?offset=' . $prevReviewSet . $viewingUser,
+				'href' => $prevReviewURL,
 				'class' => $prevLinkClass,
 			],
 			wfMessage( 'watchanalytics-pendingreviews-prev-revisions' )->text()
 		);
 
+		$nextReviewURL = $this->getPageTitle()->getLocalURL( [
+			'offset' => $nextReviewSet,
+			'user' => $this->mUser
+		] );
 		$html .= Xml::element(
 			'a',
 			[
-				'href' => $currentURL . '?offset=' . $nextReviewSet . $viewingUser,
+				'href' => $nextReviewURL,
 				'class' => $nextLinkClass,
 			],
 			wfMessage( 'watchanalytics-pendingreviews-next-revisions' )->text()
