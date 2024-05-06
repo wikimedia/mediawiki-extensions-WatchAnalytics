@@ -108,6 +108,7 @@
 	"watch-analytics-page-score-tooltip": "Оценките покажуваат што мислеле прегледувачите за страницава",
 	"watch-analytics-page-score-scrutiny-label": "Оценка",
 	"watch-analytics-page-score-reviews-label": "Проверки",
+	"watchanalytics-pagestats-scores": "Бодови",
 	"watchanalytics-pagestats-editors-list-title": "Уредници на страницата",
 	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] — {{PLURAL:$2|1 преработка|$2 преработки}}",
 	"watchanalytics-pagestats-watchers-title": "Набљудувачи на страницата",
