@@ -59,10 +59,7 @@ $(document).ready(function(){
         //     pointHighlightStroke: "rgba(151,187,205,1)",
         //     data: getMovingAverage( hits, 7 )
         // }
-    ];  
-
-
-
+    ];
 
 
     var options = {
@@ -75,9 +72,6 @@ $(document).ready(function(){
 
         //Number - Width of the grid lines
         scaleGridLineWidth : 1,
-
-
-
 
         //Boolean - Whether the line is curved between points
         bezierCurve : false,
@@ -103,16 +97,8 @@ $(document).ready(function(){
         // String - Color of dataset stroke
         datasetPointStrokeColor: 'white',
 
-
-
-
-
-
-
         //String - A legend template
        // legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-
-
 
         // String - scale type: "number" or "date"
         scaleType: "date",

@@ -8,7 +8,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 	protected $header_links = [
 		'watchanalytics-pages-specialpage' => '',
 		'watchanalytics-users-specialpage' => 'users',
-		'watchanalytics-wikihistory-specialpage'  => 'wikihistory',
+		'watchanalytics-wikihistory-specialpage' => 'wikihistory',
 		'watchanalytics-watch-forcegraph-specialpage' => 'forcegraph',
 	];
 
@@ -254,7 +254,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 				];
 			}
 
-			// same for users...add to $users and $nodes accordingly
+			// same for users... add to $users and $nodes accordingly
 			if ( !isset( $users[ $row['user_name'] ] ) ) {
 				$nextNode = count( $nodes );
 
@@ -288,7 +288,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 			// if ( $linkClass !== "unreviewed" ) {
 				$links[] = [
 					"source" => $users[ $row['user_name'] ],
-					"target" => $pages[ $row['title']     ],
+					"target" => $pages[ $row['title'] ],
 					"value"  => 1,
 					"linkclass" => $linkClass
 				];

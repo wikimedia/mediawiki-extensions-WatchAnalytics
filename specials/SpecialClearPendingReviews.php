@@ -23,40 +23,40 @@ class SpecialClearPendingReviews extends SpecialPage {
 
 		// Defines input form
 		$formDescriptor = [
-				'start' => [
-					'section' => 'section1',
-					'label-message' => 'clearpendingreview-start-time',
-					'type' => 'text',
-					'required' => 'true',
-					'validation-callback' => [ $this, 'validateTime' ],
-				],
-				'end' => [
-					'section' => 'section1',
-					'label-message' => 'clearpendingreview-end-time',
-					'type' => 'text',
-					'required' => 'true',
-					'validation-callback' => [ $this, 'validateTime' ],
-					'help' => '<b>Current time:</b> ' . date( 'YmdHi' ) . '00',
-				],
-				'category' => [
-					'section' => 'section2',
-					'label-message' => 'clearpendingreview-category',
-					'type' => 'text',
-					'validation-callback' => [ $this, 'validateCategory' ],
-				],
-				'page' => [
-					'section' => 'section2',
-					'label-message' => 'clearpendingreview-page-title',
-					'type' => 'text',
-				],
-			];
+			'start' => [
+				'section' => 'section1',
+				'label-message' => 'clearpendingreview-start-time',
+				'type' => 'text',
+				'required' => 'true',
+				'validation-callback' => [ $this, 'validateTime' ],
+			],
+			'end' => [
+				'section' => 'section1',
+				'label-message' => 'clearpendingreview-end-time',
+				'type' => 'text',
+				'required' => 'true',
+				'validation-callback' => [ $this, 'validateTime' ],
+				'help' => '<b>Current time:</b> ' . date( 'YmdHi' ) . '00',
+			],
+			'category' => [
+				'section' => 'section2',
+				'label-message' => 'clearpendingreview-category',
+				'type' => 'text',
+				'validation-callback' => [ $this, 'validateCategory' ],
+			],
+			'page' => [
+				'section' => 'section2',
+				'label-message' => 'clearpendingreview-page-title',
+				'type' => 'text',
+			],
+		];
 
-			$form = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext(), 'clearform' );
+		$form = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext(), 'clearform' );
 
-			$form->setSubmitText( 'Preview' );
-			$form->setSubmitName( 'preview' );
-			$form->setSubmitCallback( [ $this, 'trySubmit' ] );
-			$form->show();
+		$form->setSubmitText( 'Preview' );
+		$form->setSubmitName( 'preview' );
+		$form->setSubmitCallback( [ $this, 'trySubmit' ] );
+		$form->show();
 	}
 
 	public function validateTime( $dateField, $allData ) {
