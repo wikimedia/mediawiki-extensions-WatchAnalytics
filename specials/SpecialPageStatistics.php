@@ -106,8 +106,10 @@ class SpecialPageStatistics extends SpecialPage {
 	public function renderPageStats() {
 		$out = $this->getOutput();
 
-		// @todo FIXME: internationalization
-		$out->setPageTitle( 'Page Statistics: ' . $this->mTitle->getPrefixedText() );
+		$out->setPageTitle(
+			$this->msg( 'pagestatistics' )->text() . ': ' .
+			$this->mTitle->getPrefixedText()
+		);
 
 		$dbr = WatchAnalyticsUtils::getReadDB();
 		$html = '';
