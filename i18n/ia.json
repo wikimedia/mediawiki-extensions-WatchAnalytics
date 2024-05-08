@@ -108,6 +108,7 @@
 	"watch-analytics-page-score-tooltip": "Le scores indica in qual mesura iste pagina es revidite",
 	"watch-analytics-page-score-scrutiny-label": "Scrutinio",
 	"watch-analytics-page-score-reviews-label": "Revisiones",
+	"watchanalytics-pagestats-scores": "Scores",
 	"watchanalytics-pagestats-editors-list-title": "Redactores de paginas",
 	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] – $2 version{{PLURAL:$2||es}}",
 	"watchanalytics-pagestats-watchers-title": "Observatores del pagina",
