@@ -16,22 +16,9 @@ class WatchAnalyticsHooks {
 	 * @throws ConfigException
 	 */
 	public static function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
-		$user = $skin->getUser();
-		self::personalUrlsBuilder( $skin, $links['user-menu'], $user );
-	}
-
-	/**
-	 * Handler for personalUrlsBuilder hook. Replace the "watchlist" item on the user
-	 * toolbar ('personal URLs') with a link to Special:PendingReviews.
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PersonalUrls
-	 *
-	 * @param SkinTemplate $skin
-	 * @param array &$links Array of URLs to append to.
-	 * @param User $user
-	 */
-	public static function personalUrlsBuilder( $skin, &$links, $user ) {
 		global $wgOut;
 
+		$user = $skin->getUser();
 		if ( !$user->isAllowed( 'pendingreviewslink' ) ) {
 			return;
 		}
@@ -53,33 +40,35 @@ class WatchAnalyticsHooks {
 		}
 
 		// Determine CSS class of Watchlist/PendingReviews link
-		$links['watchlist']['class'] = [ 'mw-watchanalytics-watchlist-badge' ];
+		$watchlistLinkClasses = [ 'mw-watchanalytics-watchlist-badge' ];
 		if ( $numPending != 0 ) {
-			$links['watchlist']['class'] = [ 'mw-watchanalytics-watchlist-pending' ];
+			$watchlistLinkClasses = [ 'mw-watchanalytics-watchlist-pending' ];
 		}
 
 		// Determine text of Watchlist/PendingReviews link
 		global $egPendingReviewsEmphasizeDays;
 		if ( $maxPendingDays > $egPendingReviewsEmphasizeDays ) {
-			$links['watchlist']['class'][] = 'mw-watchanalytics-watchlist-pending-old';
+			$watchlistLinkClasses[] = 'mw-watchanalytics-watchlist-pending-old';
 			if ( $numPendingApprovals != 0 ) {
-				$text = wfMessage( 'watchanalytics-personal-url-approvals-old' )->params( $numPending, $maxPendingDays, $numPendingApprovals )->text();
+				$text = $skin->msg( 'watchanalytics-personal-url-approvals-old' )->params( $numPending, $maxPendingDays, $numPendingApprovals )->text();
 			} else {
-				$text = wfMessage( 'watchanalytics-personal-url-old' )->params( $numPending, $maxPendingDays )->text();
+				$text = $skin->msg( 'watchanalytics-personal-url-old' )->params( $numPending, $maxPendingDays )->text();
 			}
 		} else {
 			if ( $numPendingApprovals != 0 ) {
-				$text = wfMessage( 'watchanalytics-personal-url-approvals' )->params( $numPending, $numPendingApprovals )->text();
+				$text = $skin->msg( 'watchanalytics-personal-url-approvals' )->params( $numPending, $numPendingApprovals )->text();
 			} else {
-				// when $sk (third arg) available, replace wfMessage with $sk->msg()
-				$text = wfMessage( 'watchanalytics-personal-url' )->params( $numPending )->text();
+				$text = $skin->msg( 'watchanalytics-personal-url' )->params( $numPending )->text();
 			}
 
 		}
-		$links['watchlist']['text'] = $text;
 
 		// set "watchlist" link to Pending Reviews
-		$links['watchlist']['href'] = SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL();
+		$links['user-menu']['watchlist'] = [
+			'href' => SpecialPage::getTitleFor( 'PendingReviews' )->getLocalURL(),
+			'text' => $text,
+			'class' => $watchlistLinkClasses
+		];
 	}
 
 	/**
