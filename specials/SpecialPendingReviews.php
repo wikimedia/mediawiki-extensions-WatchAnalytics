@@ -426,7 +426,6 @@ class SpecialPendingReviews extends SpecialPage {
 	 * @return string HTML for pending review of a given page
 	 */
 	public function getReviewRowHTML( PendingReview $item, $rowCount, $displayTitle, $buttonOne, $buttonTwo, $acceptButton, $changes ) {
-		// FIXME: wow this is ugly
 		$rowClass = ( $rowCount % 2 === 0 ) ? 'pendingreviews-even-row' : 'pendingreviews-odd-row';
 
 		$scoreArr = $GLOBALS['egWatchAnalyticsReviewStatusColors'];
@@ -455,7 +454,6 @@ class SpecialPendingReviews extends SpecialPage {
 	}
 
 	public function getApproveRowHTML( PendingReview $item, $rowCount, $displayTitle, $buttonOne, $buttonTwo, $changes ) {
-		// FIXME: wow this is ugly
 		$rowClass = ( $rowCount % 2 === 0 ) ? 'pendingreviews-even-row' : 'pendingreviews-odd-row';
 
 		$classAndAttr = "class='pendingreviews-row $rowClass " .
@@ -852,8 +850,6 @@ class SpecialPendingReviews extends SpecialPage {
 
 	/**
 	 * Creates and returns a Message object appropriate for the type of log entry.
-	 *
-	 * @todo FIXME: what type is $logEntry
 	 *
 	 * @param object $logEntry
 	 * @return Message HTML for button
