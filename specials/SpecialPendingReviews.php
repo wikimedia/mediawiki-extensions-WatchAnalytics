@@ -201,7 +201,10 @@ class SpecialPendingReviews extends SpecialPage {
 	 * @param Title $clearNotifyTitle
 	 */
 	public function handleClearNotification( $clearNotifyTitle ) {
-		PendingReview::clearByUserAndTitle( $this->getUser(), $clearNotifyTitle );
+		// Clear pending reviews of the specified page for this user.
+		MediaWikiServices::getInstance()->getWatchedItemStore()->resetNotificationTimestamp(
+			$this->getUser(), $clearNotifyTitle
+		);
 
 		$this->getOutput()->addHTML(
 			// @todo FIXME: r e a l l y  should not be using ->text() as the output format...

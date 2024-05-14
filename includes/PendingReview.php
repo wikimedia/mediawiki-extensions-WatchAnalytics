@@ -335,33 +335,4 @@ class PendingReview {
 			return $moveLogParams[0];
 		}
 	}
-
-	/**
-	 * Clears a pending reviews of a particular page for a particular user.
-	 *
-	 * @param User $user
-	 * @param Title $title
-	 * @return bool
-	 */
-	public static function clearByUserAndTitle( $user, $title ) {
-		MediaWikiServices::getInstance()->getWatchedItemStore()->resetNotificationTimestamp(
-			$user, $title
-		);
-
-		// $wgOut->addHTML(
-		// wfMessage(
-		// 'pendingreviews-clear-page-notification',
-		// $title->getFullText(),
-		// Xml::tags('a',
-		// array(
-		// 'href' => $this->getTitle()->getLocalUrl(),
-		// 'style' => 'font-weight:bold;',
-		// ),
-		// $this->getTitle()
-		// )
-		// )->text()
-		// );
-
-		return true;
-	}
 }
