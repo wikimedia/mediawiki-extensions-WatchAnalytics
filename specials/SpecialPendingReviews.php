@@ -206,19 +206,13 @@ class SpecialPendingReviews extends SpecialPage {
 			$this->getUser(), $clearNotifyTitle
 		);
 
+		$thisPageName = $this->getPageTitle()->getFullText();
 		$this->getOutput()->addHTML(
-			// @todo FIXME: r e a l l y  should not be using ->text() as the output format...
 			$this->msg(
 				'pendingreviews-clear-page-notification',
-				$clearNotifyTitle->getFullText(),
-				Xml::tags( 'a',
-					[
-						'href' => $this->getPageTitle()->getLocalUrl(),
-						'style' => 'font-weight:bold;',
-					],
-					$this->getPageTitle()
-				)
-			)->text()
+				'[[' . $clearNotifyTitle->getFullText() . ']]',
+				"'''[[$thisPageName]]'''"
+			)->parse()
 		);
 	}
 
