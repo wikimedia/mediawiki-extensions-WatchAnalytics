@@ -126,9 +126,10 @@ class SpecialPendingReviews extends SpecialPage {
 		] );
 
 		// how many reviews to display
-		$this->setReviewLimit();
+		// FIXME: for consistency, shouldn't this be just "limit"
+		$this->reviewLimit = $this->getRequest()->getVal( 'limit' ) ?? 20;
 		// result to start displaying from
-		$this->setReviewOffset();
+		$this->reviewOffset = $this->getRequest()->getVal( 'offset' ) ?? 0;
 
 		$this->pendingReviewList = PendingReview::getPendingReviewsList( $this->mUser, $this->reviewLimit, $this->reviewOffset );
 
@@ -240,32 +241,6 @@ class SpecialPendingReviews extends SpecialPage {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Sets the number of reviews to return
-	 *
-	 * @return null
-	 */
-	public function setReviewLimit() {
-		if ( $this->getRequest()->getVal( 'limit' ) ) {
-			$this->reviewLimit = $this->getRequest()->getVal( 'limit' ); // FIXME: for consistency, shouldn't this be just "limit"
-		} else {
-			$this->reviewLimit = 20;
-		}
-	}
-
-	/**
-	 * Sets the offset for reviews to allow for pagination
-	 *
-	 * @return null
-	 */
-	public function setReviewOffset() {
-		if ( $this->getRequest()->getVal( 'offset' ) ) {
-			$this->reviewOffset = $this->getRequest()->getVal( 'offset' );
-		} else {
-			$this->reviewOffset = 0;
-		}
 	}
 
 	/**
