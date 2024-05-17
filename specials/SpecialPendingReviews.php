@@ -218,9 +218,7 @@ class SpecialPendingReviews extends SpecialPage {
 	}
 
 	/**
-	 * Sending which user's reviews to display
-	 *
-	 * @return bool
+	 * Setting which user's reviews to display
 	 */
 	public function setPendingReviewsUser() {
 		$viewingUser = $this->getUser();
@@ -229,18 +227,12 @@ class SpecialPendingReviews extends SpecialPage {
 		$requestUser = $this->getRequest()->getVal( 'user' );
 		if ( $requestUser ) {
 			$this->mUser = User::newFromName( $requestUser );
-			if ( $this->mUser->getId() === $viewingUser ) {
-				$this->mUserIsViewer = true;
-			} else {
-				$this->mUserIsViewer = false;
-			}
-			$this->getOutput()->setPageTitle( wfMessage( 'pendingreviews-user-page', $this->mUser->getName() )->text() );
+			$this->mUserIsViewer = ( $this->mUser->getId() === $viewingUser );
+			$this->getOutput()->setPageTitle( $this->msg( 'pendingreviews-user-page', $this->mUser->getName() )->escaped() );
 
 		} else {
 			$this->mUser = $viewingUser;
 		}
-
-		return true;
 	}
 
 	/**
