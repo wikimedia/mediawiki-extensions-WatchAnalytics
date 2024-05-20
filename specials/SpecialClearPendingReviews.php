@@ -198,14 +198,12 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$table .= "<ul>";
 			$impactedPages = [];
 			foreach ( $results as $result ) {
-				$page = Title::makeTitle( $result->wl_namespace, $result->wl_title );
-				$pageLinkHtml = Linker::link( $page );
-				$impactedPages[] = $pageLinkHtml;
+				$impactedPages[] = Title::makeTitle( $result->wl_namespace, $result->wl_title );
 			}
 
 			$impactedPages = array_unique( $impactedPages );
-			foreach ( $impactedPages as $impactedPage ) {
-				$table .= "<li>" . $impactedPage . "</li>";
+			foreach ( $impactedPages as $page ) {
+				$table .= Html::rawElement( 'li', null, Linker::link( $page ) );
 			}
 
 			$table .= "</ul>";
@@ -215,15 +213,13 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$table .= "<ul>";
 			$impactedUsers = [];
 			foreach ( $results as $result ) {
-				$user = User::newFromId( $result->wl_user );
-				$userTitleObj = $user->getUserPage();
-				$userLinkHtml = Linker::link( $userTitleObj );
-				$impactedUsers[] = $userLinkHtml;
+				$userID = $result->wl_user;
+				// Use array key to ensure uniqueness.
+				$impactedUsers[$userID] = User::newFromID( $userID );
 			}
 
-			$impactedUsers = array_unique( $impactedUsers );
-			foreach ( $impactedUsers as $impactedUser ) {
-				$table .= "<li>" . $impactedUser . "</li>";
+			foreach ( $impactedUsers as $user ) {
+				$table .= Html::rawElement( 'li', null, Linker::link( $user->getUserPage() ) );
 			}
 
 			$table .= "</ul>";
