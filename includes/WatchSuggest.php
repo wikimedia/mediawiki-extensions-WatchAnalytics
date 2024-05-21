@@ -86,9 +86,6 @@ class WatchSuggest {
 				continue;
 			}
 
-			// $cats = $suggestedTitle->getParentCategories();
-			// if (  )
-
 			if ( $userIsViewer ) {
 				$watchLink = '<strong>' . self::getWatchLink( $suggestedTitle ) . ':</strong> ';
 			} else {

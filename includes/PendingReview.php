@@ -322,7 +322,6 @@ class PendingReview {
 		Wikimedia\AtEase\AtEase::restoreWarnings();
 		if ( $unserializedParams !== false ) {
 			$moveLogParams = $unserializedParams;
-			// $this->legacy = false;
 
 			// for some reason this serialized array is in the form:
 			// Array( "4::target" => FULLPAGENAME, "5::noredir" => 1 )
@@ -330,7 +329,6 @@ class PendingReview {
 
 		} else {
 			$moveLogParams = $logParams === '' ? [] : explode( "\n", $logParams );
-			// $this->legacy = true;
 
 			return $moveLogParams[0];
 		}

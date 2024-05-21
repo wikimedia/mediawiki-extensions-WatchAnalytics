@@ -79,21 +79,20 @@ class SpecialClearPendingReviews extends SpecialPage {
 	}
 
 	public function validateCategory( $categoryField, $allData ) {
-		$bad_cat_name = false;
-
 		// Validates either Category or Title field is used
 		if ( empty( $categoryField ) && empty( $allData['page'] ) ) {
 			return wfMessage( 'clearpendingreviews-missing-date-category' )->inContentLanguage();
 		}
 		if ( empty( $categoryField ) ) {
 			return true;
-		} else {
-			// Verifys category exists in wiki
-			$category_title = Title::makeTitleSafe( NS_CATEGORY, $categoryField );
-			if ( !$category_title->exists() ) {
-				return wfMessage( 'clearpendingreviews-category-invalid' )->inContentLanguage();
-			}
 		}
+
+		// Verify that category exists in wiki
+		$categoryTitle = Title::makeTitleSafe( NS_CATEGORY, $categoryField );
+		if ( !$categoryTitle->exists() ) {
+			return wfMessage( 'clearpendingreviews-category-invalid' )->inContentLanguage();
+		}
+
 		return true;
 	}
 
@@ -131,8 +130,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 
 		$results = $dbw->select( $tables, $vars, $conditions, __METHOD__, 'DISTINCT', $join_conds );
 
-		if ( $clearPages == true ) {
-
+		if ( $clearPages ) {
 			foreach ( $results as $result ) {
 				$values = [ 'wl_notificationtimestamp' => null ];
 				$conds = [ 'wl_id' => $result->wl_id ];

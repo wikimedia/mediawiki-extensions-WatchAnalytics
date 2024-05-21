@@ -243,18 +243,12 @@ class SpecialPendingReviews extends SpecialPage {
 	 */
 	public function getClearNotificationTitle() {
 		$clearNotifyTitle = $this->getRequest()->getVal( 'clearNotificationTitle' );
-
 		if ( !$clearNotifyTitle ) {
 			return false;
 		}
 
-		$clearNotifyNS = $this->getRequest()->getVal( 'clearNotificationNS' );
-		if ( !$clearNotifyNS ) {
-			$clearNotifyNS = 0;
-		}
-
-		$title = Title::newFromText( $clearNotifyTitle, $clearNotifyNS );
-		return $title;
+		$clearNotifyNS = $this->getRequest()->getVal( 'clearNotificationNS' ) ?? NS_MAIN;
+		return Title::newFromText( $clearNotifyTitle, $clearNotifyNS );
 	}
 
 	/**
