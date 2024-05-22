@@ -103,15 +103,11 @@ class WatchesQuery {
 	}
 
 	public function setUserGroupFilter( $ugf ) {
-		if ( $ugf ) {
-			$this->userGroupFilter = $ugf;
-		}
+		$this->userGroupFilter = $ugf;
 	}
 
 	public function setCategoryFilter( $cf ) {
-		if ( $cf ) {
-			$this->categoryFilter = $cf;
-		}
+		$this->categoryFilter = $cf;
 	}
 
 	public function setCategoryFilterQueryInfo() {
