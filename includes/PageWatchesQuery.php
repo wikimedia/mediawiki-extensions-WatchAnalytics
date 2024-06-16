@@ -191,7 +191,7 @@ END;
 		);
 
 		// $row = $pageData->fetchObject();
-		if ( $pageData ) {
+		if ( $pageData && $pageData->watch_quality ) {
 			return $pageData->watch_quality;
 		} else {
 			return 0;
