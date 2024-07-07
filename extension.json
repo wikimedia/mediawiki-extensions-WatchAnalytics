@@ -8,7 +8,7 @@
 	"descriptionmsg": "watchanalytics-desc",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.37.0"
+		"MediaWiki": ">= 1.38.0"
 	},
 	"GroupPermissions": {
 		"sysop": {

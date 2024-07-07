@@ -232,7 +232,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			$form->showCancel();
 			$this->getHookContainer()->run( 'PendingReviewsPreview', [ &$data, &$results ] );
 			// Display preview of pages to be cleared
-			$form->setPostText( $table );
+			$form->setPostHtml( $table );
 
 			return false;
 		}
