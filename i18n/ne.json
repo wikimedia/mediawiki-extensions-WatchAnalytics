@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"पर्वत सुबेदी",
 			"बडा काजी"
 		]
 	},
+	"pendingreviews-timediff-hours": "परिवर्तन गरिएको {{PLURAL:$1|१ घण्टा|$1 घण्टा}} अगाडि",
 	"watchanalytics-pagestats-scores": "प्राप्ताङ्क"
 }
