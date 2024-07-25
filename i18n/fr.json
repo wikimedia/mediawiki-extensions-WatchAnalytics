@@ -7,7 +7,8 @@
 			"McDutchie",
 			"Momo50WM",
 			"Thibaut120094",
-			"Verdy p"
+			"Verdy p",
+			"MacOS Weed"
 		]
 	},
 	"watchanalytics-desc": "Encourage une bonne répartition des suiveurs",
@@ -113,7 +114,7 @@
 	"watch-analytics-page-score-scrutiny-label": "Examen minutieux",
 	"watch-analytics-page-score-reviews-label": "Relectures",
 	"watchanalytics-pagestats-editors-list-title": "Modificateurs de pages",
-	"watchanalytics-pagestats-editors-list-item": "$1 — $2 révision{{PLURAL:$2||s}}",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] — $2 révision{{PLURAL:$2||s}}",
 	"watchanalytics-pagestats-watchers-title": "Suiveurs de la page",
 	"watchanalytics-pagestats-watchers-list-item-reviewed": "relecture la plus récente",
 	"watchanalytics-pagestats-watchers-list-item-unreviewed": "relectures en attente",
