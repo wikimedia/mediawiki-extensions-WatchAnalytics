@@ -48,7 +48,7 @@ class PendingReview {
 	 */
 	public $log;
 
-	public function __construct( $row, Title $title = null ) {
+	public function __construct( $row, ?Title $title = null ) {
 		$notificationTimestamp = $row['notificationtimestamp'];
 
 		$this->notificationTimestamp = $notificationTimestamp;
