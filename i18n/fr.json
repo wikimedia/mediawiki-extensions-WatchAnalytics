@@ -8,7 +8,8 @@
 			"Momo50WM",
 			"Thibaut120094",
 			"Verdy p",
-			"MacOS Weed"
+			"MacOS Weed",
+			"Mahabarata"
 		]
 	},
 	"watchanalytics-desc": "Encourage une bonne répartition des suiveurs",
@@ -88,6 +89,8 @@
 	"watchanalytics-special-header-main-num-one-reviewed": "Nb de contenus relus une seule fois",
 	"watchanalytics-special-header-engagement-score": "Taux d’engagement",
 	"watchanalytics-special-header-watch-quality": "Qualité du suivi",
+	"watchanalytics-special-stateof-title": "L'état du Wiki :",
+	"watchanalytics-special-stateof-pendingwatches": "$1 suivis dont $2 % ($3) sont en attente",
 	"watchanalytics-watch-forcegraph-header": "Graphique orienté par force des relations de suivi utilisateur–page",
 	"watchanalytics-watch-forcegraph-description": "Les points orange représentent les utilisateurs. Les points bleus représentent les pages. Les lignes entre les points représentent l’utilisateur comme étant un suiveur de la page. Les lignes sont grises si la dernière version de la page a été relue. Les lignes sont rouges si des relectures sont en attente. Déplacez votre souris sur un point pour voir le nom de l’utilisateur ou de la page.",
 	"watchanalytics-pause-visualization": "Mettre en pause la visualisation",
@@ -160,5 +163,6 @@
 	"pendingreviews-approve-revs-title": "Page{{PLURAL:$1||s}} nécessitant votre approbation ($1)",
 	"pendingreviews-watch-suggestion-description": "Veuillez aider en suivant les pages suivantes liées à votre liste de suivi qui ont peu d’attention.",
 	"pendingreviews-watch-suggestion-watchlink": "Suivre",
+	"pendingreviews-watch-suggestion-leaders-title": "Les plus gros suiveurs",
 	"pendingreviews-watch-suggestion-leaders-desc": "Les $1 utilisateurs suivants suivent le plus de pages."
 }
