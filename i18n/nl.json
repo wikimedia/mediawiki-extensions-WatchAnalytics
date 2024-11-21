@@ -141,7 +141,7 @@
 	"pendingreviews-log-delete": "$1 heeft deze pagina met opgave van reden verwijderd: $2",
 	"pendingreviews-log-restore": "$1 heeft de verwijdering van deze pagina ongedaan gemaakt",
 	"pendingreviews-log-import-upload": "$1 heeft dit bestand geüpload",
-	"pendingreviews-log-move": "$1 heeft deze pagina hernoemd naar de nieuwe titel '''$2'''",
+	"pendingreviews-log-move": "$1 heeft deze pagina hernoemd tot de nieuwe titel '''$2'''",
 	"pendingreviews-log-move-redir": "$1 heeft deze pagina doorverwezen naar de nieuwe titel '''$2'''",
 	"pendingreviews-log-protect": "$1 heeft deze pagina als beveiligd gemarkeerd",
 	"pendingreviews-log-unprotect": "$1 heeft de beveiliging van deze pagina verwijderd",
