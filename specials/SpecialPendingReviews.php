@@ -880,11 +880,11 @@ class SpecialPendingReviews extends SpecialPage {
 		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
 		foreach ( $combinedList as $change ) {
 			if ( isset( $change->log_timestamp ) ) {
-				$changeTs = $change->log_timestamp;
+				$changeTS = $change->log_timestamp;
 				$changeText = $this->getLogChangeMessage( $change );
 			} else {
 				$rev = $revisionStore->newRevisionFromRow( $change );
-				$changeTs = $change->rev_timestamp;
+				$changeTS = $change->rev_timestamp;
 				$userLink = Linker::userLink( $change->rev_user, $change->rev_user_text );
 
 				$comment = $rev->getComment();
@@ -898,13 +898,13 @@ class SpecialPendingReviews extends SpecialPage {
 			}
 
 			$lang = RequestContext::getMain()->getLanguage();
-			$timestamp = new MWTimestamp( $changeTs );
-			$changeTs = Xml::element( 'span',
+			$timestamp = new MWTimestamp( $changeTS );
+			$timestampDisplay = Xml::element( 'span',
 				[ 'class' => 'pendingreviews-changes-list-time' ],
 				$lang->getHumanTimestamp( $timestamp )
 			) . ' ';
 
-			$changes[] = $changeTs . $changeText;
+			$changes[] = $timestampDisplay . $changeText;
 		}
 
 		$changes = '<ul><li>' . implode( '</li><li>', $changes ) . '</li></ul>';
