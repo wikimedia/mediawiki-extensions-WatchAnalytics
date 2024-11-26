@@ -876,12 +876,7 @@ class SpecialPendingReviews extends SpecialPage {
 	 */
 	public function getPendingReviewChangesList( $combinedList ) {
 		$changes = [];
-		if ( method_exists( MediaWikiServices::class, 'getCommentFormatter' ) ) {
-			// MW 1.38+
-			$commentFormatter = MediaWikiServices::getInstance()->getCommentFormatter();
-		} else {
-			$commentFormatter = null;
-		}
+		$commentFormatter = MediaWikiServices::getInstance()->getCommentFormatter();
 		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
 		foreach ( $combinedList as $change ) {
 			if ( isset( $change->log_timestamp ) ) {
@@ -894,12 +889,7 @@ class SpecialPendingReviews extends SpecialPage {
 
 				$comment = $rev->getComment();
 				if ( $comment ) {
-					if ( $commentFormatter !== null ) {
-						// MW 1.38+
-						$formattedComment = $commentFormatter->format( $comment->text );
-					} else {
-						$formattedComment = Linker::formatComment( $comment->text );
-					}
+					$formattedComment = $commentFormatter->format( $comment->text );
 					$comment = '<span class="comment">' . $formattedComment . '</span>';
 					$changeText = ' ' . wfMessage( 'pendingreviews-with-comment', [ $userLink ] )->text() . ' ' . $comment;
 				} else {
