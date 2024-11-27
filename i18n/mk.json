@@ -128,7 +128,7 @@
 	"pendingreviews-accept-change": "Означи како проверено",
 	"pendingreviews-clear-page-notification": "Страницата „$1“ е означена како проверена. Вратете се на $2",
 	"pendingreviews-log-approved": "$1 одобри преработка",
-	"pendingreviews-log-unapproved": "$1 ги острани сите одобрувања на преработки",
+	"pendingreviews-log-unapproved": "$1 ги отстрани сите одобрувања на преработки",
 	"pendingreviews-log-delete": "$1 ја избриша оваа страница со образложението: $2",
 	"pendingreviews-log-restore": "$1 ја поврати оваа страница",
 	"pendingreviews-log-import-upload": "$1 ја подигна оваа податотека",
