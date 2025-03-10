@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediawikiServices;
+use MediaWiki\Title\Title;
 
 class SpecialPageStatistics extends SpecialPage {
 

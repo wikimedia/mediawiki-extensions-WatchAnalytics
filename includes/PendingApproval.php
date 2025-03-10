@@ -8,6 +8,8 @@
  * @license MIT
  */
 
+use MediaWiki\Title\Title;
+
 class PendingApproval extends PendingReview {
 	public function __construct( $row, Title $title ) {
 		$this->title = $title;

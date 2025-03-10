@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Title\Title;
+
 class WatchAnalyticsUserTablePager extends WatchAnalyticsTablePager {
 
 	protected $isSortable = [

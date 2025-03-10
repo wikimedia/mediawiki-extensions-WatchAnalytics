@@ -6,6 +6,9 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\Html\Html;
+use MediaWiki\Title\Title;
+
 class SpecialClearPendingReviews extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'ClearPendingReviews', 'clearreviews' );

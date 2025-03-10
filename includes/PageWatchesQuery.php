@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Title\Title;
+
 class PageWatchesQuery extends WatchesQuery {
 
 	public $sqlNsAndTitle = 'CONCAT(p.page_namespace, ":", p.page_title) AS page_ns_and_title';
