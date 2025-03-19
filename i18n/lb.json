@@ -16,6 +16,7 @@
 	"watchanalytics-view-user-stats": "Benotzerstatistiken",
 	"watchanalytics-special-header-timestamp": "Datum/Zäit",
 	"watchanalytics-special-header-num-pages": "# Säiten",
+	"watchanalytics-pendingreviews-diff-revisions": "{{PLURAL:$1|Ännerung|$1 Ännerungen}} op der Säit weisen",
 	"watchanalytics-pendingreviews-prev-revisions": "Vireg",
 	"watchanalytics-pendingreviews-next-revisions": "Nächst",
 	"pendingreviews-timediff-hours": "Viru(n) {{PLURAL:$1|1 Stonn|$1 Stonne}} geännert",
