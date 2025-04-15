@@ -21,6 +21,9 @@ class ReviewHandler {
 	 */
 	public $title;
 
+	/** @var bool */
+	public $isDiff;
+
 	/**
 	 * @var int : state of the user watching the page initially (at the
 	 * beginning of the page load). Possible values: -1 for not watching the
