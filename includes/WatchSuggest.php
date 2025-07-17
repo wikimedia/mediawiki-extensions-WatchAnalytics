@@ -183,30 +183,32 @@ class WatchSuggest {
 		$userWatchlistPageTitles = [];
 		foreach ( $userWatchlist as $row ) {
 			$userWatchlistPageIds[] = $row->p_id;
-
-			// FIXME: for now this will only work in NS_MAIN since the next query
-			// these are used in assumes NS_MAIN
 			$userWatchlistPageTitles[] = $row->p_title;
 		}
+		$pageIdsFromTitles = [];
+		if ( !empty( $userWatchlistPageTitles ) ) {
+			$titleResult = $this->dbr->select(
+				'page',
+				'page_id',
+				[ 'page_title' => $userWatchlistPageTitles, 'page_namespace' => 0 ], // namespace 0 for NS_MAIN
+				__METHOD__
+			);
+			foreach ( $titleResult as $row ) {
+				$pageIdsFromTitles[] = $row->page_id;
+			}
+		}
+		// Collect all unique page IDs that could be either the source (pl_from) or the target (pl_target_id) of a link.
+		$relevantPageIds = array_unique( array_merge( $userWatchlistPageIds, $pageIdsFromTitles ) );
 
-		$ids = $this->dbr->makeList( $userWatchlistPageIds );
-		$titles = $this->dbr->makeList( $userWatchlistPageTitles );
+		// Prepare the list for the SQL IN clause
+		$idsList = $this->dbr->makeList( $relevantPageIds );
 
-		// SELECT
-		// pl.pl_from AS pl_from_id,
-		// p_to.page_id AS pl_to_id
-		// FROM pagelinks AS pl
-		// INNER JOIN page AS p_to
-		// ON (
-		// pl.pl_namespace = p_to.page_namespace
-		// AND pl.pl_title = p_to.page_title
-		// )
-		// WHERE
-		// pl.pl_from IN ( <LIST OF all p_id found above> )
-		// OR ( pl.pl_namespace = 0 AND pl.pl_title IN ( <LIST OF ALL p_title found above> ) )
-		$where =
-			"pl.pl_from IN ($ids) " .
-			" OR ( pl.pl_namespace = 0 AND pl.pl_title IN ($titles) )";
+		$where = "pl.pl_from IN ($idsList)";
+
+		// Only add the pl_target_id part if we have relevant target IDs to check against
+		if ( !empty( $idsList ) ) {
+			$where .= " OR pl.pl_target_id IN ($idsList)";
+		}
 
 		$linkedPagesResult = $this->dbr->select(
 			[
@@ -223,7 +225,7 @@ class WatchSuggest {
 			[
 				'p_to' => [
 					'INNER JOIN',
-					'pl.pl_namespace = p_to.page_namespace AND pl.pl_title = p_to.page_title'
+					'pl.pl_target_id = p_to.page_id'
 				],
 			]
 		);

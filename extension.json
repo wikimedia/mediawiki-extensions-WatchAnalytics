@@ -1,6 +1,6 @@
 {
 	"name": "WatchAnalytics",
-	"version": "4.4",
+	"version": "4.5-alpha",
 	"author": [
 		"[https://www.mediawiki.org/wiki/User:Jamesmontalvo3 James Montalvo]"
 	],
@@ -8,7 +8,7 @@
 	"descriptionmsg": "watchanalytics-desc",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.40"
+		"MediaWiki": ">= 1.41"
 	},
 	"GroupPermissions": {
 		"sysop": {
