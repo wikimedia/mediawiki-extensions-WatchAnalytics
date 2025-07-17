@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
 
 class WatchAnalyticsUserTablePager extends WatchAnalyticsTablePager {

@@ -7,6 +7,7 @@
  */
 
 use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
 
 class SpecialClearPendingReviews extends SpecialPage {

@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Linker\Linker;
 use MediaWiki\MediawikiServices;
 use MediaWiki\Title\Title;
 
