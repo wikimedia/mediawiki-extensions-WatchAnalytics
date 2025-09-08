@@ -134,6 +134,7 @@ class PageWatchesQuery extends WatchesQuery {
 
 	private function createUserWatchScoresTempTable() {
 		$dbw = WatchAnalyticsUtils::getWriteDB();
+		$dbw->query( 'DROP TEMPORARY TABLE IF EXISTS user_watch_scores;', __METHOD__ );
 
 		$sql = <<<END
 			CREATE TEMPORARY TABLE user_watch_scores
