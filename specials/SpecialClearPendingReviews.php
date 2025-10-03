@@ -114,10 +114,11 @@ class SpecialClearPendingReviews extends SpecialPage {
 		$conditions = '';
 
 		if ( $category ) {
-			$conditions .= "c.cl_to='$category' AND ";
+			$quotedCategory = $dbw->addQuotes( $category );
+			$conditions .= "c.cl_to=$quotedCategory AND ";
 		}
 		if ( $page ) {
-			$conditions .= "w.wl_title LIKE '$page%' AND ";
+			$conditions .= 'w.wl_title ' . $dbw->buildLike( $page, $dbw->anyString() ) . ' AND ';
 		}
 
 		$tables = [ 'w' => 'watchlist', 'p' => 'page', 'c' => 'categorylinks' ];
