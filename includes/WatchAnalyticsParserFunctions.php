@@ -79,6 +79,9 @@ class WatchAnalyticsParserFunctions {
 
 		$categories = [];
 		while ( $row = $result->fetchObject() ) {
+			if ( $row->categories == null ) {
+				continue;
+			}
 			$pageCategories = explode( ';', $row->categories );
 
 			foreach ( $pageCategories as $cat ) {
