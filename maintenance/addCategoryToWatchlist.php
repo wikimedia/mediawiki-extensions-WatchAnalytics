@@ -37,6 +37,7 @@ if ( !isset( $IP ) ) {
 
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\Category\Category;
 use MediaWiki\MediaWikiServices;
 
 class WatchAnalyticsAddCategoryToWatchlist extends Maintenance {

@@ -115,10 +115,19 @@ class WatchesQuery {
 	}
 
 	public function setCategoryFilterQueryInfo() {
+		$dbr = WatchAnalyticsUtils::getReadDB();
+		// MW 1.45+
+		$useTargetID = !$dbr->fieldExists( 'categorylinks', 'cl_to' );
+
 		$this->tables['cat'] = 'categorylinks';
-		$this->join_conds['cat'] = [
-			'RIGHT JOIN', 'cat.cl_from = p.page_id AND cat.cl_to = "' . $this->categoryFilter . '"'
-		];
+		$this->join_conds['cat'] = [ 'RIGHT JOIN', 'cat.cl_from = p.page_id' ];
+		if ( $useTargetID ) {
+			$this->tables['lt'] = 'linktarget';
+			$this->join_conds['lt'] = [ 'RIGHT JOIN', 'cat.cl_target_id = lt.id' ];
+			$this->conds[] = 'lt.title = "' . $this->categoryFilter . '"';
+		} else {
+			$this->conds[] = 'cat.cl_to = "' . $this->categoryFilter . '"';
+		}
 	}
 
 }

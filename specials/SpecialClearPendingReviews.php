@@ -107,23 +107,8 @@ class SpecialClearPendingReviews extends SpecialPage {
 	 */
 	public static function doSearchQuery( $data, $clearPages ) {
 		$dbw = WatchAnalyticsUtils::getWriteDB();
-		$category = preg_replace( '/\s+/', '_', $data['category'] );
-		$page = preg_replace( '/\s+/', '_', $data['page'] );
-		$start = preg_replace( '/\s+/', '', $data['start'] );
-		$end = preg_replace( '/\s+/', '', $data['end'] );
-		$conditions = '';
-
-		if ( $category ) {
-			$quotedCategory = $dbw->addQuotes( $category );
-			$conditions .= "c.cl_to=$quotedCategory AND ";
-		}
-		if ( $page ) {
-			$conditions .= 'w.wl_title ' . $dbw->buildLike( $page, $dbw->anyString() ) . ' AND ';
-		}
-
 		$tables = [ 'w' => 'watchlist', 'p' => 'page', 'c' => 'categorylinks' ];
 		$vars = [ 'w.*' ];
-		$conditions .= "w.wl_notificationtimestamp IS NOT NULL AND w.wl_notificationtimestamp < $end AND w.wl_notificationtimestamp > $start";
 		$join_conds = [
 			'p' => [
 				'LEFT JOIN', 'w.wl_title=p.page_title'
@@ -132,6 +117,30 @@ class SpecialClearPendingReviews extends SpecialPage {
 				'LEFT JOIN', 'c.cl_from=p.page_id'
 			]
 		];
+
+		$category = preg_replace( '/\s+/', '_', $data['category'] );
+		$page = preg_replace( '/\s+/', '_', $data['page'] );
+		$start = preg_replace( '/\s+/', '', $data['start'] );
+		$end = preg_replace( '/\s+/', '', $data['end'] );
+		$conditions = '';
+
+		if ( $category ) {
+			$quotedCategory = $dbw->addQuotes( $category );
+			// MW 1.45+
+			$useTargetID = !$dbw->fieldExists( 'categorylinks', 'cl_to' );
+			if ( $useTargetID ) {
+				$tables['l'] = 'linktarget';
+				$join_conds['l'] = [ 'LEFT JOIN', 'l.lt_id=c.cl_target_id' ];
+				$conditions .= "l.lt_title=$quotedCategory AND ";
+			} else {
+				$conditions .= "c.cl_to=$quotedCategory AND ";
+			}
+		}
+		if ( $page ) {
+			$conditions .= 'w.wl_title ' . $dbw->buildLike( $page, $dbw->anyString() ) . ' AND ';
+		}
+
+		$conditions .= "w.wl_notificationtimestamp IS NOT NULL AND w.wl_notificationtimestamp < $end AND w.wl_notificationtimestamp > $start";
 
 		$results = $dbw->select( $tables, $vars, $conditions, __METHOD__, 'DISTINCT', $join_conds );
 

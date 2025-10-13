@@ -170,19 +170,31 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 
 		// category filter
 		$dbr = WatchAnalyticsUtils::getReadDB();
+		$useTargetID = !$dbr->fieldExists( 'categorylinks', 'cl_to' );
+		$tables = [ 'categorylinks' ];
+		$joinConds = [];
+		if ( $useTargetID ) {
+			$tables[] = 'linktarget';
+			$joinConds['linktarget'] = [ 'JOIN', 'cl_target_id = lt_id' ];
+			$categoryNameField = 'lt_title';
+		} else {
+			$categoryNameField = 'cl_to';
+		}
 		$result = $dbr->select(
-			'categorylinks',
-			'cl_to',
+			$tables,
+			$categoryNameField,
 			'',
 			__METHOD__,
-			[ 'DISTINCT' ]
+			[ 'DISTINCT' ],
+			$joinConds
 		);
 		$categories = [ $this->msg( 'watchanalytics-category-no-filter' )->text() => '' ];
 		while ( $row = $result->fetchRow() ) {
-			$category = Category::newFromName( $row['cl_to'] );
+			$categoryName = $useTargetID ? $row['lt_title'] : $row['cl_to'];
+			$category = Category::newFromName( $categoryName );
 			$label = $category->getTitle()->getText();
 
-			$categories[ $label ] = $row['cl_to'];
+			$categories[$label] = $categoryName;
 		}
 		$categoryFilter = new XmlSelect( 'categoryfilter', false, $this->filters['categoryfilter'] );
 		$categoryFilter->addOptions( $categories );
