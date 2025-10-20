@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"LordProfo"
 		]
 	},
+	"watchanalytics-special-header-user": "کاربر",
 	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|۱ نسخه|$2 نسخه}}"
 }
