@@ -252,7 +252,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 			'<tr>
 				<td></td>
 				<td>' .
-			Xml::submitButton( $this->msg( 'allmessages-filter-submit' )->text() ) .
+			Html::submitButton( $this->msg( 'allmessages-filter-submit' )->text() ) .
 			"</td>\n
 			</tr>" .
 
