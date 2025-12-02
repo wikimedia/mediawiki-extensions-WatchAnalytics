@@ -5,6 +5,9 @@
 			"बडा काजी"
 		]
 	},
-	"pendingreviews-timediff-hours": "परिवर्तन गरिएको {{PLURAL:$1|१ घण्टा|$1 घण्टा}} अगाडि",
-	"watchanalytics-pagestats-scores": "प्राप्ताङ्क"
+	"watchanalytics-special-header-user": "प्रयोगकर्ता",
+	"watchanalytics-special-header-page-title": "पृष्ठ",
+	"pendingreviews-timediff-hours": "{{PLURAL:$1|१ घन्टा|$1 घन्टा}} पहिले परिवर्तन गरिएको",
+	"watchanalytics-pagestats-scores": "प्राप्ताङ्क",
+	"pendingreviews-watch-suggestion-watchlink": "अवलोकन"
 }
