@@ -3,7 +3,8 @@
 		"authors": [
 			"Hedda",
 			"MrSchipunov",
-			"Sayginer"
+			"Sayginer",
+			"SaldırganSincap"
 		]
 	},
 	"watchanalytics-desc": "İzleyicilerin iyi dağılımının teşvik edilmesi",
@@ -32,7 +33,7 @@
 	"clearpendingreviews-date-order-invalid": "Başlangıç tarihi bitiş tarihinden önce olmalıdır",
 	"clearpendingreviews-missing-date-category": "Kategori veya başlık girilmelidir.",
 	"clearpendingreviews-category-invalid": "Kategori mevcut değil.",
-	"clearpendingreviews-success": "$1 sayfadan İnceleme bekleyenler başarıyla temizlendi.",
+	"clearpendingreviews-success": "{{PLURAL:$1|bir sayfadan|$1 sayfadan}} inceleme bekleyenler başarıyla temizlendi.",
 	"clearpendingreviews-success-return": "Dön: $1",
 	"clearpendingreviews-pages-cleared": "Şu sayfalar temizlenecektir:",
 	"clearpendingreviews-people-impacted": "Şu kişiler etkilenecektir:",
@@ -45,6 +46,6 @@
 	"watchanalytics-users-specialpage": "Kullanıcı izleme istatistikleri",
 	"watchanalytics-wikihistory-specialpage": "Viki tarihsel izleme istatistikleri",
 	"watchanalytics-special-header-pending-averagetime": "Ortalama bekleme süresi",
-	"pendingreviews-num-reviews": "İnceleme bekleyen $1 değişikliğiniz var.",
-	"pendingreviews-num-other-user-reviews": "$1 kullanıcısının $2 inceleme bekleyen değişikliği var"
+	"pendingreviews-num-reviews": "Bekleyen $1 {{PLURAL:$1|incelemeniz}} var",
+	"pendingreviews-num-other-user-reviews": "$1, $2 bekleyen {{PLURAL:$2|inceleme}} var"
 }
