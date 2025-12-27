@@ -216,7 +216,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 			// filter results by user group
 			'<tr>
 				<td class="mw-label">' .
-			Xml::label(
+			Html::label(
 				$this->msg( 'watchanalytics-user-group-filter-label' )->text(),
 				'ext-watchanalytics-user-group-filter'
 			) .
@@ -229,7 +229,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 			// filter results by page category
 			'<tr>
 				<td class="mw-label">' .
-			Xml::label(
+			Html::label(
 				$this->msg( 'watchanalytics-category-filter-label' )->text(),
 				'ext-watchanalytics-category-filter'
 			) .
@@ -242,7 +242,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 			// limit results returned
 			'<tr>
 				<td class="mw-label">' .
-			Xml::label( $this->msg( 'table_pager_limit_label' )->text(), 'mw-table_pager_limit_label' ) .
+			Html::label( $this->msg( 'table_pager_limit_label' )->text(), 'mw-table_pager_limit_label' ) .
 			'</td>
 			<td class="mw-input">' .
 			$this->getLimitSelect() .
