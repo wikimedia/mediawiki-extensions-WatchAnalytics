@@ -202,16 +202,17 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 
 		$out =
 			// create the form element
-			Xml::openElement( 'form', [ 'method' => 'get', 'action' => $wgScript, 'id' => 'ext-watchanalytics-form' ] ) .
+			Html::openElement( 'form', [ 'method' => 'get', 'action' => $wgScript, 'id' => 'ext-watchanalytics-form' ] ) .
 
 			// create fieldset
-			Xml::fieldset( $this->msg( 'allmessages-filter-legend' )->text() ) .
+			Html::openElement( 'fieldset' ) . "\n" .
+			Html::element( 'legend', [], $this->msg( 'allmessages-filter-legend' )->text() ) . "\n" .
 
 			// create hidden <input> showing page name (Special:WatchAnalytics)
 			Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
 
 			// create table for form elements
-			Xml::openElement( 'table', [ 'class' => 'ext-watchanalytics-stats-filter-table' ] ) . "\n" .
+			Html::openElement( 'table', [ 'class' => 'ext-watchanalytics-stats-filter-table' ] ) . "\n" .
 
 			// filter results by user group
 			'<tr>
@@ -258,15 +259,15 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 			</tr>" .
 
 			// close out table element
-			Xml::closeElement( 'table' ) .
+			Html::closeElement( 'table' ) .
 
 			// FIXME: are all of these needed? are additional need to support
 			// WatchAnalytics fields?
 			$this->getHiddenFields( [ 'title', 'prefix', 'filter', 'lang', 'limit', 'groupfilter', 'categoryfilter' ] ) .
 
 			// close fieldset and form elements
-			Xml::closeElement( 'fieldset' ) .
-			Xml::closeElement( 'form' );
+			Html::closeElement( 'fieldset' ) .
+			Html::closeElement( 'form' );
 
 		return $out;
 	}

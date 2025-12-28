@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
 
@@ -45,7 +46,7 @@ class WatchAnalyticsUserTablePager extends WatchAnalyticsTablePager {
 			);
 			$msg = wfMessage( 'watchanalytics-view-user-pendingreviews' )->text();
 
-			$name .= ' (' . Xml::element(
+			$name .= ' (' . Html::element(
 				'a',
 				[ 'href' => $url ],
 				$msg

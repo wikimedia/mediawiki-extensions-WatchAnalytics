@@ -21,6 +21,7 @@
  * @ingroup SpecialPage
  */
 
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
@@ -465,7 +466,7 @@ class SpecialPendingReviews extends SpecialPage {
 				'oldid' => $mostRecentReviewed->getId()
 			] );
 
-			$diffLink = Xml::element( 'a',
+			$diffLink = Html::element( 'a',
 				[ 'href' => $diffURL, 'target' => "_blank" ],
 				wfMessage(
 					'watchanalytics-pendingreviews-diff-revisions',
@@ -476,7 +477,7 @@ class SpecialPendingReviews extends SpecialPage {
 			$latest = $revisionStore->getRevisionByTitle( $item->title );
 			$diffURL = $item->title->getLocalURL( [ 'oldid' => $latest->getId() ] );
 
-			$diffLink = Xml::element( 'a',
+			$diffLink = Html::element( 'a',
 				[ 'href' => $diffURL, 'target' => "_blank" ],
 				$this->msg( 'watchanalytics-pendingreviews-users-first-view' )->text()
 			);
@@ -498,7 +499,7 @@ class SpecialPendingReviews extends SpecialPage {
 			'oldid' => ApprovedRevs::getApprovedRevID( $item->title )
 		] );
 
-		$diffLink = Xml::element( 'a',
+		$diffLink = Html::element( 'a',
 			[ 'href' => $diffURL, 'class' => 'pendingreviews-green-button', 'target' => "_blank" ],
 			wfMessage(
 				'watchanalytics-view-and-approve'
@@ -515,7 +516,7 @@ class SpecialPendingReviews extends SpecialPage {
 	 * @return string HTML for button
 	 */
 	public function getHistoryLink( $item ) {
-		return Xml::element( 'a',
+		return Html::element( 'a',
 			[
 				'href' => $item->title->getLocalURL( [ 'action' => 'history' ] ),
 				'target' => "_blank"
@@ -544,7 +545,7 @@ class SpecialPendingReviews extends SpecialPage {
 	 * @return string HTML for button
 	 */
 	public function getClearNotificationButton( $titleText, $namespace, $buttonMsg, $buttonClass ) {
-		return Xml::element( 'a',
+		return Html::element( 'a',
 			[
 				'href' => $this->getPageTitle()->getLocalURL( [
 					'clearNotificationTitle' => $titleText,
@@ -650,7 +651,7 @@ class SpecialPendingReviews extends SpecialPage {
 			$talkQueryString = [ 'action' => 'edit' ];
 		}
 
-		return Xml::element( 'a',
+		return Html::element( 'a',
 			[
 				'href' => $userTalk->getLocalURL( $talkQueryString )
 			],
@@ -695,7 +696,7 @@ class SpecialPendingReviews extends SpecialPage {
 			'offset' => $prevReviewSet,
 			'user' => $this->mUser
 		] );
-		$html .= Xml::element(
+		$html .= Html::element(
 			'a',
 			[
 				'href' => $prevReviewURL,
@@ -708,7 +709,7 @@ class SpecialPendingReviews extends SpecialPage {
 			'offset' => $nextReviewSet,
 			'user' => $this->mUser
 		] );
-		$html .= Xml::element(
+		$html .= Html::element(
 			'a',
 			[
 				'href' => $nextReviewURL,
@@ -911,7 +912,7 @@ class SpecialPendingReviews extends SpecialPage {
 
 			$lang = RequestContext::getMain()->getLanguage();
 			$timestamp = new MWTimestamp( $changeTS );
-			$timestampDisplay = Xml::element( 'span',
+			$timestampDisplay = Html::element( 'span',
 				[ 'class' => 'pendingreviews-changes-list-time' ],
 				$lang->getHumanTimestamp( $timestamp )
 			) . ' ';

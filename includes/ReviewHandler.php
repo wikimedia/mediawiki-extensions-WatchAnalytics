@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
@@ -127,7 +128,7 @@ class ReviewHandler {
 	}
 
 	public function getTemplate() {
-		$reviewLink = Xml::element(
+		$reviewLink = Html::element(
 			'a',
 			[
 				'href' => null,
@@ -143,7 +144,7 @@ class ReviewHandler {
 			'unreview' => $this->initial
 		] );
 
-		$unReviewLink = Xml::element(
+		$unReviewLink = Html::element(
 			'a',
 			[
 				'href' => $unReviewURL,

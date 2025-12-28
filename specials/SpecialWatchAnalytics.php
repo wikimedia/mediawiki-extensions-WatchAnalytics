@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Html\Html;
+
 class SpecialWatchAnalytics extends SpecialPage {
 
 	/** @var int */
@@ -134,22 +136,22 @@ class SpecialWatchAnalytics extends SpecialPage {
 		}
 
 		$header = '<strong>' . wfMessage( 'watchanalytics-view' )->escaped() . '</strong>';
-		$header .= Xml::tags( 'ul', null, $navLinks ) . "\n";
+		$header .= Html::rawElement( 'ul', [], $navLinks ) . "\n";
 
-		return $stateOf . Xml::tags( 'div', [ 'class' => 'special-watchanalytics-header' ], $header );
+		return $stateOf . Html::rawElement( 'div', [ 'class' => 'special-watchanalytics-header' ], $header );
 	}
 
 	public function createHeaderLink( $msg, $query_param ) {
 		$WatchAnalyticsTitle = SpecialPage::getTitleFor( $this->getName() );
 
 		if ( $this->mMode == $query_param ) {
-			return Xml::element( 'strong',
-				null,
+			return Html::element( 'strong',
+				[],
 				wfMessage( $msg )->text()
 			);
 		} else {
 			$show = ( $query_param == '' ) ? [] : [ 'show' => $query_param ];
-			return Xml::element( 'a',
+			return Html::element( 'a',
 				[ 'href' => $WatchAnalyticsTitle->getLocalURL( $show ) ],
 				wfMessage( $msg )->text()
 			);

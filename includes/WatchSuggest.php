@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
 
@@ -355,7 +356,7 @@ class WatchSuggest {
 		] );
 
 		$watchLink =
-			Xml::element(
+			Html::element(
 				'a',
 				[
 					'href' => $watchLinkURL,

@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
@@ -72,7 +73,7 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 				$titleFullText = $titleNsText . ':' . $title->getText();
 			}
 
-			$pageLink = Xml::element(
+			$pageLink = Html::element(
 				'a',
 				[ 'href' => $titleURL ],
 				$titleFullText
@@ -82,7 +83,7 @@ class WatchAnalyticsPageTablePager extends WatchAnalyticsTablePager {
 			$url = SpecialPage::getTitleFor( 'PageStatistics' )->getInternalURL( [
 				'page' => $title->getPrefixedText()
 			] );
-			$pageStatsLink = Xml::element(
+			$pageStatsLink = Html::element(
 				'a',
 				[ 'href' => $url ],
 				wfMessage( 'watchanalytics-view-page-stats' )->text()

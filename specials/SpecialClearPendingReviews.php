@@ -215,7 +215,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 
 			$impactedPages = array_unique( $impactedPages );
 			foreach ( $impactedPages as $page ) {
-				$table .= Html::rawElement( 'li', null, Linker::link( $page ) );
+				$table .= Html::rawElement( 'li', [], Linker::link( $page ) );
 			}
 
 			$table .= "</ul>";
@@ -231,7 +231,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 			}
 
 			foreach ( $impactedUsers as $user ) {
-				$table .= Html::rawElement( 'li', null, Linker::link( $user->getUserPage() ) );
+				$table .= Html::rawElement( 'li', [], Linker::link( $user->getUserPage() ) );
 			}
 
 			$table .= "</ul>";

@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
@@ -163,24 +164,24 @@ class SpecialPageStatistics extends SpecialPage {
 		#
 		# Page editors
 		#
-		$html .= Xml::element( 'h2', null, $this->msg( 'watchanalytics-pagestats-editors-list-title' )->text() );
-		$html .= Xml::openElement( 'ul' );
+		$html .= Html::element( 'h2', [], $this->msg( 'watchanalytics-pagestats-editors-list-title' )->text() );
+		$html .= Html::openElement( 'ul' );
 		if ( $row ) {
 			// $editor = User::newFromId( $row->rev_user )
 			// $realName = $editor->getRealName();
 			$u = User::newFromActorId( $row->rev_actor );
 			if ( $u ) {
 				$html .=
-					Xml::openElement( 'li' )
+					Html::openElement( 'li' )
 					. $this->msg(
 						'watchanalytics-pagestats-editors-list-item',
 						$u->getName(),
 						$row->num_revisions
 					)->parse()
-					. Xml::closeElement( 'li' );
+					. Html::closeElement( 'li' );
 			}
 		}
-		$html .= Xml::closeElement( 'ul' );
+		$html .= Html::closeElement( 'ul' );
 
 		#
 		# Watchers query
@@ -211,8 +212,8 @@ class SpecialPageStatistics extends SpecialPage {
 		#
 		# Page watchers
 		#
-		$html .= Xml::element( 'h2', null, wfMessage( 'watchanalytics-pagestats-watchers-title' )->text() );
-		$html .= Xml::openElement( "ul" );
+		$html .= Html::element( 'h2', [], wfMessage( 'watchanalytics-pagestats-watchers-title' )->text() );
+		$html .= Html::openElement( "ul" );
 		while ( $row = $res->fetchObject() ) {
 			// $editor = User::newFromId( $row->rev_user )
 			// $realName = $editor->getRealName();
@@ -224,14 +225,14 @@ class SpecialPageStatistics extends SpecialPage {
 			}
 
 			$html .=
-				Xml::openElement( 'li' )
+				Html::openElement( 'li' )
 				. Linker::userLink( $row->wl_user, $row->user_name )
 				. ' - '
 				. wfMessage( $watcherMsg )->escaped()
-				. Xml::closeElement( 'li' );
+				. Html::closeElement( 'li' );
 
 		}
-		$html .= Xml::closeElement( "ul" );
+		$html .= Html::closeElement( "ul" );
 
 		$out->addHTML( $html );
 
