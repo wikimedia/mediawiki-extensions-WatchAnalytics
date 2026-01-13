@@ -4,7 +4,11 @@
 			"Cabal"
 		]
 	},
+	"pagestatistics": "ਵਰਕਿਆਂ ਦੇ ਅੰਕੜੇ",
 	"watchanalytics-special-header-user": "ਵਰਤੋਂਕਾਰ",
+	"watchanalytics-special-header-page-title": "ਵਰਕਾ",
+	"watchanalytics-view-page-stats": "ਵਰਕੇ ਦੇ ਅੰਕੜੇ",
 	"watchanalytics-special-header-num-pages": "# ਸਫ਼ੇ",
+	"watchanalytics-pagestats-editors-list-title": "ਵਰਕੇ ਦੇ ਸੋਧਕ",
 	"pendingreviews-accept-change": "ਪਰਖਿਆ ਹੋਇਆ ਵਜੋਂ ਨੱਥੀ ਕਰੋ"
 }
