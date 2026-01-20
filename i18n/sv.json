@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"watchanalytics-desc": "Uppmuntra god utspridning av bevakare",
@@ -30,8 +31,8 @@
 	"clearpendingreviews-date-order-invalid": "Startdatum måste vara före slutdatum",
 	"clearpendingreviews-missing-date-category": "Måste ange antingen kategori eller titel.",
 	"clearpendingreviews-category-invalid": "Kategorin finns inte.",
-	"clearpendingreviews-success": "Väntande granskningar har rensats från $1 sidor.",
-	"clearpendingreviews-success-return": "Tillbaka till:",
+	"clearpendingreviews-success": "Väntande granskningar har rensats från {{PLURAL:$1|one page|$1 sidor}}.",
+	"clearpendingreviews-success-return": "Tillbaka till $1.",
 	"clearpendingreviews-pages-cleared": "Följande sidor kommer rensas:",
 	"clearpendingreviews-people-impacted": "Följande personer kommer påverkas:",
 	"action-clearreviews": "rensa väntande granskningar",
@@ -104,7 +105,7 @@
 	"watch-analytics-page-score-scrutiny-label": "Granskning",
 	"watch-analytics-page-score-reviews-label": "Granskningar",
 	"watchanalytics-pagestats-editors-list-title": "Sidredigerare",
-	"watchanalytics-pagestats-editors-list-item": "$1 - {{PLURAL:$2|1 sidversion|$2 sidversioner}}",
+	"watchanalytics-pagestats-editors-list-item": "[[User:$1|$1]] - {{PLURAL:$2|1 revision|$2 revisioner}}",
 	"watchanalytics-pagestats-watchers-title": "Sidbevakare",
 	"watchanalytics-pagestats-watchers-list-item-reviewed": "senast granskad",
 	"watchanalytics-pagestats-watchers-list-item-unreviewed": "inväntar granskning",
