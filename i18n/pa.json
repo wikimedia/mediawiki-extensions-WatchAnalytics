@@ -4,11 +4,14 @@
 			"Cabal"
 		]
 	},
+	"watchanalytics-view": "ਵੇਖੋ:",
 	"pagestatistics": "ਵਰਕਿਆਂ ਦੇ ਅੰਕੜੇ",
+	"pendingreviews-current": "ਮੌਜੂਦਾ",
 	"watchanalytics-special-header-user": "ਵਰਤੋਂਕਾਰ",
 	"watchanalytics-special-header-page-title": "ਵਰਕਾ",
 	"watchanalytics-view-page-stats": "ਵਰਕੇ ਦੇ ਅੰਕੜੇ",
 	"watchanalytics-special-header-num-pages": "# ਸਫ਼ੇ",
+	"watch-analytics-page-score-reviews-label": "ਪੜਚੋਲ",
 	"watchanalytics-pagestats-editors-list-title": "ਵਰਕੇ ਦੇ ਸੋਧਕ",
 	"pendingreviews-accept-change": "ਪਰਖਿਆ ਹੋਇਆ ਵਜੋਂ ਨੱਥੀ ਕਰੋ"
 }
