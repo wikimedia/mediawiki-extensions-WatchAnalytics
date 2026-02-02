@@ -10,8 +10,13 @@
 	"watchanalytics-special-header-user": "ਵਰਤੋਂਕਾਰ",
 	"watchanalytics-special-header-page-title": "ਵਰਕਾ",
 	"watchanalytics-view-page-stats": "ਵਰਕੇ ਦੇ ਅੰਕੜੇ",
+	"watchanalytics-special-header-timestamp": "ਮਿਤੀ/ਵੇਲਾ",
 	"watchanalytics-special-header-num-pages": "# ਸਫ਼ੇ",
+	"watchanalytics-pendingreviews-prev-revisions": "ਪਿਛਲਾ",
+	"watchanalytics-pendingreviews-next-revisions": "ਅਗਲਾ",
 	"watch-analytics-page-score-reviews-label": "ਪੜਚੋਲ",
 	"watchanalytics-pagestats-editors-list-title": "ਵਰਕੇ ਦੇ ਸੋਧਕ",
-	"pendingreviews-accept-change": "ਪਰਖਿਆ ਹੋਇਆ ਵਜੋਂ ਨੱਥੀ ਕਰੋ"
+	"watchanalytics-reviews-seechanges-title": "ਤਬਦੀਲੀਆਂ ਵੇਖੋ",
+	"pendingreviews-accept-change": "ਪਰਖਿਆ ਹੋਇਆ ਵਜੋਂ ਨੱਥੀ ਕਰੋ",
+	"pendingreviews-watch-suggestion-watchlink": "ਨਿਗ੍ਹਾ ਰੱਖੋ"
 }
