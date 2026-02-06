@@ -316,9 +316,8 @@ class PendingReview {
 		// I couldn't find a cleaner way to do it.
 		// $logParams the content of the column log_params in the logging table
 
-		Wikimedia\AtEase\AtEase::suppressWarnings();
-		$unserializedParams = unserialize( $logParams );
-		Wikimedia\AtEase\AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$unserializedParams = @unserialize( $logParams );
 		if ( $unserializedParams !== false ) {
 			$moveLogParams = $unserializedParams;
 
