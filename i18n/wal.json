@@ -17,7 +17,7 @@
 	"watchanalytics-special-header-main-num-one-watched": "# oyqettay issito xeelettis",
 	"watchanalytics-view-and-approve": "Laameta be'a/ekka",
 	"watchanalytics-pendingreviews-prev-revisions": "Kaseegaa",
-	"watchanalytics-pendingreviews-next-revisions": "Kaalliyaga",
+	"watchanalytics-pendingreviews-next-revisions": "Kaalliyagaa",
 	"pendingreviews-timediff-hours": "{{PLURAL:$1|1 saatiyappe|$1 saatetuppe}} ppe kase laamettis",
 	"pendingreviews-timediff-minutes": "{{PLURAL:$1|1 daqiiqaappe|$1 daqiiqatuppe}} kase laamettis",
 	"pendingreviews-timediff-just-now": "Ha'i laamettis",
