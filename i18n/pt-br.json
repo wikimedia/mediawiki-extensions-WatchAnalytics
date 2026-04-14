@@ -1,15 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eduardoaddad",
 			"Trooper57",
 			"YuriNikolai"
 		]
 	},
+	"watchanalytics-desc": "Incentivar uma boa distribuição dos vigias",
+	"watchanalytics-personal-url": "Avaliações pendentes ($1)",
+	"watchanalytics-view": "Ver:",
 	"pagestatistics": "Estatísticas da página",
+	"clearpendingreview-category": "Selecione a categoria da página:",
+	"clearpendingreview-start-time": "Hora de início:",
+	"clearpendingreview-end-time": "Hora de término:",
 	"clearpendingreviews-success": "Revisões pendentes limpas com sucesso de $1 páginas.",
 	"clearpendingreviews-success-return": "Retornar para $1.",
 	"clearpendingreviews-people-impacted": "As seguintes pessoas serão afetadas:",
 	"action-clearreviews": "limpar revisões pendentes",
+	"watchanalytics-special-header-user": "Usuário",
 	"watchanalytics-special-header-page-title": "página",
 	"watchanalytics-category-filter-label": "Filtrar por categoria da página:",
 	"watchanalytics-category-no-filter": "(sem filtro de categoria)",
