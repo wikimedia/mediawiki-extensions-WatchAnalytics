@@ -126,7 +126,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 		$queries = parent::getPagingQueries();
 
 		# Don't announce the limit everywhere if it's the default
-		$this->limit = $this->limit ?? $this->mDefaultLimit;
+		$this->limit ??= $this->mDefaultLimit;
 		$offset = $this->offset ?? 0;
 
 		if ( $offset <= 0 ) {
