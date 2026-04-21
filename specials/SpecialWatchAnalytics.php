@@ -18,11 +18,7 @@ class SpecialWatchAnalytics extends SpecialPage {
 	];
 
 	public function __construct() {
-		parent::__construct(
-			"WatchAnalytics", //
-			"", // rights required to view
-			true // show in Special:SpecialPages
-		);
+		parent::__construct( 'WatchAnalytics' );
 	}
 
 	public function execute( $parser = null ) {

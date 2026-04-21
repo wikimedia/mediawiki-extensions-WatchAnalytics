@@ -13,11 +13,7 @@ class SpecialPageStatistics extends SpecialPage {
 	protected $mTitle;
 
 	public function __construct() {
-		parent::__construct(
-			"PageStatistics", //
-			"", // rights required to view
-			true // show in Special:SpecialPages
-		);
+		parent::__construct( 'PageStatistics' );
 	}
 
 	public function execute( $parser = null ) {

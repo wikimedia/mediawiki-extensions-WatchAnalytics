@@ -61,11 +61,7 @@ class SpecialPendingReviews extends SpecialPage {
 	 * Constructor for Special Page.
 	 */
 	public function __construct() {
-		parent::__construct(
-			"PendingReviews", //
-			"", // rights required to view
-			true // show in Special:SpecialPages
-		);
+		parent::__construct( 'PendingReviews' );
 	}
 
 	/**
