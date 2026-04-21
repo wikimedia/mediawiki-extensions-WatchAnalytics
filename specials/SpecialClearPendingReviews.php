@@ -8,7 +8,9 @@
 
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
+use Wikimedia\Rdbms\IResultWrapper;
 
 class SpecialClearPendingReviews extends SpecialPage {
 	public function __construct() {
@@ -108,7 +110,7 @@ class SpecialClearPendingReviews extends SpecialPage {
 	/**
 	 * @param array $data
 	 * @param bool $clearPages
-	 * @return \Wikimedia\Rdbms\IResultWrapper
+	 * @return IResultWrapper
 	 */
 	public static function doSearchQuery( $data, $clearPages ) {
 		$dbw = WatchAnalyticsUtils::getWriteDB();

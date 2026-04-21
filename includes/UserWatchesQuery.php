@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\User\User;
+
 class UserWatchesQuery extends WatchesQuery {
 
 	public $sqlUserName = 'MAX(u.user_name) AS user_name';

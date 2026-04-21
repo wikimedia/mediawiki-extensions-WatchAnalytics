@@ -9,6 +9,7 @@
  */
 
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 
 class PendingApproval extends PendingReview {
 	public function __construct( $row, Title $title ) {

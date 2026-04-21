@@ -3,6 +3,8 @@
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class WatchSuggest {
 
@@ -12,7 +14,7 @@ class WatchSuggest {
 	public $mUser;
 
 	/**
-	 * @var DatabaseBase : FIXME confirm correct class
+	 * @var IReadableDatabase
 	 */
 	public $dbr;
 

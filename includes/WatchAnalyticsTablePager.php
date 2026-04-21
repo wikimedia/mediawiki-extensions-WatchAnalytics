@@ -3,6 +3,8 @@
 use MediaWiki\Category\Category;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Pager\TablePager;
+use Wikimedia\Rdbms\IResultWrapper;
 
 abstract class WatchAnalyticsTablePager extends TablePager {
 
@@ -80,7 +82,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 	 * @param string $offset Index offset, inclusive
 	 * @param int $limit Exact query limit
 	 * @param bool $order Query direction
-	 * @return ResultWrapper
+	 * @return IResultWrapper
 	 */
 	public function reallyDoQuery( $offset, $limit, $order ) {
 		$qInfo = $this->getQueryInfo();

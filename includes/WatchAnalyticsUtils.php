@@ -1,13 +1,15 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class WatchAnalyticsUtils {
 
 	/**
 	 * Provides database for read access
 	 *
-	 * @return Database
+	 * @return IReadableDatabase
 	 */
 	public static function getReadDB() {
 		return MediaWikiServices::getInstance()
@@ -18,7 +20,7 @@ class WatchAnalyticsUtils {
 	/**
 	 * Provides database for write access
 	 *
-	 * @return Database
+	 * @return IDatabase
 	 */
 	public static function getWriteDB() {
 		return MediaWikiServices::getInstance()
