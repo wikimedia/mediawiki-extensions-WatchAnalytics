@@ -12,7 +12,12 @@ use MediaWiki\Title\Title;
 
 class SpecialClearPendingReviews extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'ClearPendingReviews', 'clearreviews' );
+		parent::__construct( 'ClearPendingReviews' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'clearreviews';
 	}
 
 	public function execute( $par ) {
