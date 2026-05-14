@@ -17,11 +17,6 @@ class SpecialClearPendingReviews extends SpecialPage {
 		parent::__construct( 'ClearPendingReviews' );
 	}
 
-	/** @inheritDoc */
-	public function getRestriction(): string {
-		return 'clearreviews';
-	}
-
 	public function execute( $par ) {
 		$output = $this->getOutput();
 
