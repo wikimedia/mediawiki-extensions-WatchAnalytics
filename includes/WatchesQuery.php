@@ -90,10 +90,10 @@ class WatchesQuery {
 	}
 
 	public function getQueryInfo() {
-		if ( isset( $this->limit ) ) {
+		if ( $this->limit !== null ) {
 			$this->options['LIMIT'] = $this->limit;
 		}
-		if ( isset( $this->offset ) ) {
+		if ( $this->offset !== null ) {
 			$this->options['OFFSET'] = $this->offset;
 		}
 

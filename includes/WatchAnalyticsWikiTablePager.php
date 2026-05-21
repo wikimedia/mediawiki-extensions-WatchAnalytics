@@ -34,7 +34,7 @@ class WatchAnalyticsWikiTablePager extends WatchAnalyticsTablePager {
 		parent::__construct( $page, $conds );
 
 		$sortField = $this->getRequest()->getVal( 'sort' );
-		if ( !isset( $sortField ) ) {
+		if ( $sortField !== null ) {
 			$this->mDefaultDirection = false;
 		}
 

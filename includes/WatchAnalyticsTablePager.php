@@ -8,7 +8,7 @@ use Wikimedia\Rdbms\IResultWrapper;
 
 abstract class WatchAnalyticsTablePager extends TablePager {
 
-	/** @var WikiPage|Page|SpecialWatchAnalytics */
+	/** @var WikiPage|Page */
 	public $page;
 
 	/** @var int */
@@ -60,7 +60,7 @@ abstract class WatchAnalyticsTablePager extends TablePager {
 
 	public function getIndexField() {
 		$sortField = $this->getRequest()->getVal( 'sort' );
-		if ( isset( $sortField ) && $this->isFieldSortable( $sortField ) ) {
+		if ( $sortField !== null && $this->isFieldSortable( $sortField ) ) {
 			return $sortField;
 		} else {
 			return $this->getDefaultSort();

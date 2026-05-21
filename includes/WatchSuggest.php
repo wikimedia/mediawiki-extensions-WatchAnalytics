@@ -189,7 +189,7 @@ class WatchSuggest {
 			$userWatchlistPageTitles[] = $row->p_title;
 		}
 		$pageIdsFromTitles = [];
-		if ( !empty( $userWatchlistPageTitles ) ) {
+		if ( count( $userWatchlistPageTitles ) > 0 ) {
 			$titleResult = $this->dbr->select(
 				'page',
 				'page_id',
@@ -209,7 +209,7 @@ class WatchSuggest {
 		$where = "pl.pl_from IN ($idsList)";
 
 		// Only add the pl_target_id part if we have relevant target IDs to check against
-		if ( !empty( $idsList ) ) {
+		if ( $idsList !== '' ) {
 			$where .= " OR pl.pl_target_id IN ($idsList)";
 		}
 
