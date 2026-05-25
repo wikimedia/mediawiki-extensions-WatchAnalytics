@@ -1,8 +1,9 @@
 {
 	"name": "WatchAnalytics",
-	"version": "4.5.1",
+	"version": "4.5.2",
 	"author": [
-		"[https://www.mediawiki.org/wiki/User:Jamesmontalvo3 James Montalvo]"
+		"[https://www.mediawiki.org/wiki/User:Jamesmontalvo3 James Montalvo]",
+		"Yaron Koren"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:WatchAnalytics",
 	"descriptionmsg": "watchanalytics-desc",
