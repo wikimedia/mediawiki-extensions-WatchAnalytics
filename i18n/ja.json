@@ -3,7 +3,8 @@
 		"authors": [
 			"MathXplore",
 			"Shirayuki",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Tensama0415"
 		]
 	},
 	"watchanalytics-view": "表示",
@@ -24,7 +25,7 @@
 	"clearpendingreviews-missing-date-category": "カテゴリまたはタイトルのいずれかを入力する必要があります。",
 	"clearpendingreviews-category-invalid": "カテゴリは存在しません。",
 	"clearpendingreviews-success": "ページ\"$1\"から保留中のレビューを削除しました。",
-	"clearpendingreviews-success-return": "戻る:",
+	"clearpendingreviews-success-return": "$1 に戻る。",
 	"action-clearreviews": "保留中の査読のクリア",
 	"clearform-submit": "ページをクリア",
 	"clearform-section1": "期間を選択:",
