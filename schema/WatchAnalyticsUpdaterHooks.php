@@ -10,11 +10,15 @@ class WatchAnalyticsUpdaterHooks {
 		// existence of one is sufficient to determine if the tables need to be
 		// created.
 
-		// DB updates
-		// For now, there's just a single SQL file for all DB types.
-		// if ( $updater->getDB()->getType() == 'mysql' ) {
-			$updater->addExtensionTable( 'watch_tracking_user', __DIR__ . '/WatchAnalytics.sql' );
-		// }
+		// DB updates. The schema is defined using MediaWiki's abstract schema
+		// system (sql/tables.json); the per-DBMS DDL files below are generated
+		// from it with maintenance/generateSchemaSql.php and adapt automatically
+		// to MySQL/MariaDB, SQLite and PostgreSQL.
+		$dbType = $updater->getDB()->getType();
+		$updater->addExtensionTable(
+			'watch_tracking_user',
+			__DIR__ . "/../sql/$dbType/tables-generated.sql"
+		);
 	}
 
 }

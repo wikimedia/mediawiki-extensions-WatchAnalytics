@@ -1,0 +1,226 @@
+[
+	{
+		"name": "watch_tracking_user",
+		"comment": "Stores per-user watchlist and pending-review counts at a given point in time.",
+		"columns": [
+			{
+				"name": "tracking_timestamp",
+				"comment": "Timestamp at which this data point was recorded.",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "user_id",
+				"comment": "Key to user.user_id.",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_watches",
+				"comment": "Number of pages this user is watching.",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_pending",
+				"comment": "Number of pages this user is watching that have pending reviews.",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "event_notes",
+				"comment": "Optional notes about the event that triggered this data point.",
+				"type": "string",
+				"options": { "notnull": false, "length": 63 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "watch_tracking_user_datapoint",
+				"columns": [ "tracking_timestamp", "user_id" ],
+				"unique": false
+			},
+			{
+				"name": "watch_tracking_user_user",
+				"columns": [ "user_id" ],
+				"unique": false
+			},
+			{
+				"name": "watch_tracking_user_timestamp",
+				"columns": [ "tracking_timestamp" ],
+				"unique": false
+			}
+		],
+		"pk": []
+	},
+	{
+		"name": "watch_tracking_page",
+		"comment": "Stores per-page watch and review counts at a given point in time.",
+		"columns": [
+			{
+				"name": "tracking_timestamp",
+				"comment": "Timestamp at which this data point was recorded.",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "page_id",
+				"comment": "Key to page.page_id.",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_watches",
+				"comment": "Number of users watching this page.",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_reviewed",
+				"comment": "Number of users who have reviewed the latest revision of this page.",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "event_notes",
+				"comment": "Optional notes about the event that triggered this data point.",
+				"type": "string",
+				"options": { "notnull": false, "length": 63 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "watch_tracking_page_datapoint",
+				"columns": [ "tracking_timestamp", "page_id" ],
+				"unique": true
+			},
+			{
+				"name": "watch_tracking_page_page",
+				"columns": [ "page_id" ],
+				"unique": false
+			},
+			{
+				"name": "watch_tracking_page_timestamp",
+				"columns": [ "tracking_timestamp" ],
+				"unique": false
+			}
+		],
+		"pk": []
+	},
+	{
+		"name": "watch_tracking_wiki",
+		"comment": "Stores wiki-wide watch and review statistics at a given point in time.",
+		"columns": [
+			{
+				"name": "tracking_timestamp",
+				"comment": "Timestamp at which this data point was recorded.",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_pages",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_watches",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_pending",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "max_pending_minutes",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "avg_pending_minutes",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_unwatched",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_one_watched",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_unreviewed",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "num_one_reviewed",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_pages",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_watches",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_pending",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_max_pending_minutes",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_avg_pending_minutes",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_unwatched",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_one_watched",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_unreviewed",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "content_num_one_reviewed",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "event_notes",
+				"comment": "Optional notes about the event that triggered this data point.",
+				"type": "string",
+				"options": { "notnull": false, "length": 63 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "watch_tracking_wiki_datapoint",
+				"columns": [ "tracking_timestamp" ],
+				"unique": true
+			}
+		],
+		"pk": []
+	}
+]
