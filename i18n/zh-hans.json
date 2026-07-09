@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"GuoPC",
 			"Peterxy",
 			"Peterxy12"
 		]
 	},
-	"watchanalytics-desc": "鼓励观察者合理分布",
+	"watchanalytics-desc": "鼓励监视者合理贡献",
 	"watchanalytics-personal-url": "待审核（$1）",
 	"watchanalytics-view": "查看：",
 	"right-viewpagescore": "查看页面基于评论的评分",
