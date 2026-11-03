@@ -17,6 +17,7 @@ class WatchAnalyticsHooks {
 	 */
 	public static function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		global $wgOut;
+		global $egWatchAnalyticsUserWatchStats;
 
 		$user = $skin->getUser();
 		if ( !$user->isAllowed( 'pendingreviewslink' ) ) {
@@ -28,11 +29,9 @@ class WatchAnalyticsHooks {
 		// the onBeforePageDisplay() method was created below.
 
 		// Get user's watch/review stats
-		$watchStats = $user->watchStats; // set in onBeforePageDisplay() hook
-		// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
-		$numPending = $watchStats['num_pending'];
-		$maxPendingDays = $watchStats['max_pending_days'];
-		// @phan-suppress-previous-line PhanTypeArraySuspiciousNullable
+		// This global variable was set in onBeforePageDisplay() hook
+		$numPending = $egWatchAnalyticsUserWatchStats['num_pending'] ?? 0;
+		$maxPendingDays = $egWatchAnalyticsUserWatchStats['max_pending_days'] ?? 0;
 
 		// Get user's pending approvals
 		// Check that Approved Revs is installed
@@ -85,6 +84,8 @@ class WatchAnalyticsHooks {
 	 * @param OutputPage $out reference to OutputPage object
 	 */
 	public static function onBeforePageDisplay( $out /*, $skin*/ ) {
+		global $egWatchAnalyticsUserWatchStats;
+
 		$user = $out->getUser();
 		$title = $out->getTitle();
 
@@ -92,15 +93,15 @@ class WatchAnalyticsHooks {
 		# 1) Is user's oldest pending review old enough to require emphasis?
 		#
 		$userWatch = new UserWatchesQuery();
-		$user->watchStats = $userWatch->getUserWatchStats( $user );
-		$user->watchStats['max_pending_days'] = ceil(
+		$egWatchAnalyticsUserWatchStats = $userWatch->getUserWatchStats( $user );
+		$egWatchAnalyticsUserWatchStats['max_pending_days'] = ceil(
 			// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
-			$user->watchStats['max_pending_minutes'] / ( 60 * 24 )
+			$egWatchAnalyticsUserWatchStats['max_pending_minutes'] / ( 60 * 24 )
 		);
 
 		global $egPendingReviewsEmphasizeDays;
 		// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
-		if ( $user->watchStats['max_pending_days'] > $egPendingReviewsEmphasizeDays ) {
+		if ( $egWatchAnalyticsUserWatchStats['max_pending_days'] > $egPendingReviewsEmphasizeDays ) {
 			$out->addModules( [ 'ext.watchanalytics.shakependingreviews' ] );
 		}
 
